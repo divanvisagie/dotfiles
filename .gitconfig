@@ -1,0 +1,7 @@
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[user]
+	name = Divan Visagie
+	email = me@dvisagie.com
+[init]
+	defaultBranch = main
