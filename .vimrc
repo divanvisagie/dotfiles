@@ -20,13 +20,16 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 "Autocomplete:
-"Plug 'git@github.com:Valloric/YouCompleteMe.git' 
+Plug 'git@github.com:Valloric/YouCompleteMe.git' 
 "Improved typescript syntax:
 Plug 'leafgarland/typescript-vim'
 "Tree explorer
 Plug 'preservim/nerdtree'
 "Search with ack
 Plug 'idbrii/vim-notgrep'
+"Fuzzy file search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 colorscheme gruvbox
@@ -40,4 +43,18 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR> 
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+"Fuzzy file finder
+nnoremap <leader>f :FZF<CR>
+
+
+"change to current file's directory
+nnoremap <leader>cd :cd %:p:h<CR>
+
+"open a terminal at the bottom of the current buffer
+function SpawnTerm()
+    bel term 
+    15 winc -
+endfunction
+nnoremap <leader>t :call SpawnTerm()<CR>
 
