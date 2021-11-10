@@ -23,12 +23,21 @@ Plug 'morhetz/gruvbox'
 "Plug 'git@github.com:Valloric/YouCompleteMe.git' 
 "Improved typescript syntax:
 Plug 'leafgarland/typescript-vim'
-
-
+"Tree explorer
+Plug 'preservim/nerdtree'
+"Search with ack
+Plug 'idbrii/vim-notgrep'
 call plug#end()
 
 colorscheme gruvbox
 set background=dark
 
 let mapleader=" "
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+"Activate with Ctrl where C = Ctrl
+nnoremap <C-n> :NERDTree<CR> 
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
