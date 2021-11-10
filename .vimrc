@@ -12,7 +12,7 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch "while you serch you get results 
 set nu "Show line numbers
-
+set clipboard=unnamed "copy to global clipboard
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
