@@ -45,7 +45,10 @@ call plug#end()
 
 colorscheme gruvbox
 set background=dark
-
+" Split down and to the right instead of left and to the top which is the
+" weird default
+set splitbelow
+set splitright
 let mapleader=" "
 let g:lsp_fold_enabled = 0 "Disable lsp folding
 let g:ackprg = 'ack'
@@ -57,9 +60,9 @@ nnoremap <C-f> :NERDTreeFind<CR>
 "Fuzzy file finder
 nnoremap <leader>f :FZF<CR>
 "language server stuff
-nnoremap <leader>d :LspDefinition<CR>
+nnoremap <leader>gd :LspDefinition<CR>
 nnoremap <leader>pd :LspPeekDefinition<CR>
-nnoremap <leader>i :LspDeclaration<CR>
+nnoremap <leader>gi :LspDeclaration<CR>
 nnoremap <leader>pi :LspPeekDeclaration<CR>
 nnoremap <leader>r :LspRename<CR>
 nnoremap <leader>ca :LspCodeAction<CR>
@@ -74,6 +77,11 @@ map <C-t> :tabnext<cr>
 nnoremap <leader>tm :tabmove<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>to :tabonly<cr>
+"Easy window navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 "shortcuts
 map <C-s> :w<cr>
 
