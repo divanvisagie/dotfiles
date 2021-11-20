@@ -107,7 +107,7 @@ nnoremap <leader>pd :LspPeekDefinition<CR>
 nnoremap <leader>gi :LspDeclaration<CR>
 nnoremap <leader>pi :LspPeekDeclaration<CR>
 nnoremap <leader>r :LspRename<CR>
-nnoremap <leader>ca :LspCodeAction<CR>
+nnoremap <leader>c. :LspCodeAction<CR>
 nnoremap <leader>td :LspTypeDefinition<CR>
 nnoremap <leader>is :LspInstallServer<CR>
 nnoremap <leader>fr :LspReferences<CR>
