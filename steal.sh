@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-cp ~/.vimrc .
-cp ~/.zshrc .
-cp ~/.tmux.conf .
+cp ~/.vimrc ./vim
+cp ~/.zshrc ./zsh
+cp ~/.tmux.conf ./tmux
