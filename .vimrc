@@ -13,7 +13,9 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch "while you serch you get results 
-set nu "Show line numbers
+"do relative line numbers with hybrid:
+set number relativenumber
+set nu rnu
 set clipboard=unnamed "copy to global clipboard
 set colorcolumn=80
 "stops issue where backspace doesnt work on some things
@@ -23,6 +25,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 "Set up plugin loader, this loader works between the begin and end functions
 call plug#begin('~/.vim/plugged')
+Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 "Autocomplete and language servers
 Plug 'prabirshrestha/vim-lsp'
@@ -41,10 +44,16 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Be able to change quotes and other surrounds with: cs'" for example
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdcommenter'
 call plug#end()
 
-colorscheme gruvbox
+colorscheme nord
 set background=dark
+" let g:airline_theme='bubblegum'
 " Split down and to the right instead of left and to the top which is the
 " weird default
 set splitbelow
@@ -53,6 +62,16 @@ let mapleader=" "
 let g:lsp_fold_enabled = 0 "Disable lsp folding
 let g:ackprg = 'ack'
 let g:lsp_diagnostics_echo_cursor = 1 "Show the lsp error at this line
+let g:lsp_diagnostics_float_cursor = 1 "Show the error on the line as a popup
+
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+"Configurations for autocomplete plugin
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"Force refresh autocomplete
+imap <c-space> <Plug>(asyncomplete_force_refresh)
 
 nnoremap <leader>n :NERDTreeToggle<CR>
 "Activate with Ctrl where C = Ctrl
