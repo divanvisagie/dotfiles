@@ -55,9 +55,6 @@ Plug 'preservim/nerdtree'
 "Search with ack
 Plug 'idbrii/vim-notgrep'
 Plug 'mileszs/ack.vim'
-"Fuzzy file search
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'vim-airline/vim-airline'
@@ -65,6 +62,12 @@ Plug 'vim-airline/vim-airline-themes'
 "Be able to change quotes and other surrounds with: cs'" for example
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
+
+" telescope requirements...
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,8 +101,6 @@ imap <c-space> <Plug>(asyncomplete_force_refresh)
 nnoremap <leader>n :NERDTreeToggle<CR>
 "Activate with Ctrl where C = Ctrl
 nnoremap <C-f> :NERDTreeFind<CR>
-"Fuzzy file finder
-nnoremap <leader>f :FZF<CR>
 "language server stuff
 nnoremap <leader>gd :LspDefinition<CR>
 nnoremap <leader>pd :LspPeekDefinition<CR>
@@ -125,7 +126,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 "shortcuts
 map <C-s> :w<cr>
+"telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
+"Exit terminal mode
+tnoremap <Esc> <C-\><C-n>
 "open a terminal at the bottom of the current buffer
 function SpawnTerm()
     split | terminal 
