@@ -1,6 +1,9 @@
-syntax on "Basic syntax highlighting 
+syntax on "enable syntax highlighting
 
+set termguicolors
 set nocompatible "disable backward compatibility with vi
+set mouse=v "enable middle click paste
+set scrolloff=8 "scroll 8 lines before file edge
 set laststatus=2 "show status line
 set statusline=%f "status line format
 set noerrorbells
@@ -15,24 +18,36 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch "while you serch you get results 
 "do relative line numbers with hybrid:
+" https://medium.com/geekculture/neovim-configuration-for-beginners-b2116dbbde84
 set number relativenumber
 set nu rnu
 set clipboard=unnamed "copy to global clipboard
 set colorcolumn=80
 "stops issue where backspace doesnt work on some things
 set backspace=indent,eol,start
+" show plugins errors etc in margin:
+set signcolumn=yes
+"set termguicolors
+set guicursor= " Make the thin cursor tick again
+set cmdheight=1 "size of the place at the bottom of the window where you type
+" set the margin color to grey
+highlight ColorColumn ctermbg=0 guibg=lightgrey 
 
-highlight ColorColumn ctermbg=0 guibg=lightgrey
-
-"Set up plugin loader, this loader works between the begin and end functions
+let g:gruvbox_termcolors = 16
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Install Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
+" Themes
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 "Autocomplete and language servers
+"Plug 'neovim/nvim-lspconfig'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"
 "Improved typescript syntax:
 Plug 'leafgarland/typescript-vim'
 "Tree explorer
@@ -52,9 +67,10 @@ Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 call plug#end()
 
-colorscheme nord
-set background=dark
-" let g:airline_theme='bubblegum'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set themes and color schemes as well as plugin setups
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:airline_theoue='bubblegum'
 " Split down and to the right instead of left and to the top which is the
 " weird default
 set splitbelow
@@ -63,9 +79,14 @@ let mapleader=" "
 let g:lsp_fold_enabled = 0 "Disable lsp folding
 let g:ackprg = 'ack'
 let g:lsp_diagnostics_echo_cursor = 1 "Show the lsp error at this line
-let g:lsp_diagnostics_float_cursor = 1 "Show the error on the line as a popup
-
+"let g:lsp_diagnostics_float_cursor = 1 "Show the error on the line as a popup
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+colorscheme gruvbox
+hi! Normal ctermbg=NONE guibg=NONE guifg=NONE " Transparent background for gruvbox
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set key mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Configurations for autocomplete plugin
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -107,7 +128,7 @@ map <C-s> :w<cr>
 
 "open a terminal at the bottom of the current buffer
 function SpawnTerm()
-    bel term 
+    split | terminal 
     15 winc -
 endfunction
 nnoremap <leader>ot :call SpawnTerm()<CR>
