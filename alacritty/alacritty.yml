@@ -11,7 +11,6 @@ scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
   history: 10000
-
 # The definition of color schemes.
 schemes:
   gruvbox_material_hard_dark: &gruvbox_material_hard_dark
@@ -175,7 +174,7 @@ colors: *gruvbox_material_medium_dark
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. The number of columns
@@ -213,7 +212,7 @@ colors: *gruvbox_material_medium_dark
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  #decorations: full
+  decorations: full
 
   # Background opacity
   #
@@ -236,7 +235,7 @@ colors: *gruvbox_material_medium_dark
   #title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
+  dynamic_title: true
 
   # Window class (Linux/BSD only):
   #class:
