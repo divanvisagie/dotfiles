@@ -52,7 +52,7 @@ Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 call plug#end()
 
-colorscheme nord
+colorscheme gruvbox
 set background=dark
 " let g:airline_theme='bubblegum'
 " Split down and to the right instead of left and to the top which is the
