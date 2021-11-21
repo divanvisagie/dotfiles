@@ -104,8 +104,8 @@ nnoremap <C-f> :NERDTreeFind<CR>
 "language server stuff
 nnoremap <leader>gd :LspDefinition<CR>
 nnoremap <leader>pd :LspPeekDefinition<CR>
-nnoremap <leader>gi :LspDeclaration<CR>
-nnoremap <leader>pi :LspPeekDeclaration<CR>
+nnoremap <leader>gi :LspImplementation<CR>
+nnoremap <leader>pi :LspPeekImplementation<CR>
 nnoremap <leader>r :LspRename<CR>
 nnoremap <leader>c. :LspCodeAction<CR>
 nnoremap <leader>td :LspTypeDefinition<CR>
