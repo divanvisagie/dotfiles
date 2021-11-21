@@ -2,7 +2,7 @@ syntax on "enable syntax highlighting
 
 set termguicolors
 set nocompatible "disable backward compatibility with vi
-set mouse=v "enable middle click paste
+set mouse=a "enable mouse for all modes
 set scrolloff=8 "scroll 8 lines before file edge
 set laststatus=2 "show status line
 set statusline=%f "status line format
