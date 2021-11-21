@@ -2,10 +2,9 @@ font:
   # The normal (roman) font face to use.
   normal:
     family: MesloLGS NF
-    style: Regular
 
   # Point size of the font
-  size: 14.0
+  size: 16.0
   use_thin_strokes: true
 
 # The definition of color schemes.
