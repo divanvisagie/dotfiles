@@ -33,7 +33,6 @@ set cmdheight=1 "size of the place at the bottom of the window where you type
 " set the margin color to grey
 highlight ColorColumn ctermbg=0 guibg=lightgrey 
 
-let g:gruvbox_termcolors = 16
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Install Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -47,7 +46,6 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-"
 "Improved typescript syntax:
 Plug 'leafgarland/typescript-vim'
 "Tree explorer
@@ -82,11 +80,9 @@ let mapleader=" "
 let g:lsp_fold_enabled = 0 "Disable lsp folding
 let g:ackprg = 'ack'
 let g:lsp_diagnostics_echo_cursor = 1 "Show the lsp error at this line
-"let g:lsp_diagnostics_float_cursor = 1 "Show the error on the line as a popup
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 colorscheme gruvbox
-hi! Normal ctermbg=NONE guibg=NONE guifg=NONE " Transparent background for gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set key mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
