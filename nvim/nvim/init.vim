@@ -81,7 +81,7 @@ let g:lsp_fold_enabled = 0 "Disable lsp folding
 let g:ackprg = 'ack'
 let g:lsp_diagnostics_echo_cursor = 1 "Show the lsp error at this line
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-
+let NERDTreeShowHidden=1 "Show the hidden files in NERDTree
 colorscheme gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set key mappings
