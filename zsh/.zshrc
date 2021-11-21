@@ -91,14 +91,14 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 ########################## Powerlevel 10k Settings ###########################
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export ZSH_THEME="powerlevel10k/powerlevel10k"
+#export ZSH_THEME="powerlevel10k/powerlevel10k"
 ########################### Mcfly History Management #########################
 eval "$(mcfly init zsh)"
 export MCFLY_KEY_SCHEME=vim
