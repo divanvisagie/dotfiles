@@ -111,4 +111,6 @@ export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH=${PATH}:/usr/local/sbin
 
-tmux #start tmux in all terminals
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
