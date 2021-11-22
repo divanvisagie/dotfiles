@@ -122,6 +122,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 "shortcuts
 map <C-s> :w<cr>
+map <leader>qw :q<cr>
 "telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
