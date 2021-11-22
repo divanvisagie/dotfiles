@@ -14,7 +14,7 @@ set smartindent "try indent
 set nowrap "no line wrapping
 set noswapfile "does not create annoying vim swap files
 set nobackup
-set undodir=~/.vim/undodir
+set undodir=~/.vim/nvim/undodir
 set undofile
 set incsearch "while you serch you get results 
 "do relative line numbers with hybrid:
