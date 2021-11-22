@@ -82,6 +82,7 @@ let g:ackprg = 'ack'
 let g:lsp_diagnostics_echo_cursor = 1 "Show the lsp error at this line
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let NERDTreeShowHidden=1 "Show the hidden files in NERDTree
+let g:NERDTreeChDirMode = 2 "let nerdtree set the working directory
 colorscheme gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set key mappings
