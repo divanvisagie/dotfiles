@@ -28,7 +28,7 @@ set backspace=indent,eol,start
 " show plugins errors etc in margin:
 set signcolumn=yes
 "set termguicolors
-set guicursor= " Make the thin cursor tick again
+"set guicursor= " Make the thin cursor tick again
 set cmdheight=1 "size of the place at the bottom of the window where you type
 " set the margin color to grey
 highlight ColorColumn ctermbg=0 guibg=lightgrey 
@@ -108,6 +108,7 @@ nnoremap <leader>c. :LspCodeAction<CR>
 nnoremap <leader>td :LspTypeDefinition<CR>
 nnoremap <leader>is :LspInstallServer<CR>
 nnoremap <leader>fr :LspReferences<CR>
+ nnoremap <leader>lh :LspHover<CR>
 "change to current file's directory
 nnoremap <leader>cd :cd %:p:h<CR>
 "tab controls
