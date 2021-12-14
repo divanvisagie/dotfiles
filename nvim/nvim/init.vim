@@ -1,4 +1,5 @@
 syntax on "enable syntax highlighting
+filetype on
 
 set termguicolors
 set nocompatible "disable backward compatibility with vi
@@ -66,6 +67,9 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" Vim Script
+Plug 'ahmedkhalf/jupyter-nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,3 +142,7 @@ function SpawnTerm()
 endfunction
 nnoremap <leader>ot :call SpawnTerm()<CR>
 
+lua << EOF
+  require("jupyter-nvim").setup {
+  }
+EOF
