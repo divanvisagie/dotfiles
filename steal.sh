@@ -4,3 +4,4 @@ cp ~/.zshrc ./zsh
 cp ~/.tmux.conf ./tmux
 cp -R ~/.config/nvim ./nvim
 cp -R ~/.config/alacritty/ ./alacritty
+cp ~/.p10k.zsh ./p10k
