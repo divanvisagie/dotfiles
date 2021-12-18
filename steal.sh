@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-cp ~/.vimrc ./vim
-cp ~/.zshrc ./zsh
-cp ~/.tmux.conf ./tmux
-cp -R ~/.config/nvim ./nvim
-cp -R ~/.config/alacritty/ ./alacritty
-cp ~/.p10k.zsh ./p10k
+cd ~
+
+cp .zshrc ~/dotfiles/zsh
+cp .tmux.conf ~/dotfiles/tmux
+cp .config/nvim/init.vim ~/dotfiles/nvim
+cp .config/alacritty/alacritty.yml ~/dotfiles/alacritty
+cp .p10k.zsh ~/dotfiles/p10k
