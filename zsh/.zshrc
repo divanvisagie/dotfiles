@@ -114,3 +114,5 @@ export PATH=${PATH}:/usr/local/sbin
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+eval "$(direnv hook zsh)"
