@@ -8,3 +8,4 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 vim.opt.scrolloff = 8
+vim.opt.clipboard = "unnamed"
