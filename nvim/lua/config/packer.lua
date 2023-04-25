@@ -5,15 +5,25 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
   -- ColorScheme
+-- If you are using Packer
   use { "ellisonleao/gruvbox.nvim" }
   -- Better Syntax Highlighting
   use ( 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
   -- A history of your undos
   use ( 'mbbill/undotree' )
+  -- File tree
+--  use ( 'nvim-tree/nvim-tree.lua' )
+  use ( 'nvim-tree/nvim-web-devicons' )
+  -- Comments
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
   -- Shows shortcut key help when initiating a command
   use {
 		  "folke/which-key.nvim",
