@@ -42,7 +42,26 @@ return require('packer').startup(function(use)
 	  branch = 'v2.x',
 	  requires = {
 		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},             -- Required
+		  {'neovim/nvim-lspconfig',
+      opts = {
+        autoformat = true,
+        servers = {
+          jsonls = {},
+          tsserver = {
+            init_options = {
+              -- support large TS projects
+              maxTsServerMemory = 8192,
+              disableAutomaticTypingAcquisition = true,
+            },
+            preferences = {
+              includeCompletionsForModuleExports = false,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+            },
+          },
+          eslint = {},
+        },
+      }
+      },             -- Required
 		  {                                      -- Optional
 		  'williamboman/mason.nvim',
 		  run = function()
