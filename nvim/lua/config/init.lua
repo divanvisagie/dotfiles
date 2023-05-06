@@ -1,3 +1,3 @@
 require("config.remap")
 require("config.set")
-print("hello from the config")
+print("Welcome to Divan's Vim")

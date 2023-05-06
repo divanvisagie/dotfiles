@@ -7,9 +7,22 @@ return require('packer').startup(function(use)
 				'nvim-telescope/telescope.nvim', tag = '0.1.1',
 				requires = { {'nvim-lua/plenary.nvim'} }
 		}
-		-- ColorScheme
-		-- If you are using Packer
+		-- copilot 
+		use {
+		   "zbirenbaum/copilot.lua",
+		}	
+		-- debug adapter protocol
+		use 'mfussenegger/nvim-dap'
+		-- run jest tests
+		use 'David-Kunz/jester'
+		-- guess indentation
+		use {
+		  'nmac427/guess-indent.nvim',
+		  config = function() require('guess-indent').setup {} end,
+		}	-- ColorScheme
+				-- If you are using Packer
 		use { "ellisonleao/gruvbox.nvim" }
+		use({ 'rose-pine/neovim', as = 'rose-pine' })
 		-- Better Syntax Highlighting
 		use ( 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
 		-- A history of your undos
