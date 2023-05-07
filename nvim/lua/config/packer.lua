@@ -1,6 +1,10 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+		use("theprimeagen/harpoon")
+		use("theprimeagen/refactoring.nvim")
+
+		use "preservim/nerdtree"
 		-- Packer can manage itself
 		use 'wbthomason/packer.nvim'
 		use {
@@ -13,6 +17,7 @@ return require('packer').startup(function(use)
 		}	
 		-- debug adapter protocol
 		use 'mfussenegger/nvim-dap'
+		use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 		-- run jest tests
 		use 'David-Kunz/jester'
 		-- guess indentation
@@ -23,6 +28,7 @@ return require('packer').startup(function(use)
 				-- If you are using Packer
 		use { "ellisonleao/gruvbox.nvim" }
 		use({ 'rose-pine/neovim', as = 'rose-pine' })
+		use { "sainnhe/everforest" }
 		-- Better Syntax Highlighting
 		use ( 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
 		-- A history of your undos

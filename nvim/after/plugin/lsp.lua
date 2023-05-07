@@ -27,12 +27,12 @@ lsp.setup_nvim_cmp({
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
-    sign_icons = {
-       error = 'E',
-       warn = 'W',
-       hint = 'H',
-       info = 'I'
-	}
+    -- sign_icons = {
+    --   error = 'E',
+    --   warn = 'W',
+    --   hint = 'H',
+    --   info = 'I'
+    -- }
 })
 
 -- Only apply for lsps
@@ -44,6 +44,7 @@ lsp.on_attach(function(client, bufnr)
 		  vim.cmd("vsplit")
   end, opts)
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
