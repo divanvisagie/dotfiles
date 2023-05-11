@@ -14,18 +14,20 @@ return require('packer').startup(function(use)
 		-- copilot 
 		use {
 		   "zbirenbaum/copilot.lua",
-		}	
+		}
 		-- debug adapter protocol
 		use 'mfussenegger/nvim-dap'
 		use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+
 		-- run jest tests
 		use 'David-Kunz/jester'
 		-- guess indentation
 		use {
 		  'nmac427/guess-indent.nvim',
 		  config = function() require('guess-indent').setup {} end,
-		}	-- ColorScheme
-				-- If you are using Packer
+		}
+		-- ColorScheme
+		-- If you are using Packer
 		use { "ellisonleao/gruvbox.nvim" }
 		use({ 'rose-pine/neovim', as = 'rose-pine' })
 		use { "sainnhe/everforest" }
@@ -80,7 +82,7 @@ return require('packer').startup(function(use)
 										eslint = {},
 								},
 						}
-				},   
+				},
 				{                                      -- Optional
 						'williamboman/mason.nvim',
 						run = function()

@@ -8,6 +8,17 @@ lsp.ensure_installed({
   'eslint',
 })
 
+-- Fix Undefined global 'vim'
+lsp.configure('lua-language-server', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+})
+
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -27,12 +38,12 @@ lsp.setup_nvim_cmp({
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
-    -- sign_icons = {
-    --   error = 'E',
-    --   warn = 'W',
-    --   hint = 'H',
-    --   info = 'I'
-    -- }
+    sign_icons = {
+      error = 'E',
+      warn = 'W',
+      hint = 'H',
+      info = 'I'
+    }
 })
 
 -- Only apply for lsps
