@@ -11,3 +11,7 @@ vim.api.nvim_set_keymap('n', '<leader>"', ':split<CR>', {noremap = true, silent 
 
 
 vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', {noremap = true, silent = true})
+
+
+-- Toggle line numbers in context
+vim.api.nvim_set_keymap('n', '<leader>ln', ':setlocal nonumber norelativenumber<CR>', {noremap = true})
