@@ -6,14 +6,12 @@ end
 
 function Dark()
     vim.o.background = "dark"
-    color = color or "everforest"
-	vim.cmd.colorscheme(color)
+	vim.cmd.colorscheme("everforest")
 end
 
 function Light()
     vim.o.background = "light"
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
+	vim.cmd.colorscheme("rose-pine")
 end
 
-Light()
+Dark()
