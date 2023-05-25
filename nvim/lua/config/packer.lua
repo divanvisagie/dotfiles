@@ -5,6 +5,8 @@ return require('packer').startup(function(use)
 		use("theprimeagen/refactoring.nvim")
 
 		use "preservim/nerdtree"
+		use 'simrat39/rust-tools.nvim'
+
 		-- Packer can manage itself
 		use 'wbthomason/packer.nvim'
 		use {
@@ -21,6 +23,12 @@ return require('packer').startup(function(use)
 
 		-- run jest tests
 		use 'David-Kunz/jester'
+		use {
+				"klen/nvim-test",
+				config = function()
+						require('nvim-test').setup()
+				end
+		}
 		-- guess indentation
 		use {
 		  'nmac427/guess-indent.nvim',
