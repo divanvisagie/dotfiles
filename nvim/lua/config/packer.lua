@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
 		-- debug adapter protocol
 		use 'mfussenegger/nvim-dap'
 		use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-
+		use 'leoluz/nvim-dap-go'
 		-- run jest tests
 		use 'David-Kunz/jester'
 		use {
