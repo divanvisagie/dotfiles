@@ -7,6 +7,12 @@ end
 function Dark()
     vim.o.background = "dark"
 	vim.cmd.colorscheme("everforest")
+    Trans()
+end
+
+function Gruv()
+    vim.o.background = "dark"
+	vim.cmd.colorscheme("gruvbox")
 end
 
 function Light()
@@ -14,4 +20,4 @@ function Light()
 	vim.cmd.colorscheme("rose-pine")
 end
 
-Dark()
+Light()
