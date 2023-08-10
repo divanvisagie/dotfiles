@@ -28,6 +28,16 @@ return require('packer').startup(function(use)
             require('nvim-test').setup()
         end
     }
+    -- Status line
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+    use{ 'anuvyklack/pretty-fold.nvim',
+       config = function()
+          require('pretty-fold').setup()
+       end
+    }
     -- guess indentation
     use {
         'nmac427/guess-indent.nvim',
