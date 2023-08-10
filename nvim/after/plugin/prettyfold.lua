@@ -1,6 +1,6 @@
 require('pretty-fold').setup{
    keep_indentation = false,
-   fill_char = '•',
+   fill_char = '·',
    sections = {
       left = {
          '+', function() return string.rep('-', vim.v.foldlevel) end,
