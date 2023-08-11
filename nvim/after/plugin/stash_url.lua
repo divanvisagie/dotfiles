@@ -20,44 +20,44 @@ local function get_file()
 end
 
 local function get_remote()
-    -- get the remote url
-    local handle = io.popen("git config --get remote.origin.url")
-	if handle == nil then
-		return ""
-	end
-    local result = handle:read("*a")
+  -- get the remote url
+  local handle = io.popen("git config --get remote.origin.url")
+  if handle == nil then
+    return ""
+  end
+  local result = handle:read("*a")
 
-	if result == "" then
-		print("No remote found")
-		return ""
-	end
-    handle:close()
-    local ssh, user, domain, port, group, repo = result:match("(ssh://)([^@]+)@([^:]+):(%d+)/([^/]+)/([^/]+).git")
+  if result == "" then
+    print("No remote found")
+    return ""
+  end
+  handle:close()
+  local ssh, user, domain, port, group, repo = result:match("(ssh://)([^@]+)@([^:]+):(%d+)/([^/]+)/([^/]+).git")
 
-    local git_remote_url = ("https://%s/projects/%s/repos/%s/browse/"):format(domain, group:upper(), repo)
+  local git_remote_url = ("https://%s/projects/%s/repos/%s/browse/"):format(domain, group:upper(), repo)
 
-    return git_remote_url
+  return git_remote_url
 end
 
 local function sturl()
-	local fp = get_file()
-	local rp = get_remote()
-	local path = rp .. fp
+  local fp = get_file()
+  local rp = get_remote()
+  local path = rp .. fp
 
-	-- Copy URL to clipboard in MacOS
-    os.execute("echo '" .. path .. "' | pbcopy")
+  -- Copy URL to clipboard in MacOS
+  os.execute("echo '" .. path .. "' | pbcopy")
 
-    print("Copied to clipboard: " .. path)
+  print("Copied to clipboard: " .. path)
 end
 
 local function furl()
-	local path = get_file()
+  local path = get_file()
 
-	-- Copy URL to clipboard in MacOS
-    os.execute("echo '" .. path .. "' | pbcopy")
+  -- Copy URL to clipboard in MacOS
+  os.execute("echo '" .. path .. "' | pbcopy")
 
-    print("Copied to clipboard: " .. path)
+  print("Copied to clipboard: " .. path)
 end
 
-vim.keymap.set("n", "<leader>sturl", sturl) -- Copy stash url to clipboard
-vim.keymap.set("n", "<leader>furl", furl) -- Copy file path to clipboard
+vim.keymap.set("n", "<leader>sturl", sturl, { desc = 'Copy [st]ash [url] to clipboard' }) -- Copy stash url to clipboard
+vim.keymap.set("n", "<leader>furl", furl, { desc = 'Copy [f]ile [url] to clipboard' }) -- Copy file path to clipboard
