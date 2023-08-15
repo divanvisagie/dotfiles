@@ -1,4 +1,9 @@
+local function relative_path()
+  return vim.fn.expand('%')
+end
+
 require('lualine').setup {
+
   options = {
     icons_enabled = false,
     theme = 'auto',
@@ -15,7 +20,12 @@ require('lualine').setup {
       statusline = 1000,
       tabline = 1000,
       winbar = 1000,
-    }
+    },
   },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = { relative_path	},
+  }
 }
 

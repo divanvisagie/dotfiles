@@ -20,4 +20,4 @@ function Light()
 	vim.cmd.colorscheme("rose-pine")
 end
 
-Light()
+Dark()
