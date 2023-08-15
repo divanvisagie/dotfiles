@@ -23,6 +23,10 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+    -- Display errors better 
+    use { "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    }
     -- copilot 
     use {
         "zbirenbaum/copilot.lua",
