@@ -10,14 +10,18 @@ function Dark()
     Trans()
 end
 
-function Gruv()
-    vim.o.background = "dark"
-	vim.cmd.colorscheme("gruvbox")
-end
-
 function Light()
     vim.o.background = "light"
 	vim.cmd.colorscheme("rose-pine")
 end
 
-Light()
+local function isDarkModeEnabled()
+    local darkModeOutput = os.execute("defaults read -g AppleInterfaceStyle 2>/dev/null")
+    return darkModeOutput == 0
+end
+
+if isDarkModeEnabled() then
+    Dark()
+else
+    Light()
+end
