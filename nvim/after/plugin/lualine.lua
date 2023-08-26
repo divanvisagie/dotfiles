@@ -15,7 +15,7 @@ require('lualine').setup {
     },
     ignore_focus = {},
     always_divide_middle = true,
-    globalstatus = true,
+    -- globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -24,7 +24,7 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_b = { 'diff', 'diagnostics'},
     lualine_c = { relative_path	},
   }
 }
