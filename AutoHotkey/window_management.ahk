@@ -34,3 +34,27 @@ $!g::
         Run "%APPDATA%\Telegram Desktop\Telegram.exe" ; dynamic path to Telegram
     }
 return
+
+; Alt + S for Steam
+$!s::
+    IfWinExist ahk_exe Steam.exe ; class for Steam
+    {
+        WinActivate
+    }
+    else
+    {
+        Run "C:\Program Files (x86)\Steam\Steam.exe" ; specify the correct path to Steam
+    }
+return
+
+; Alt + D for Discord
+$!d::
+    IfWinExist ahk_exe Discord.exe ; class for Discord
+    {
+        WinActivate
+    }
+    else
+    {
+        Run % "C:\Users\" . A_UserName . "\AppData\Local\Discord\Update.exe --processStart Discord.exe" ; dynamic path to Discord
+    }
+return
