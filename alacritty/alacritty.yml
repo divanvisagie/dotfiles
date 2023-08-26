@@ -9,7 +9,7 @@ scrolling:
   history: 10000
 import:
    -  ~/.config/alacritty/themes/themes/rose-pine-dawn.yaml
-     #   -  ~/.config/alacritty/themes/themes/everforest_dark.yaml
+   -  ~/.config/alacritty/themes/themes/everforest_dark.yaml
 # colors:
 #   primary:
 #     background: '0x303030'
