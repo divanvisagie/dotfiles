@@ -1,12 +1,4 @@
-# change focus
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
-# (alt) change focus (using arrow keys)
-alt - left  : yabai -m window --focus west
-alt - down  : yabai -m window --focus south
-alt - up    : yabai -m window --focus north
-alt - right : yabai -m window --focus east
-
-alt - s : yabai -m window --focus "$(yabai -m query --windows | jq -r 'map(select(.app == "Safari")) | .[0].id')"
+# Focus specific applications
+alt - t : osascript -e 'tell application "Alacritty" to activate'
+alt - b : osascript -e 'tell application "Google Chrome" to activate'
+alt - s : osascript -e 'tell application "Slack" to activate'
