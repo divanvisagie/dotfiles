@@ -62,6 +62,10 @@ return require('packer').startup(function(use)
     use { 'numToStr/Comment.nvim' }
     -- Shows shortcut key help when initiating a command
     use { "folke/which-key.nvim" }
+
+    -- helpers for neovim lua
+    use { "folke/neodev.nvim" }
+    -- lsp
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -95,11 +99,10 @@ return require('packer').startup(function(use)
         },
         {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},     -- Required
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    {'L3MON4D3/LuaSnip'},     -- Required
+        -- Autocompletion
+        {'hrsh7th/nvim-cmp'},     -- Required
+        {'hrsh7th/cmp-nvim-lsp'}, -- Required
+        {'L3MON4D3/LuaSnip'},     -- Required
+      }
   }
-}
-
 end)
