@@ -11,5 +11,5 @@ vim.opt.scrolloff = 8
 vim.opt.clipboard = "unnamed"
 vim.opt.undolevels = 10000
 
-vim.o.termguicolors = true 
-vim.cmd [[colorscheme default]] 
+vim.o.termguicolors = true
+vim.cmd [[colorscheme default]]
