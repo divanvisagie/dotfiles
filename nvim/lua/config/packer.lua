@@ -37,26 +37,16 @@ return require('packer').startup(function(use)
     use 'leoluz/nvim-dap-go'
     -- run tests
     use {
-        "klen/nvim-test",
-        config = function()
-            require('nvim-test').setup()
-        end
+        "klen/nvim-test"
     }
     -- Status line
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
-    use{ 'anuvyklack/pretty-fold.nvim',
-       config = function()
-          require('pretty-fold').setup()
-       end
-    }
+    use { 'anuvyklack/pretty-fold.nvim' }
     -- guess indentation
-    use {
-        'nmac427/guess-indent.nvim',
-        config = function() require('guess-indent').setup {} end,
-    }
+    use { 'nmac427/guess-indent.nvim' }
     -- ColorScheme
     -- If you are using Packer
     use { "ellisonleao/gruvbox.nvim" }
@@ -69,22 +59,9 @@ return require('packer').startup(function(use)
     -- File tree
     use ( 'nvim-tree/nvim-web-devicons' )
     -- Comments
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
+    use { 'numToStr/Comment.nvim' }
     -- Shows shortcut key help when initiating a command
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("which-key").setup {
-            }
-        end
-    }
+    use { "folke/which-key.nvim" }
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
