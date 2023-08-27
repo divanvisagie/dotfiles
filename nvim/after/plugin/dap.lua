@@ -32,7 +32,7 @@ dap.listeners.before.event_exited["dapui_config"]=function()
   dapui.close()
 end
 
-dap.adapters.go = function(callback, config)
+dap.adapters.go = function(callback, _)
   -- Wait for delve to start
     vim.defer_fn(function()
         callback({type = "server", host = "127.0.0.1", port = "port"})
