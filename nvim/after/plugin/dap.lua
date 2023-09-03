@@ -53,21 +53,6 @@ for i, ext in ipairs(exts) do
       skipFiles = { '<node_internals>/**', 'node_modules/**' },
     },
     {
-      type = 'node2',
-      request = 'attach',
-      name = 'Attach Program (Node2)',
-      processId = require('dap.utils').pick_process,
-    },
-    {
-      type = 'node2',
-      request = 'attach',
-      name = 'Attach Program (Node2 with ts-node)',
-      cwd = vim.fn.getcwd(),
-      sourceMaps = true,
-      skipFiles = { '<node_internals>/**' },
-      port = 9229,
-    },
-    {
       type = 'pwa-node',
       request = 'attach',
       name = 'Attach Program (pwa-node)',
