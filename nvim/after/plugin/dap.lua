@@ -1,71 +1,122 @@
 local dap = require("dap")
+-- https://github.com/anasrar/.dotfiles/blob/4c444c3ab2986db6ca7e2a47068222e47fd232e2/neovim/.config/nvim/lua/rin/DAP/languages/typescript.lua
+require('dap-vscode-js').setup({
+  node_path = 'node',
+  debugger_path = os.getenv('HOME') .. '/.local/share/nvim/site/pack/packer/opt/vscode-js-debug',
+  adapters = { 'pwa-node', 'node2', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+})
 
-dap.adapters["pwa-node"] = {
-  type = "server",
-  host = "localhost",
-  port = 9229,
-  executable = {
-    command = "node",
-    args = {os.getenv('HOME') .. "/.local/share/nvim/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js", "${port}"},
+local exts = {
+  'javascript',
+  'typescript',
+}
+
+for i, ext in ipairs(exts) do
+  dap.configurations[ext] = {
+    {
+      type = 'pwa-node',
+      request = 'launch',
+      name = 'Launch Current File (pwa-node)',
+      cwd = vim.fn.getcwd(),
+      args = { '${file}' },
+      sourceMaps = true,
+      protocol = 'inspector',
+    },
+    {
+      type = 'pwa-node',
+      request = 'launch',
+      name = 'Launch Current File (pwa-node with ts-node)',
+      cwd = vim.fn.getcwd(),
+      runtimeArgs = { '--loader', 'ts-node/esm' },
+      runtimeExecutable = 'node',
+      args = { '${file}' },
+      sourceMaps = true,
+      protocol = 'inspector',
+      skipFiles = { '<node_internals>/**', 'node_modules/**' },
+      resolveSourceMapLocations = {
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+      },
+    },
+    {
+      type = 'pwa-node',
+      request = 'launch',
+      name = 'Launch Test Current File (pwa-node with jest)',
+      cwd = vim.fn.getcwd(),
+      runtimeArgs = { '${workspaceFolder}/node_modules/.bin/jest' },
+      runtimeExecutable = 'node',
+      args = { '${file}', '--coverage', 'false' },
+      rootPath = '${workspaceFolder}',
+      sourceMaps = true,
+      console = 'integratedTerminal',
+      internalConsoleOptions = 'neverOpen',
+      skipFiles = { '<node_internals>/**', 'node_modules/**' },
+    },
+    {
+      type = 'node2',
+      request = 'attach',
+      name = 'Attach Program (Node2)',
+      processId = require('dap.utils').pick_process,
+    },
+    {
+      type = 'node2',
+      request = 'attach',
+      name = 'Attach Program (Node2 with ts-node)',
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      skipFiles = { '<node_internals>/**' },
+      port = 9229,
+    },
+    {
+      type = 'pwa-node',
+      request = 'attach',
+      name = 'Attach Program (pwa-node)',
+      cwd = vim.fn.getcwd(),
+      processId = require('dap.utils').pick_process,
+      skipFiles = { '<node_internals>/**' },
+    },
   }
-}
+end
 
-dap.configurations.javascript = {
-  {
-    type = "pwa-node",
-    request = "attach",
-    name = "Attach Debugger",
-    program = "${file}",
-    cwd = "${workspaceFolder}",
-  },
-}
-
-dap.configurations.typescript = {
-  {
-    type = "pwa-node",
-    request = "attach",
-    name = "Attach Debugger",
-    program = "${file}",
-    cwd = "${workspaceFolder}",
-  },
-}
-
--- Golang
 require('dap-go').setup()
+require("dapui").setup()
 
-local dap, dapui =require("dap"),require("dapui")
-dap.listeners.after.event_initialized["dapui_config"]=function()
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
-dap.listeners.before.event_terminated["dapui_config"]=function()
+dap.listeners.before.event_terminated["dapui_config"] = function()
   dapui.close()
 end
-dap.listeners.before.event_exited["dapui_config"]=function()
+dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
+
 
 dap.adapters.go = function(callback, _)
   -- Wait for delve to start
-    vim.defer_fn(function()
-        callback({type = "server", host = "127.0.0.1", port = "port"})
-      end,
+  vim.defer_fn(function()
+      callback({ type = "server", host = "127.0.0.1", port = "port" })
+    end,
     100)
 end
 
 dap.configurations.go = {
   {
-      type = "go",
-      name = "Debug",
-      request = "launch",
-      program = "${file}",
+    type = "go",
+    name = "Debug",
+    request = "launch",
+    program = "${file}",
   }
 }
 
 
 
 -- Keymaps
-vim.keymap.set('n', '<F5>', require 'dap'.continue)
-vim.keymap.set('n', '<F10>', require 'dap'.step_over)
-vim.keymap.set('n', '<F11>', require 'dap'.step_into)
-vim.keymap.set('n', '<F12>', require 'dap'.step_out)
+vim.keymap.set('n', '<leader>da', require 'dap'.continue, { desc = 'Debug Continue' })
+vim.keymap.set('n', '<leader>do', require 'dap'.step_over, { desc = 'Step Over' })
+vim.keymap.set('n', '<leader>di', require 'dap'.step_into, { desc = 'Step Into' })
+vim.keymap.set('n', '<leader>ds', require 'dap'.step_out, { desc = 'Step Out' })
 vim.keymap.set('n', '<leader>b', require 'dap'.toggle_breakpoint)
+
+vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", { desc = 'Open the dap' })
