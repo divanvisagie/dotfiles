@@ -9,7 +9,7 @@ local ensure_packer = function()
     return false
 end
 
-local packer_bootstrap = ensure_packer()
+ensure_packer()
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- Packer can manage itself
 
@@ -25,24 +25,21 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    -- Display errors better
-    use 'folke/trouble.nvim'
+    use 'folke/trouble.nvim' -- Display errors better
 
-    -- copilot
     use 'zbirenbaum/copilot.lua'
 
     -- debug adapter protocol
     use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
     use 'leoluz/nvim-dap-go'
-    -- run tests
-    use {
-        "klen/nvim-test"
-    }
-    use 'nvim-lualine/lualine.nvim' -- Better status line
+
+    use 'klen/nvim-test'              -- run tests
+
+    use 'nvim-lualine/lualine.nvim'   -- Better status line
 
     use 'anuvyklack/pretty-fold.nvim' -- Better code folding
-    use 'nmac427/guess-indent.nvim' -- guess indentation
+    use 'nmac427/guess-indent.nvim'   -- guess indentation
 
     -- Color Schemes
     use({ 'rose-pine/neovim', as = 'rose-pine' })
@@ -50,14 +47,13 @@ return require('packer').startup(function(use)
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }) -- Better Syntax Highlighting
 
-    use 'mbbill/undotree'  -- A history of your undos
-    use { 'numToStr/Comment.nvim' } -- Easier code comments
+    use 'mbbill/undotree'                                         -- A history of your undos
+    use { 'numToStr/Comment.nvim' }                               -- Easier code comments
 
     -- Shows shortcut key help when initiating a command
-    use { "folke/which-key.nvim" }
+    use 'folke/which-key.nvim'
 
-    -- helpers for neovim lua
-    use { "folke/neodev.nvim" }
+    use 'folke/neodev.nvim' -- helpers for neovim lua
 
     -- lsp
     use {
@@ -87,7 +83,7 @@ return require('packer').startup(function(use)
                 }
             },
             {
-            -- Optional
+                -- Optional
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.cmd, 'MasonUpdate')
@@ -96,9 +92,9 @@ return require('packer').startup(function(use)
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' }, -- Required
+            { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' }, -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
         }
     }
 end)
