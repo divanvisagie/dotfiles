@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }) -- Better Syntax Highlighting
 
     use 'mbbill/undotree'                                         -- A history of your undos
-    use { 'numToStr/Comment.nvim' }                               -- Easier code comments
+    use 'numToStr/Comment.nvim'                              -- Easier code comments
 
     -- Shows shortcut key help when initiating a command
     use 'folke/which-key.nvim'
@@ -58,7 +58,7 @@ return require('packer').startup(function(use)
     -- Useful status updates for LSP
     use { 'j-hui/fidget.nvim', tag = 'legacy' }
 
-    -- lsp
+    -- LSP Zero setup
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -100,4 +100,6 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },     -- Required
         }
     }
+
+
 end)
