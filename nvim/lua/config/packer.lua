@@ -42,7 +42,7 @@ return require('packer').startup(function(use)
     use 'nmac427/guess-indent.nvim'   -- guess indentation
 
     -- Color Schemes
-    use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use 'rose-pine/neovim'
     use 'sainnhe/everforest'
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }) -- Better Syntax Highlighting
