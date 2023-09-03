@@ -11,12 +11,13 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-    use("theprimeagen/refactoring.nvim")
-    use("theprimeagen/harpoon")
+    use 'wbthomason/packer.nvim' -- Packer can manage itself
 
-    use "preservim/nerdtree"
+    use 'theprimeagen/refactoring.nvim'
+    use 'theprimeagen/harpoon'
+
+    use 'preservim/nerdtree'
+
     use 'simrat39/rust-tools.nvim'
 
     use {
