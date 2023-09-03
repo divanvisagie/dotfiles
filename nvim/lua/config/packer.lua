@@ -18,7 +18,6 @@ return require('packer').startup(function(use)
 
     use 'preservim/nerdtree'
 
-    use 'simrat39/rust-tools.nvim'
     use 'nvim-tree/nvim-web-devicons'
 
     use {
@@ -32,7 +31,6 @@ return require('packer').startup(function(use)
     -- debug adapter protocol
     use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
-    use 'leoluz/nvim-dap-go'
 
     use 'klen/nvim-test'              -- run tests
 
@@ -48,7 +46,7 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }) -- Better Syntax Highlighting
 
     use 'mbbill/undotree'                                         -- A history of your undos
-    use 'numToStr/Comment.nvim'                              -- Easier code comments
+    use 'numToStr/Comment.nvim'                                   -- Easier code comments
 
     -- Shows shortcut key help when initiating a command
     use 'folke/which-key.nvim'
@@ -101,5 +99,7 @@ return require('packer').startup(function(use)
         }
     }
 
-
+    -- Language specific tools
+    use 'simrat39/rust-tools.nvim'
+    use 'leoluz/nvim-dap-go'
 end)
