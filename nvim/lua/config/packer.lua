@@ -55,6 +55,9 @@ return require('packer').startup(function(use)
 
     use 'folke/neodev.nvim' -- helpers for neovim lua
 
+    -- Useful status updates for LSP
+    use { 'j-hui/fidget.nvim', tag = 'legacy' }
+
     -- lsp
     use {
         'VonHeikemen/lsp-zero.nvim',
