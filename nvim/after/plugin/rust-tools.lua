@@ -9,4 +9,9 @@ rt.setup({
       vim.keymap.set("n", "<Leader>rca", rt.code_action_group.code_action_group, { buffer = bufnr })
     end,
   },
+  tools = {
+    hover_actions = {
+      auto_focus = true,
+    },
+  }
 })
