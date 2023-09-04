@@ -6,69 +6,60 @@ require('dap-vscode-js').setup({
   adapters = { 'pwa-node', 'node2', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
 })
 
-local exts = {
-  'javascript',
-  'typescript',
+dap.configurations['typescript'] = {
+  {
+    type = 'pwa-node',
+    request = 'launch',
+    name = 'Launch Current File (pwa-node)',
+    cwd = vim.fn.getcwd(),
+    args = { '${file}' },
+    sourceMaps = true,
+    protocol = 'inspector',
+  },
+  {
+    type = 'pwa-node',
+    request = 'launch',
+    name = 'Launch Current File (pwa-node with ts-node)',
+    cwd = vim.fn.getcwd(),
+    runtimeArgs = { '--loader', 'ts-node/esm' },
+    runtimeExecutable = 'node',
+    args = { '${file}' },
+    sourceMaps = true,
+    protocol = 'inspector',
+    skipFiles = { '<node_internals>/**', 'node_modules/**' },
+    resolveSourceMapLocations = {
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
+    },
+  },
+  {
+    type = 'pwa-node',
+    request = 'launch',
+    name = 'Launch Test Current File (pwa-node with jest)',
+    cwd = vim.fn.getcwd(),
+    runtimeArgs = { '${workspaceFolder}/node_modules/.bin/jest' },
+    runtimeExecutable = 'node',
+    args = { '${file}', '--coverage', 'false' },
+    rootPath = '${workspaceFolder}',
+    sourceMaps = true,
+    console = 'integratedTerminal',
+    internalConsoleOptions = 'neverOpen',
+    skipFiles = { '<node_internals>/**', 'node_modules/**' },
+  },
+  {
+    type = 'pwa-node',
+    request = 'attach',
+    name = 'Attach Program (pwa-node)',
+    cwd = vim.fn.getcwd(),
+    processId = require('dap.utils').pick_process,
+    skipFiles = { '<node_internals>/**' },
+  },
 }
-
-for i, ext in ipairs(exts) do
-  dap.configurations[ext] = {
-    {
-      type = 'pwa-node',
-      request = 'launch',
-      name = 'Launch Current File (pwa-node)',
-      cwd = vim.fn.getcwd(),
-      args = { '${file}' },
-      sourceMaps = true,
-      protocol = 'inspector',
-    },
-    {
-      type = 'pwa-node',
-      request = 'launch',
-      name = 'Launch Current File (pwa-node with ts-node)',
-      cwd = vim.fn.getcwd(),
-      runtimeArgs = { '--loader', 'ts-node/esm' },
-      runtimeExecutable = 'node',
-      args = { '${file}' },
-      sourceMaps = true,
-      protocol = 'inspector',
-      skipFiles = { '<node_internals>/**', 'node_modules/**' },
-      resolveSourceMapLocations = {
-        "${workspaceFolder}/**",
-        "!**/node_modules/**",
-      },
-    },
-    {
-      type = 'pwa-node',
-      request = 'launch',
-      name = 'Launch Test Current File (pwa-node with jest)',
-      cwd = vim.fn.getcwd(),
-      runtimeArgs = { '${workspaceFolder}/node_modules/.bin/jest' },
-      runtimeExecutable = 'node',
-      args = { '${file}', '--coverage', 'false' },
-      rootPath = '${workspaceFolder}',
-      sourceMaps = true,
-      console = 'integratedTerminal',
-      internalConsoleOptions = 'neverOpen',
-      skipFiles = { '<node_internals>/**', 'node_modules/**' },
-    },
-    {
-      type = 'pwa-node',
-      request = 'attach',
-      name = 'Attach Program (pwa-node)',
-      cwd = vim.fn.getcwd(),
-      processId = require('dap.utils').pick_process,
-      skipFiles = { '<node_internals>/**' },
-    },
-  }
-end
 
 
 require("nvim-dap-virtual-text").setup()
 require('dap-go').setup()
-require("dapui").setup()
 
-local dapui = require("dapui")
 -- dap.listeners.after.event_initialized["dapui_config"] = function()
 --   dapui.open()
 -- end
@@ -104,8 +95,6 @@ vim.keymap.set('n', '<leader>da', require 'dap'.continue, { desc = 'Debug Contin
 vim.keymap.set('n', '<leader>do', require 'dap'.step_over, { desc = 'Step Over' })
 vim.keymap.set('n', '<leader>di', require 'dap'.step_into, { desc = 'Step Into' })
 vim.keymap.set('n', '<leader>ds', require 'dap'.step_out, { desc = 'Step Out' })
-vim.keymap.set('n', '<leader>duo', function() dapui.open() end,  { desc = 'Open Dap UI' })
-vim.keymap.set('n', '<leader>duc', function() dapui.close() end,  { desc = 'Close Dap UI' })
 vim.keymap.set('n', '<leader>b', require 'dap'.toggle_breakpoint)
 
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", { desc = 'Open the dap' })
