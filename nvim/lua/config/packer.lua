@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
     -- debug adapter protocol
     use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
+    use 'theHamsta/nvim-dap-virtual-text'
 
     use 'klen/nvim-test'              -- run tests
 
