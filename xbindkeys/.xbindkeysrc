@@ -1,0 +1,11 @@
+"xdotool search --name 'Google Chrome' windowactivate"
+Alt+B
+
+"xdotool search --name 'Alacritty' windowactivate"
+Alt+T
+
+"xdotool search --name 'Telegram' windowactivate"
+Alt+G
+
+"xdotool search --name 'Steam' windowactivate"
+Alt+S
