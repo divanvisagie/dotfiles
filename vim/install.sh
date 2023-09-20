@@ -1,1 +1,1 @@
-ln -s ~/.dotfiles/skhd/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
