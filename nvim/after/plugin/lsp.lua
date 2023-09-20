@@ -4,6 +4,21 @@ require("neodev").setup({
     library = { plugins = { "nvim-dap-ui" }, types = true },
 })
 
+local nvim_lsp = require("lspconfig")
+
+nvim_lsp.tsserver.setup {
+  init_options = {
+    maxTsServerMemory = 8192,
+    disableAutomaticTypingAcquisition = true,
+  },
+  settings = {
+    preferences = {
+      includeCompletionsForModuleExports = false,
+      includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+    },
+  },
+}
+
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")

@@ -64,24 +64,6 @@ return require('packer').startup(function(use)
             -- LSP Support
             {
                 'neovim/nvim-lspconfig',
-                opts = {
-                    autoformat = true,
-                    servers = {
-                        jsonls = {},
-                        tsserver = {
-                            init_options = {
-                                -- support large TS projects
-                                maxTsServerMemory = 8192,
-                                disableAutomaticTypingAcquisition = true,
-                            },
-                            preferences = {
-                                includeCompletionsForModuleExports = false,
-                                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                            },
-                        },
-                        eslint = {},
-                    },
-                }
             },
             {
                 -- Optional
@@ -98,6 +80,10 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },     -- Required
         }
     }
+
+    -- Git blame
+    use 'f-person/git-blame.nvim'
+    use 'brooth/far.vim'
 
     -- Language specific tools
     use 'simrat39/rust-tools.nvim'
