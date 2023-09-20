@@ -2,9 +2,15 @@ alias cb='git branch --show-current'
 alias uuid="uuidgen | tr 'A-F' 'a-f'"
 alias sf="source ~/.zshrc"
 alias ls="exa"
-alias cleaner=sed -n '/```/,/```/p' | sed '/```/d'
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias mac="openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/:$//'"
+
+function strp() {
+ awk '
+    /```/ { p=!p; next }
+    p     { print }
+  '
+}
 
 function dm() {
   eval "$(~/.dotfiles/scripts/darkmode.sh)"
