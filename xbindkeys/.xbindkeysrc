@@ -1,10 +1,10 @@
-"xdotool search --name 'Google Chrome' windowactivate"
+"sh ~/.dotfiles/xbindkeys/focus_browser.sh"
 Alt+B
 
 "xdotool search --name 'Alacritty' windowactivate"
 Alt+T
 
-"xdotool search --name 'Telegram' windowactivate"
+"xdotool search --class 'telegram-desktop' windowactivate"
 Alt+G
 
 "xdotool search --name 'Steam' windowactivate"

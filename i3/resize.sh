@@ -6,7 +6,7 @@ height=$(xrandr | grep '*' | awk '{print $1}' | awk -Fx '{print $2}')
 
 # Calculate two-thirds for width and height
 new_width=$((width * 2 / 3))
-new_height=$((height * 2 / 3))
+new_height=$((height - 90))
 
 # Get the window ID of the currently focused window
 window_id=$(xdotool getwindowfocus)
