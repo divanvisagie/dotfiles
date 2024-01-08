@@ -9,7 +9,7 @@ local ensure_packer = function()
     return false
 end
 
-ensure_packer()
+-- ensure_packer()
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- Packer can manage itself
 
@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use 'folke/trouble.nvim' -- Display errors better
