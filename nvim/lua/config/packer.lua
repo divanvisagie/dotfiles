@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
 
     use 'theprimeagen/refactoring.nvim'
     use 'theprimeagen/harpoon'
+    use 'dmmulroy/ts-error-translator.nvim'
 
     use 'preservim/nerdtree'
 

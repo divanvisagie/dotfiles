@@ -10,6 +10,10 @@ vim.opt.colorcolumn = "80"
 vim.opt.scrolloff = 8
 vim.opt.clipboard = "unnamedplus"
 vim.opt.undolevels = 10000
+-- set folding
+vim.opt.foldmethod = "indent"
+-- do not fold by default
+vim.opt.foldlevel = 99
 
 vim.o.termguicolors = true
 vim.cmd [[colorscheme default]]

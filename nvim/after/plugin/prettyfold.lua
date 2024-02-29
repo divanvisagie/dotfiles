@@ -1,5 +1,5 @@
 require('pretty-fold').setup{
-   keep_indentation = false,
+   keep_indentation = true,
    fill_char = '·',
    sections = {
       left = {

@@ -9,12 +9,13 @@ local nvim_lsp = require("lspconfig")
 nvim_lsp.tsserver.setup {
   init_options = {
     maxTsServerMemory = 8192,
-    disableAutomaticTypingAcquisition = true,
+    -- disableAutomaticTypingAcquisition = true,
   },
   settings = {
     preferences = {
       includeCompletionsForModuleExports = false,
       includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+      includeInlayFunctionParameterTypeHints = true, -- Enable type inlay hints for function parameters
     },
   },
 }

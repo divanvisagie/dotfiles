@@ -33,3 +33,9 @@ Once that is sorted out, browse to the packer.lua and then enter the following v
 :so
 :PackerSync
 ```
+
+For issues with treesitter try:
+```vim
+:TSInstall typescript
+:TSInstallSync typescript
+```

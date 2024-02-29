@@ -7,7 +7,7 @@ require('copilot').setup({
       jump_next = "]]",
       accept = "<CR>",
       refresh = "gr",
-      open = "<M-CR>"
+      open = "<C-x>"
     },
     layout = {
       position = "bottom", -- | top | left | right
@@ -28,15 +28,12 @@ require('copilot').setup({
     },
   },
   filetypes = {
-    yaml = false,
+    yaml = true,
     markdown = true,
     help = false,
-    gitcommit = false,
-    gitrebase = false,
-    hgcommit = false,
-    svn = false,
-    cvs = false,
-	lua = true,
+    gitcommit = true,
+    gitrebase = true,
+	  lua = true,
     ["."] = false,
   },
   copilot_node_command = 'node', -- Node.js version must be > 16.x

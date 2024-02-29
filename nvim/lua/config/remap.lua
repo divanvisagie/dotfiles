@@ -11,8 +11,12 @@ vim.api.nvim_set_keymap('n', '<leader>%', ':vsplit<CR>', {noremap = true, silent
 vim.api.nvim_set_keymap('n', '<leader>"', ':split<CR>', {noremap = true, silent = true}) -- horizontal split
 
 -- go to previous buffer
--- vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', {noremap = true, silent = true})
-
 
 -- Toggle line numbers in context
 vim.api.nvim_set_keymap('n', '<leader>ln', ':setlocal nonumber norelativenumber<CR>', {noremap = true})
+
+-- Window resizing
+vim.api.nvim_set_keymap('n', '<C-Right>', ':vertical resize +2<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-Left>', ':vertical resize -2<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-Down>', ':resize +2<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-Up>', ':resize -2<CR>', {noremap = true})
