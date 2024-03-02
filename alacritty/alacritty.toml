@@ -1,0 +1,23 @@
+import = ["/home/divanvisagie/.config/alacritty/themes/themes/everforest_dark.toml"]
+live_config_reload = true
+
+[selection]
+save_to_clipboard = true
+
+[font]
+size = 16.0
+
+[font.normal]
+family = "MesloLGS NF"
+
+[scrolling]
+history = 10000
+
+[window]
+decorations = "buttonless"
+dynamic_title = true
+
+[window.position]
+x = 16
+y = 24
+
