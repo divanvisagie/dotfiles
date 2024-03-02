@@ -12,3 +12,6 @@ Alt+S
 
 "xdotool getactivewindow windowkill"
 Alt+Q
+
+"sh ~/.dotfiles/xbindkeys/center.sh"
+Control+Alt+C
