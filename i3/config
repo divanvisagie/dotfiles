@@ -1,7 +1,6 @@
 ##############################################################################
 # i3 config file (v4)
 ##############################################################################
-set $mod Mod1 #Alt
 # Font
 font pango:MesloLGS NF 12
 
@@ -33,10 +32,10 @@ exec --no-startup-id i3-msg "workspace $ws1"
 ##############################################################################
 # Basic Window Management
 ##############################################################################
-bindsym $mod+h split h
-bindsym $mod+v split v
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+d exec dmenu_run
+bindsym Mod1+h split h
+bindsym Mod1+v split v
+bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+d exec dmenu_run
 
 # Close focused window
 bindsym Mod4+q kill
@@ -66,9 +65,9 @@ bindsym Mod1+Shift+Tab workspace prev_on_output
 # System functions
 ##############################################################################
 # Reload i3 config
-bindsym $mod+Shift+r reload
+bindsym Mod1+Shift+r reload
 # Exit i3
-bindsym $mod+Shift+e exit
+bindsym Mod1+Shift+e exit
 # Background
 exec feh --no-startup-id --bg-scale ~/.dotfiles/wallpapers/dark.png
 
@@ -76,14 +75,14 @@ exec feh --no-startup-id --bg-scale ~/.dotfiles/wallpapers/dark.png
 ##############################################################################
 # Gaps
 ##############################################################################
-gaps top 10
-gaps right 100
-gaps bottom 10
-gaps left 100
-
-# Screen gaps
-gaps inner 10
-gaps outer 20
+# gaps top 10
+# gaps right 100
+# gaps bottom 10
+# gaps left 100
+#
+# # Screen gaps
+# gaps inner 10
+# gaps outer 20
 
 ##############################################################################
 # Theming and bar configuration
