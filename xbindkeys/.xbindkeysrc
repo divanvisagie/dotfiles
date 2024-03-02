@@ -1,11 +1,14 @@
-"xdotool search --name 'Google Chrome' windowactivate"
+"sh ~/.dotfiles/xbindkeys/focus_browser.sh"
 Alt+B
 
-"xdotool search --name 'Alacritty' windowactivate; wmctrl -r Alacritty -b add,maximized_vert,maximized_horz"
+"sh ~/.dotfiles/xbindkeys/focus_terminal.sh"
 Alt+T
 
-"wmctrl -a Telegram; wmctrl -r Telegram -b add,maximized_vert"
+"sh ~/.dotfiles/xbindkeys/focus_telegram.sh"
 Alt+G
 
 "xdotool search --name 'Steam' windowactivate"
 Alt+S
+
+"xdotool getactivewindow windowkill"
+Alt+Q

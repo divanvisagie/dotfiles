@@ -41,10 +41,10 @@ bindsym Mod1+d exec dmenu_run
 bindsym Mod4+q kill
 
 # Switch to specific workspaces
-bindsym Mod1+a exec --no-startup-id i3-msg 'workspace $ws1'
-bindsym Mod1+t exec --no-startup-id i3-msg 'workspace $ws2'
-bindsym Mod1+b exec --no-startup-id i3-msg 'workspace $ws3'
-bindsym Mod1+s exec --no-startup-id i3-msg 'workspace $ws4'
+# bindsym Mod1+a exec --no-startup-id i3-msg 'workspace $ws1'
+# bindsym Mod1+t exec --no-startup-id i3-msg 'workspace $ws2'
+# bindsym Mod1+b exec --no-startup-id i3-msg 'workspace $ws3'
+# bindsym Mod1+s exec --no-startup-id i3-msg 'workspace $ws4'
 # bindsym $mod+a workspace $ws3  # You can bind this to any key you prefer
 
 ##############################################################################
