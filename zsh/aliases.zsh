@@ -13,7 +13,7 @@ function strp() {
 }
 
 function dm() {
-    ~/.dotfiles/scripts/darkmode.sh
+  eval "$(~/.dotfiles/scripts/darkmode.sh)"
 }
 
 function today() {
