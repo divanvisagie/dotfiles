@@ -82,8 +82,8 @@ require("lazy").setup({
   'leoluz/nvim-dap-go',
   {
     "mxsdev/nvim-dap-vscode-js",
-    lazy = true,  -- `module` in Packer is equivalent to making it lazy-loaded in Lazy.nvim
-    keys = { "<Plug>(your-custom-key-binding-here)" }  -- Replace with an actual key binding if needed
+    lazy = true  -- `module` in Packer is equivalent to making it lazy-loaded in Lazy.nvim
+    -- keys = { "<Plug>(your-custom-key-binding-here)" }  -- Replace with an actual key binding if needed
   },
   {
     "microsoft/vscode-js-debug",
