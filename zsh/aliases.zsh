@@ -28,3 +28,5 @@ function today() {
         nvim "$filename"
     fi
 }
+
+export TERM=xterm-256color
