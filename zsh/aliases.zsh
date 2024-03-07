@@ -17,7 +17,7 @@ function dm() {
 }
 
 function today() {
-    local filename=$(date "+%Y-%j").md
+    local filename=$(date "+%Y-%m-%d").md
 
     if [[ -f "$filename" ]]; then
         echo "Opening existing file: $filename"
