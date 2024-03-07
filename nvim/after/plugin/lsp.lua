@@ -30,6 +30,16 @@ lsp.ensure_installed({
     'eslint',
 })
 
+nvim_lsp.rust_analyzer.setup({
+  settings = {
+    ["rust-analyzer"] = {
+        cargo = {
+            allFeatures = true,
+        },
+    },
+  },
+})
+
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({

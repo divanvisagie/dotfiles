@@ -82,6 +82,7 @@ dap.configurations.go = {
 dap.adapters.lldb = {
   type = 'executable',
   command = '/usr/lib/llvm-14/bin/lldb-vscode', -- Adjust the path to lldb-vscode if needed
+  --command = '/usr/bin/lldb', -- Adjust the path to lldb-vscode if needed
   name = "lldb"
 }
 
@@ -106,6 +107,29 @@ dap.configurations.rust = {
       -- Set your desired environment variables here
       return variables
     end,
+  },
+  {
+    -- Attach to Process configuration with updated user prompts
+    name = "Attach to Process",
+    type = "lldb",
+    request = "attach",
+    pid = function()
+      local binary_name = vim.fn.input('Binary name: ')
+      local output = vim.fn.system('pidof ' .. binary_name)
+      if output == "" then
+        print("No running process found for " .. binary_name)
+        return nil
+      end
+      local pid = vim.fn.input('PID to attach: ', vim.fn.trim(output))
+      pid = tonumber(pid)
+      if not pid then
+        print("Invalid PID. Please enter a numeric PID.")
+        return nil
+      end
+      return pid
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
   },
 }
 

@@ -39,3 +39,8 @@ For issues with treesitter try:
 :TSInstall typescript
 :TSInstallSync typescript
 ```
+On linux for rust debugging
+```sh
+sudo setcap cap_sys_ptrace=eip /usr/lib/llvm-14/bin/lldb-vscode
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
