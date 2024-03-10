@@ -28,6 +28,7 @@ require("lazy").setup({
     'mfussenegger/nvim-dap',
     'theHamsta/nvim-dap-virtual-text',
 
+	-- tests
     'klen/nvim-test',              -- run tests
 
     'nvim-lualine/lualine.nvim',   -- Better status line
