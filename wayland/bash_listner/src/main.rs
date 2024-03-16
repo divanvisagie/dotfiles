@@ -2,6 +2,7 @@ use input::event::keyboard::{KeyState, KeyboardEventTrait};
 use input::{Libinput, LibinputInterface, Event};
 
 use libc::{O_RDONLY, O_RDWR, O_WRONLY};
+use std::collections::HashSet;
 use std::fs::{File, OpenOptions};
 use std::os::unix::{fs::OpenOptionsExt, io::OwnedFd};
 use std::path::Path;
@@ -36,7 +37,7 @@ fn key_to_string(key: u32) -> &'static str {
 
 enum Keys {
     A = 30,
-    B = 31,
+    B = 48,
     LeftAlt = 56,
     LeftMod = 125,
 }
@@ -45,7 +46,9 @@ fn main() {
     let mut input = Libinput::new_with_udev(Interface);
     input.udev_assign_seat("seat0").unwrap();
 
-    let mut active_keys = Vec::new();
+    // create list of active keys in a Set
+    let mut active_keys = HashSet::new();
+
     loop {
         input.dispatch().unwrap();
         for event in &mut input {
@@ -53,19 +56,21 @@ fn main() {
                 Event::Keyboard(kb_event) => {
                     let key = kb_event.key();
                     let state = kb_event.key_state();
-                    println!("Keyboard event: key {:?}, state {:?}", key, state);
+                    // println!("Keyboard event: key {:?}, state {:?}", key, state);
                     // Here, you can add logic to handle specific keys and states
                     if key == Keys::LeftAlt as u32 && state == KeyState::Pressed {
-                        active_keys.push(key);
-                        println!("Alt key pressed");
+                        active_keys.insert(key);
                     }
                     if key == Keys::LeftAlt as u32 && state == KeyState::Released {
-                        println!("Alt key released");
-                        active_keys.clear();
+                        active_keys.remove(&key);
                     }
 
-                    if active_keys.contains(&(Keys::LeftAlt as u32)) && key == Keys::A as u32 {
+                    if active_keys.contains(&(Keys::LeftAlt as u32)) && key == Keys::A as u32 && state == KeyState::Pressed {
                         println!("Alt + A pressed");
+                    }
+
+                    if active_keys.contains(&(Keys::LeftAlt as u32)) && key == Keys::B as u32 && state == KeyState::Pressed {
+                        println!("Alt + B pressed");
                     }
 
                 },
