@@ -19,10 +19,33 @@ local function isDarkModeEnabledMac()
     return darkModeOutput == 0
 end
 
+
 local function isDarkModeEnabledLinux()
-    local darkModeOutput = os.execute("gsettings get org.gnome.desktop.interface gtk-theme 2>/dev/null")
-    return darkModeOutput == 0
+    local commandString = "gsettings get org.gnome.desktop.interface gtk-theme 2>/dev/null"
+
+    -- Attempt to open the command output
+    local handle = io.popen(commandString)
+    if not handle then
+        print("Failed to execute command")
+        return false
+    end
+
+    -- Get the output and ensure the file handle is closed
+    local darkModeOutput = handle:read("*a")
+    handle:close()
+
+    -- Debugging the output
+    print("'" .. darkModeOutput .. "'")
+
+    -- Using pattern matching to search for 'Yaru-dark' within the output,
+    -- ignoring leading/trailing quotes and whitespace
+    local pattern = "'.*Yaru%-dark.*'"
+    local isDark = darkModeOutput:match(pattern) ~= nil
+    print(isDark)
+    return isDark
 end
+
+
 
 local function isDarkModeEnabled()
     -- generic check for mac and linux
