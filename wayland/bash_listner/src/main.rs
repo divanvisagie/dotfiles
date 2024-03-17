@@ -1,11 +1,13 @@
+use dbus::blocking::Connection;
 use input::event::keyboard::{KeyState, KeyboardEventTrait};
-use input::{Libinput, LibinputInterface, Event};
+use input::{Event, Libinput, LibinputInterface};
 
 use libc::{O_RDONLY, O_RDWR, O_WRONLY};
 use std::collections::HashSet;
 use std::fs::{File, OpenOptions};
 use std::os::unix::{fs::OpenOptionsExt, io::OwnedFd};
 use std::path::Path;
+use std::time::Duration;
 
 struct Interface;
 
@@ -24,7 +26,6 @@ impl LibinputInterface for Interface {
     }
 }
 
-
 fn key_to_string(key: u32) -> &'static str {
     match key {
         30 => "A",
@@ -38,10 +39,27 @@ fn key_to_string(key: u32) -> &'static str {
 enum Keys {
     A = 30,
     B = 48,
+    T = 20,
+    G = 34,
     LeftAlt = 56,
     LeftMod = 125,
 }
+fn focus_window_via_extension(unique_name: &str) -> Result<(), Box<dyn std::error::Error>> {
+    let conn = Connection::new_session()?;
+    let proxy = conn.with_proxy(
+        "org.gnome.Shell.Extension.FocusWindow", // Hypothetical D-Bus name
+        "/org/gnome/Shell/Extension/FocusWindow", // Hypothetical object path
+        Duration::from_millis(5000),
+    );
 
+    proxy.method_call(
+        "org.gnome.Shell.Extension.FocusWindow", // Hypothetical interface
+        "FocusWindowByName",                     // Hypothetical method
+        (unique_name, ),
+    )?;
+
+    Ok(())
+}
 fn main() {
     let mut input = Libinput::new_with_udev(Interface);
     input.udev_assign_seat("seat0").unwrap();
@@ -65,15 +83,59 @@ fn main() {
                         active_keys.remove(&key);
                     }
 
-                    if active_keys.contains(&(Keys::LeftAlt as u32)) && key == Keys::A as u32 && state == KeyState::Pressed {
-                        println!("Alt + A pressed");
+                    if active_keys.contains(&(Keys::LeftAlt as u32))
+                        && key == Keys::G as u32
+                        && state == KeyState::Pressed
+                    {
+                        // wmctrl -a "Telegram" || telegram-desktop
+                        let command = "wmctrl -a 'Telegram' || telegram-desktop";
+
+                        let _ = std::process::Command::new("sh")
+                            .arg("-c")
+                            .arg(command)
+                            .spawn()
+                            .expect("failed to execute process");
+
+                        println!("Launched Telegram in background");
                     }
 
-                    if active_keys.contains(&(Keys::LeftAlt as u32)) && key == Keys::B as u32 && state == KeyState::Pressed {
+                    if active_keys.contains(&(Keys::LeftAlt as u32))
+                        && key == Keys::T as u32
+                        && state == KeyState::Pressed
+                    {
+                        // wmctrl -a "Alacritty" || alacritty
+                        let command = "wmctrl -a 'Alacritty' || alacritty";
+
+                        let _ = std::process::Command::new("sh")
+                            .arg("-c")
+                            .arg(command)
+                            .spawn()
+                            .expect("failed to execute process");
+
+                        println!("Launched Alacritty in background");
+                    }
+
+                    if active_keys.contains(&(Keys::LeftAlt as u32))
+                        && key == Keys::B as u32
+                        && state == KeyState::Pressed
+                    {
                         println!("Alt + B pressed");
-                    }
 
-                },
+                        // launch or select firefox (wayland)
+                        // wmctrl -a "Google Chrome" || google-chrome
+
+                        // launch or select firefox (x11)
+                        let command = "wmctrl -a 'Google Chrome' || google-chrome";
+                        let _ = std::process::Command::new("sh")
+                            .arg("-c")
+                            .arg(command)
+                            .spawn()
+                            .expect("failed to execute process");
+
+                        println!("Launched Browser in background");
+
+                    }
+                }
                 _ => {} // Ignore non-keyboard events
             }
         }
