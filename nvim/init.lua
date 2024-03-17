@@ -90,7 +90,10 @@ require("lazy").setup({
     "microsoft/vscode-js-debug",
     build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
     lazy = true  -- Set to lazy load, but consider specifying conditions for loading, similar to `opt` in Packer
-  }
+  },
+
+  -- Thing trouble keeps complaining about
+  'nvim-tree/nvim-web-devicons'
 })
 
 
