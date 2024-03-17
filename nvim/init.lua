@@ -78,6 +78,9 @@ require("lazy").setup({
     'f-person/git-blame.nvim',
     'brooth/far.vim',
 
+	-- Git diff
+	'tpope/vim-fugitive',
+
     -- Language specific tools
    'simrat39/rust-tools.nvim',
   'leoluz/nvim-dap-go',
