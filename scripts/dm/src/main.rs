@@ -71,6 +71,31 @@ fn set_gtk_theme(dark: bool) {
     }
 }
 
+fn set_gtk_wallpaper(dark: bool) {
+    // wallpaper set ~/.dotfiles/wallpapers/dark.png
+    //
+    let image_name = if dark {
+        "dark.png"
+    } else {
+        "light.jpg"
+    };
+
+    // set the gnome desktop wallpaper
+    if let Ok(home_dir) = env::var("HOME") {
+        let wallpaper_path = format!("{}/.dotfiles/wallpapers/{}", home_dir, image_name);
+
+        match Command::new("gsettings")
+            .args(&["set", "org.gnome.desktop.background", "picture-uri", &wallpaper_path])
+            .output() {
+                Ok(_) => {
+                    println!("Set wallpaper to {}", image_name);
+                },
+                Err(e) => {
+                    println!("Failed to set wallpaper: {}", e);
+                }
+            }
+    }
+}
 fn set_apple_dark_mode(dark: bool) {
 
     if dark {
@@ -124,5 +149,6 @@ fn main() {
         set_apple_wallpaper(!is_dark_mode);
     } else {
         set_gtk_theme(!is_dark_mode);
+        set_gtk_wallpaper(!is_dark_mode);
     }
 }
