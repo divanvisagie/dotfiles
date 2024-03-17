@@ -12,6 +12,10 @@ function strp() {
   '
 }
 
+function kb() {
+    for job in $(jobs -p); do kill -9 $job; done
+}
+
 function today() {
     local filename=$(date "+%Y-%m-%d").md
 
