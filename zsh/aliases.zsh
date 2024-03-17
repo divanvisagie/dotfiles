@@ -12,9 +12,9 @@ function strp() {
   '
 }
 
-function dm() {
-  eval "$(~/.dotfiles/scripts/darkmode.sh)"
-}
+# function dm() {
+#   eval "$(~/.dotfiles/scripts/darkmode.sh)"
+# }
 
 function today() {
     local filename=$(date "+%Y-%m-%d").md

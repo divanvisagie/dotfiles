@@ -1,7 +1,9 @@
+use std::{env, process::Command};
+
 fn get_is_dark_mode() -> bool {
     //if linux
     if cfg!(target_os = "linux") {
-        let output = std::process::Command::new("gsettings")
+        let output = Command::new("gsettings")
             .args(&["get", "org.gnome.desktop.interface", "gtk-theme"])
             .output()
             .expect("Failed to execute command");
@@ -9,7 +11,7 @@ fn get_is_dark_mode() -> bool {
         return theme.contains("dark");
     }
     if cfg!(target_os = "macos") {
-        let output = std::process::Command::new("defaults")
+        let output = Command::new("defaults")
             .args(&["read", "-g", "AppleInterfaceStyle"])
             .output()
             .expect("Failed to execute command");
@@ -57,12 +59,12 @@ fn set_alacritty_theme(dark: bool) {
 
 fn set_gtk_theme(dark: bool) {
     if dark {
-        std::process::Command::new("gsettings")
+        Command::new("gsettings")
             .args(&["set", "org.gnome.desktop.interface", "gtk-theme", "Yaru-dark"])
             .output()
             .expect("Failed to execute command");
     } else {
-        std::process::Command::new("gsettings")
+        Command::new("gsettings")
             .args(&["set", "org.gnome.desktop.interface", "gtk-theme", "Yaru"])
             .output()
             .expect("Failed to execute command");
@@ -70,18 +72,48 @@ fn set_gtk_theme(dark: bool) {
 }
 
 fn set_apple_dark_mode(dark: bool) {
+
     if dark {
-        std::process::Command::new("defaults")
-            .args(&["write", "-g", "AppleInterfaceStyle", "Dark"])
+        // osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+        Command::new("osascript")
+            .args(&["-e", "tell application \"System Events\" to tell appearance preferences to set dark mode to true"])
             .output()
             .expect("Failed to execute command");
+
     } else {
-        std::process::Command::new("defaults")
-            .args(&["delete", "-g", "AppleInterfaceStyle"])
+        // osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
+        Command::new("osascript")
+            .args(&["-e", "tell application \"System Events\" to tell appearance preferences to set dark mode to false"])
             .output()
             .expect("Failed to execute command");
     }
 }
+
+fn set_apple_wallpaper(dark: bool) {
+    // wallpaper set ~/.dotfiles/wallpapers/dark.png
+    //
+    let image_name = if dark {
+        "dark.png"
+    } else {
+        "light.jpg"
+    };
+
+   if let Ok(home_dir) = env::var("HOME") {
+        let wallpaper_path = format!("{}/.dotfiles/wallpapers/{}", home_dir, image_name);
+
+        match Command::new("wallpaper")
+            .args(&["set", &wallpaper_path])
+            .output() {
+                Ok(_) => {
+                    println!("Set wallpaper to {}", image_name);
+                },
+                Err(e) => {
+                    println!("Failed to set wallpaper: {}", e);
+                }
+            }
+    } else {
+        println!("Could not find HOME directory");
+    }}
 
 fn main() {
     let is_dark_mode = get_is_dark_mode();
@@ -89,6 +121,7 @@ fn main() {
     set_alacritty_theme(!is_dark_mode);
     if cfg!(target_os = "macos") {
         set_apple_dark_mode(!is_dark_mode);
+        set_apple_wallpaper(!is_dark_mode);
     } else {
         set_gtk_theme(!is_dark_mode);
     }
