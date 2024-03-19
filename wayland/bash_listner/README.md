@@ -1,3 +1,8 @@
+# Bash Listner
+
+Bash Listner is a replacement for XBindkeys on wayland, it uses libinput to listen to the keyboard
+in order to execute commands.
+
 ```sh
 sudo usermod -aG input yourusername
 ```
