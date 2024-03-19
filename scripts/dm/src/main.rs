@@ -1,10 +1,9 @@
 use std::{env, process::Command};
 
 fn get_is_dark_mode() -> bool {
-    //if linux
     if cfg!(target_os = "linux") {
         let output = Command::new("gsettings")
-            .args(&["get", "org.gnome.desktop.interface", "gtk-theme"])
+            .args(&["get", "org.gnome.desktop.interface", "color-scheme"])
             .output()
             .expect("Failed to execute command");
         let theme = String::from_utf8_lossy(&output.stdout);
@@ -60,29 +59,26 @@ fn set_alacritty_theme(dark: bool) {
 fn set_gtk_theme(dark: bool) {
     if dark {
         Command::new("gsettings")
-            .args(&["set", "org.gnome.desktop.interface", "gtk-theme", "Yaru-dark"])
+            .args(&["set", "org.gnome.desktop.interface", "color-scheme", "prefer-dark"])
             .output()
             .expect("Failed to execute command");
     } else {
         Command::new("gsettings")
-            .args(&["set", "org.gnome.desktop.interface", "gtk-theme", "Yaru"])
+            .args(&["set", "org.gnome.desktop.interface", "color-scheme", "prefer-light"])
             .output()
             .expect("Failed to execute command");
     }
 }
 
 fn set_gtk_wallpaper(dark: bool) {
-    // wallpaper set ~/.dotfiles/wallpapers/dark.png
-    //
     let image_name = if dark {
         "dark.png"
     } else {
         "light.jpg"
     };
 
-    // set the gnome desktop wallpaper
     if let Ok(home_dir) = env::var("HOME") {
-        let wallpaper_path = format!("{}/.dotfiles/wallpapers/{}", home_dir, image_name);
+        let wallpaper_path = format!("file:///{}/.dotfiles/wallpapers/{}", home_dir, image_name);
 
         match Command::new("gsettings")
             .args(&["set", "org.gnome.desktop.background", "picture-uri", &wallpaper_path])
@@ -99,14 +95,12 @@ fn set_gtk_wallpaper(dark: bool) {
 fn set_apple_dark_mode(dark: bool) {
 
     if dark {
-        // osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
         Command::new("osascript")
             .args(&["-e", "tell application \"System Events\" to tell appearance preferences to set dark mode to true"])
             .output()
             .expect("Failed to execute command");
 
     } else {
-        // osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
         Command::new("osascript")
             .args(&["-e", "tell application \"System Events\" to tell appearance preferences to set dark mode to false"])
             .output()
@@ -115,8 +109,6 @@ fn set_apple_dark_mode(dark: bool) {
 }
 
 fn set_apple_wallpaper(dark: bool) {
-    // wallpaper set ~/.dotfiles/wallpapers/dark.png
-    //
     let image_name = if dark {
         "dark.png"
     } else {
