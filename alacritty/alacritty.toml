@@ -21,3 +21,7 @@ dynamic_title = true
 x = 16
 y = 24
 
+[keyboard]
+bindings = [
+    { key = "Space", mods = "Control|Shift", action = "ToggleViMode" },
+]
