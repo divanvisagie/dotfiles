@@ -21,7 +21,7 @@ end
 
 
 local function isDarkModeEnabledLinux()
-    local commandString = "gsettings get org.gnome.desktop.interface gtk-theme 2>/dev/null"
+    local commandString = "gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null"
 
     -- Attempt to open the command output
     local handle = io.popen(commandString)
@@ -39,7 +39,7 @@ local function isDarkModeEnabledLinux()
 
     -- Using pattern matching to search for 'Yaru-dark' within the output,
     -- ignoring leading/trailing quotes and whitespace
-    local pattern = "'.*Yaru%-dark.*'"
+    local pattern = "'.*prefer%-dark.*'"
     local isDark = darkModeOutput:match(pattern) ~= nil
     print(isDark)
     return isDark
