@@ -8,14 +8,15 @@ local nvim_lsp = require("lspconfig")
 
 nvim_lsp.tsserver.setup {
   init_options = {
-    maxTsServerMemory = 8192,
+    maxTsServerMemory = 9192,
     -- disableAutomaticTypingAcquisition = true,
   },
   settings = {
     preferences = {
-      includeCompletionsForModuleExports = false,
+      includeCompletionsForModuleExports = true,
       includeInlayVariableTypeHintsWhenTypeMatchesName = true,
       includeInlayFunctionParameterTypeHints = true, -- Enable type inlay hints for function parameters
+      importModuleSpecifier = "relative",  
     },
   },
 }
@@ -28,6 +29,9 @@ lsp.ensure_installed({
     'tsserver',
     'rust_analyzer',
     'eslint',
+    'jsonls',
+    'yamlls',
+    'gopls'
 })
 
 nvim_lsp.rust_analyzer.setup({
@@ -93,3 +97,17 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 lsp.setup()
+
+local wk = require('which-key')
+local mappings = {
+    g = {
+        name = "Go to (LSP)",
+        d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+    },
+    c = {
+        name = "Code action (LSP)",
+        a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
+    },
+}
+local opts = { prefix = "<leader>" }
+wk.register(mappings, opts)
