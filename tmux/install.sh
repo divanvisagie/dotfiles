@@ -1,4 +1,5 @@
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # clone tmux if it does not exist
 if [ ! -d ~/Projects/com.github/tmux/tmux ]; then
