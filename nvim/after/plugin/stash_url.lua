@@ -39,10 +39,21 @@ local function get_remote()
   return git_remote_url
 end
 
+-- Get the line number that our cursor is on when 
+-- running the function
+function get_line_number() 
+  local line = vim.fn.line(".")
+  return line
+end
+
 local function sturl()
+  local line_number = get_line_number()
   local fp = get_file()
   local rp = get_remote()
   local path = rp .. fp
+
+  -- Add line number to end of path
+  path = path .. "#" .. line_number
 
   -- Copy URL to clipboard in MacOS
   os.execute("echo '" .. path .. "' | pbcopy")
