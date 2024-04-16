@@ -15,7 +15,7 @@ history = 10000
 
 [window]
 decorations = "buttonless"
-dynamic_title = true
+dynamic_title = false
 
 [window.position]
 x = 16
