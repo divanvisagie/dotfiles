@@ -8,6 +8,8 @@ sudo apt install wmctrl -y
 sudo apt install openssh-server -y
 sudo apt install git -y
 sudo apt install avahi-daemon -y # install mdns 
+sudo apt-get install libkstat-dev libkvm-dev libperfstat-dev libsendfile-dev
+
 
 # install zsh and set it as the default shell
 sudo apt install zsh -y
