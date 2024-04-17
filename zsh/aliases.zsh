@@ -22,6 +22,10 @@ function strp() {
   '
 }
 
+function nocol() {
+    sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"
+}
+
 function kb() {
     for job in $(jobs -p); do kill -9 $job; done
 }
