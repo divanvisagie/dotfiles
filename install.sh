@@ -1,8 +1,17 @@
 #!/bin/bash
 
+## install oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+## install powerlevel 10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+## Install autosuggenstions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # if we are on linux install the dependencies
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sh ./ubuntu/install.sh
+else
+	sh ./macos/install.sh
 fi
 
 # install useful rust tools
@@ -12,6 +21,7 @@ cargo install du-dust
 cargo install ripgrep
 cargo install cgip
 cargo install cargo-watch
+cargo install gitui
 
 # Set up working directories if the do not exist
 if [ ! -d ~/Projects ]; then
@@ -45,3 +55,6 @@ if [ ! -d ~/Projects/com.github/neovim/neovim ]; then
 fi
 
 sh ~/.dotfiles/tmux/install.sh
+
+
+
