@@ -6,6 +6,11 @@ if [ ! -d ~/Projects/com.github/alacritty/alacritty ]; then
 	cd ~/Projects/com.github/alacritty
 	git clone https://github.com/alacritty/alacritty.git
 	cd alacritty
+
+	## only build if alacritty command not present
+	if ! [ -x "$(command -v alacritty)" ]; then
+		cargo install --path .
+	fi
 	make install
 	cd ~
 fi
