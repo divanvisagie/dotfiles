@@ -1,4 +1,4 @@
-ln -s ~/.dotfiles/alacritty ~/.config/alacritty
+ln -s ~/.dotfiles/alacritty/ ~/.config/
 
 # Clone the alacritty repo if it does not exist
 if [ ! -d ~/Projects/com.github/alacritty/alacritty ]; then
