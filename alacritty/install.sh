@@ -11,6 +11,5 @@ if [ ! -d ~/Projects/com.github/alacritty/alacritty ]; then
 	if ! [ -x "$(command -v alacritty)" ]; then
 		cargo install --path .
 	fi
-	make install
 	cd ~
 fi
