@@ -58,6 +58,11 @@ if [ ! -d ~/Projects/com.github/neovim/neovim ]; then
 	cd ~
 fi
 
+# Install configs
 sh ~/.dotfiles/tmux/install.sh
 sh ~/.dotfiles/git/install.sh
 
+
+# Install custom tools
+cd ~/.dotfiles/scripts/dm
+cargo install --path .
