@@ -59,6 +59,5 @@ if [ ! -d ~/Projects/com.github/neovim/neovim ]; then
 fi
 
 sh ~/.dotfiles/tmux/install.sh
-
-
+sh ~/.dotfiles/git/install.sh
 
