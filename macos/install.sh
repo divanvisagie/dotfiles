@@ -10,3 +10,5 @@ brew install neofetch htop tmux
 brew install ninja cmake gettext curl
 brew install skhd
 brew install wallpaper
+
+sh ~/.dotfiles/skhd/install.sh
