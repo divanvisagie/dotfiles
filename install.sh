@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if ! [ -x "$(command -v node)" ]; then
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+	export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+	nvm install --lts
+	nvm use --lts
+fi
+
 # Perform OS specific installs
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sh ./ubuntu/install.sh
@@ -29,7 +37,7 @@ cargo install cargo-watch
 cargo install gitui --locked
 cargo install zoxide
 
-# Set up working directories if the do not exist
+# Set up working directories if they do not exist
 if [ ! -d ~/Projects ]; then
 	mkdir ~/Projects
 fi
