@@ -18,6 +18,7 @@ sudo apt install gnome-tweaks -y
 # install zsh and set it as the default shell
 sudo apt install zsh -y
 chsh -s $(which zsh)
+zsh
 
 
 
