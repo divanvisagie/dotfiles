@@ -26,6 +26,7 @@ cargo install cgip
 cargo install hurl
 cargo install cargo-watch
 cargo install gitui --locked
+cargo install zoxide
 
 # Set up working directories if the do not exist
 if [ ! -d ~/Projects ]; then
