@@ -13,7 +13,7 @@ sudo apt install xdotool -y
 sudo apt install libxml2-dev -y
 sudo apt install librust-servo-fontconfig-sys-dev -y
 sudo apt install ninja-build -y
-
+sudo apt install gnome-tweaks -y
 
 # install zsh and set it as the default shell
 sudo apt install zsh -y
