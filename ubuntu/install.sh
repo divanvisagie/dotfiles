@@ -19,7 +19,6 @@ sudo apt install ninja-build gettext cmake unzip curl build-essential -y #needed
 # install zsh and set it as the default shell
 sudo apt install zsh -y
 chsh -s $(which zsh)
-zsh
 
 
 
