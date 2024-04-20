@@ -11,6 +11,8 @@ sudo apt install xbindkeys -y
 sudo apt install xclip -y
 sudo apt install xdotool -y
 sudo apt install libxml2-dev -y
+sudo apt install librust-servo-fontconfig-sys-dev -y
+
 # install zsh and set it as the default shell
 sudo apt install zsh -y
 chsh -s $(which zsh)
