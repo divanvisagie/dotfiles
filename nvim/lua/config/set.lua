@@ -23,3 +23,9 @@ vim.api.nvim_set_keymap('n', '<C-j>', ':resize -2<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-k>', ':resize +2<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-h>', ':vertical resize -2<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-l>', ':vertical resize +2<CR>', {noremap = true})
+
+-- Apply text margin for Markdown files
+vim.api.nvim_exec([[ 
+  autocmd FileType markdown setlocal textwidth=80
+  autocmd FileType markdown setlocal formatoptions+=t 
+]], false) 
