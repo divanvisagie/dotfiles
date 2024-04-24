@@ -1,6 +1,12 @@
 #!/bin/bash
+
 sudo apt update
 sudo apt upgrade
+
+# install zsh and set it as the default shell
+sudo apt install zsh -y
+chsh -s $(which zsh)
+
 sudo apt install avahi-daemon -y # install mdns 
 sudo apt install build-essential -y
 sudo apt install curl git -y
