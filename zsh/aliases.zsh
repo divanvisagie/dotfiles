@@ -43,3 +43,5 @@ function today() {
 }
 
 export TERM=xterm-256color
+
+eval "$(direnv hook zsh)"
