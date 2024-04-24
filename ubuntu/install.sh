@@ -19,7 +19,8 @@ sudo apt install gnome-tweaks -y
 sudo apt install ninja-build gettext cmake unzip curl build-essential -y #needed for neovim build
 sudo apt install libssl-dev -y #needed for rust dev 
 sudo apt install libglib2.0-dev -y
-sudo apt install psensor 0y
+sudo apt install psensor -y
+sudo apt install direnv -y
 
 # install zsh and set it as the default shell
 sudo apt install zsh -y
