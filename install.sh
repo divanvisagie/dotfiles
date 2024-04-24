@@ -49,6 +49,7 @@ fi
 sh ~/.dotfiles/tmux/install.sh
 sh ~/.dotfiles/git/install.sh
 sh ~/.dotfiles/alacritty/install.sh
+sh ~/.dotfiles/nvim/install.sh
 
 # Install custom tools
 cd ~/.dotfiles/scripts/dm
