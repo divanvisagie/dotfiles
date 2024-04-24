@@ -30,3 +30,9 @@ chsh -s $(which zsh)
 sudo apt install flatpak -y
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub com.github.d4nj1.tlpui
+
+# set up proton vpn
+wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
+sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
+sudo apt install proton-vpn-gnome-desktop
+sudo apt install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator
