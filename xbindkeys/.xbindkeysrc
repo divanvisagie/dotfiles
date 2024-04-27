@@ -16,5 +16,8 @@ Alt+Q
 "sh ~/.dotfiles/xbindkeys/center.sh"
 Control+Alt+C
 
+"sh ~/.dotfiles/xbindkeys/twothirds.sh"
+Control+Alt+E
+
 "sh ~/.dotfiles/xbindkeys/maximize.sh"
 Control+Alt+F
