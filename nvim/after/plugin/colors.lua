@@ -4,14 +4,15 @@ function Trans()
 	vim.api.nvim_set_hl(0, "Normal",{ bg = "none" })
 end
 
+-- vim.cmd.colorscheme("catpuccin")
 function Dark()
+    vim.cmd.colorscheme("everforest")
     vim.o.background = "dark"
-	vim.cmd.colorscheme("everforest")
 end
 
 function Light()
+    vim.cmd.colorscheme("rose-pine")
     vim.o.background = "light"
-	vim.cmd.colorscheme("rose-pine")
 end
 
 local function isDarkModeEnabledMac()
@@ -44,8 +45,6 @@ local function isDarkModeEnabledLinux()
     print(isDark)
     return isDark
 end
-
-
 
 local function isDarkModeEnabled()
     -- generic check for mac and linux

@@ -39,6 +39,8 @@ require("lazy").setup({
 	-- Color Schemes
     'rose-pine/neovim',
     'sainnhe/everforest',
+
+    -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate"  -- This replaces the 'do' hook from Vim-Plug
@@ -50,7 +52,6 @@ require("lazy").setup({
     -- undo history visualiser
     'mbbill/undotree',                                         -- A history of your undos
 
-
     -- Shows shortcut key help when initiating a command
     'folke/which-key.nvim',
 
@@ -58,8 +59,7 @@ require("lazy").setup({
 
     -- Useful status updates for LSP
     { 'j-hui/fidget.nvim', tag = 'legacy' },
-    
-     {
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         dependencies = {
@@ -73,7 +73,7 @@ require("lazy").setup({
           'hrsh7th/cmp-nvim-lsp', -- Required for LSP completion source
           'L3MON4D3/LuaSnip',     -- Required for snippets
         }
-      },
+    },
      -- Git blame
     'f-person/git-blame.nvim',
     'brooth/far.vim',
@@ -81,22 +81,8 @@ require("lazy").setup({
 	-- Git diff
 	'tpope/vim-fugitive',
 
-    -- Language specific tools
-   'simrat39/rust-tools.nvim',
-  'leoluz/nvim-dap-go',
-  {
-    "mxsdev/nvim-dap-vscode-js",
-    lazy = true  -- `module` in Packer is equivalent to making it lazy-loaded in Lazy.nvim
-    -- keys = { "<Plug>(your-custom-key-binding-here)" }  -- Replace with an actual key binding if needed
-  },
-  {
-    "microsoft/vscode-js-debug",
-    build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-    lazy = true  -- Set to lazy load, but consider specifying conditions for loading, similar to `opt` in Packer
-  },
-
-  -- Thing trouble keeps complaining about
-  'nvim-tree/nvim-web-devicons'
+    -- Thing trouble keeps complaining about
+	'nvim-tree/nvim-web-devicons'
 })
 
 

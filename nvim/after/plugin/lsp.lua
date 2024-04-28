@@ -98,16 +98,3 @@ lsp.on_attach(function(_, bufnr)
 end)
 lsp.setup()
 
-local wk = require('which-key')
-local mappings = {
-    g = {
-        name = "Go to (LSP)",
-        d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-    },
-    c = {
-        name = "Code action (LSP)",
-        a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
-    },
-}
-local opts = { prefix = "<leader>" }
-wk.register(mappings, opts)
