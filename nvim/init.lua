@@ -82,7 +82,10 @@ require("lazy").setup({
 	'tpope/vim-fugitive',
 
     -- Thing trouble keeps complaining about
-	'nvim-tree/nvim-web-devicons'
+	'nvim-tree/nvim-web-devicons',
+
+    -- Language specific tools
+    'simrat39/rust-tools.nvim',
 })
 
 
