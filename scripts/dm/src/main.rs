@@ -72,7 +72,7 @@ fn set_gtk_theme(dark: bool) {
 
 fn set_gtk_wallpaper(dark: bool) {
     let image_name = if dark {
-        "dark.png"
+        "dark.jpg"
     } else {
         "light.jpg"
     };
@@ -110,7 +110,7 @@ fn set_apple_dark_mode(dark: bool) {
 
 fn set_apple_wallpaper(dark: bool) {
     let image_name = if dark {
-        "dark.png"
+        "dark.jpg"
     } else {
         "light.jpg"
     };
