@@ -74,7 +74,7 @@ require("lazy").setup({
           'L3MON4D3/LuaSnip',     -- Required for snippets
         }
     },
-     -- Git blame
+    -- Git blame
     'f-person/git-blame.nvim',
     'brooth/far.vim',
 
@@ -86,6 +86,9 @@ require("lazy").setup({
 
     -- Language specific tools
     'simrat39/rust-tools.nvim',
+
+    -- Preview markdown with :Glow
+    {"ellisonleao/glow.nvim", config = true, cmd = "Glow"}
 })
 
 
