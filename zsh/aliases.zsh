@@ -10,7 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-plugins=(git history zsh-autosuggestions)
+plugins=(git history zsh-autosuggestions zsh-syntax-highlighting)
 
 export EDITOR='nvim'
 
@@ -45,3 +45,4 @@ function today() {
 export TERM=xterm-256color
 
 eval "$(direnv hook zsh)"
+source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
