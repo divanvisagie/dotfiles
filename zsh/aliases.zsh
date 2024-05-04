@@ -44,5 +44,9 @@ function today() {
 
 export TERM=xterm-256color
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    alias pbcopy='xclip -selection c'
+fi
+
 eval "$(direnv hook zsh)"
 source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
