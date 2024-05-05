@@ -89,7 +89,10 @@ require("lazy").setup({
     'simrat39/rust-tools.nvim',
 
     -- Preview markdown with :Glow
-    {"ellisonleao/glow.nvim", config = true, cmd = "Glow"}
+    {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+
+    -- hex editing
+    { 'RaafatTurki/hex.nvim' }
 })
 
 
