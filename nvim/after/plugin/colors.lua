@@ -6,7 +6,10 @@ end
 
 -- vim.cmd.colorscheme("catpuccin")
 function Dark()
-    vim.cmd.colorscheme("everforest")
+    -- vim.cmd.colorscheme("everforest")
+    -- vim.g.gruvbox_material_background = "hard"
+    vim.g.gruvbox_material_background = "medium"
+    vim.cmd.colorscheme("gruvbox-material")
     vim.o.background = "dark"
 end
 

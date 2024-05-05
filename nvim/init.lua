@@ -39,6 +39,7 @@ require("lazy").setup({
 	-- Color Schemes
     'rose-pine/neovim',
     'sainnhe/everforest',
+    'sainnhe/gruvbox-material',
 
     -- Treesitter
     {
