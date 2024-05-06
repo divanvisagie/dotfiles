@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]
+import = ["~/.config/alacritty/themes/themes/rose-pine-dawn.toml"]
 live_config_reload = true
 
 [selection]
@@ -14,7 +14,7 @@ family = "MesloLGS NF"
 history = 10000
 
 [window]
-decorations = "buttonless"
+decorations = "None"
 dynamic_title = false
 
 [window.position]

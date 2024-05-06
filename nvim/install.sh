@@ -1,4 +1,6 @@
-ln -s ~/.dotfiles/nvim/ ~/.config/
+if [ ! -d ~/.config/nvim ]; then
+	ln -s ~/.dotfiles/nvim/ ~/.config/
+fi
 
 # Clone the nvim repo if it does not exist
 if [ ! -d ~/Projects/com.github/neovim/neovim ]; then

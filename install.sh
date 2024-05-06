@@ -16,13 +16,6 @@ else
 fi
 
 sh ~/.dotfiles/zsh/install.sh
-# Zsh setup
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
 
 # Install rust if not present 
 if ! [ -x "$(command -v rustc)" ]; then
@@ -57,3 +50,4 @@ sh ~/.dotfiles/nvim/install.sh
 # Install custom tools
 cd ~/.dotfiles/scripts/dm
 cargo install --path .
+cd ~/.dotfiles

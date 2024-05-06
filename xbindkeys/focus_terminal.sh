@@ -21,7 +21,7 @@ if [ -z "$is_open" ]; then
 
   # Center the window
   wmctrl -r "Alacritty" -e 0,$NEW_X,0,-1,-1
-  wmctrl -r "Alacritty" -b add,maximized_vert
+  wmctrl -r "Alacritty" -b add,maximized_vert,maximized_horz
 else
   wmctrl -a "Alacritty"
 fi

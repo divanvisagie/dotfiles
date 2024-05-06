@@ -1,4 +1,7 @@
-ln -s ~/.dotfiles/alacritty/ ~/.config/
+#!/bin/bash
+if [ ! -d ~/.dotfiles/alacritty ]; then
+	ln -s ~/.dotfiles/alacritty/ ~/.config/
+fi
 
 # Clone the alacritty repo if it does not exist
 if [ ! -d ~/Projects/com.github/alacritty/alacritty ]; then
@@ -16,4 +19,4 @@ if ! [ -x "$(command -v alacritty)" ]; then
 	sudo desktop-file-install extra/linux/Alacritty.desktop
 	sudo update-desktop-database
 fi
-cd ~
+cd ~/.dotfiles
