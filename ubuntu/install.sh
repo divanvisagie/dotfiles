@@ -25,6 +25,7 @@ sudo apt-get install psensor -y
 sudo apt-get install direnv -y
 sudo apt-get install just -y
 sudo apt-get install syncthing
+sudo apt-get install gnome-shell-extensions
 
 # set up flatpak
 sudo apt-get install flatpak -y

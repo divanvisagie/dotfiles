@@ -45,7 +45,13 @@ function today() {
 export TERM=xterm-256color
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    alias pbcopy='xclip -selection c'
+    # if wayland
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+        export GDK_BACKEND=wayland
+        alias pbcopy='wl-copy'
+    else
+        alias pbcopy='xclip -selection c'
+    fi
 fi
 
 eval "$(direnv hook zsh)"
