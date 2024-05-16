@@ -1,9 +1,12 @@
 alias cb='git branch --show-current'
 alias uuid="uuidgen | tr 'A-F' 'a-f'"
 alias sf="source ~/.zshrc"
-alias ls="exa"
+alias ls="eza --all --group-directories-first --icons"
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias mac="openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/:$//'"
+
+## Copy latest commit hash to clipboard
+alias gtop='git log -1 --format="%H" | cat | xargs echo -n | pbcopy'
 
 export ZSH="$HOME/.oh-my-zsh"
 
