@@ -16,7 +16,6 @@ zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
-export ZSH="$HOME/.oh-my-zsh"
 export TERM=xterm-256color
 export EDITOR='nvim'
 
@@ -73,3 +72,5 @@ function today() {
 
 eval "$(direnv hook zsh)"
 source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
