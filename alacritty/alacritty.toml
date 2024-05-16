@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/themes/rose-pine-dawn.toml"]
+import = ["~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]
 live_config_reload = true
 
 [selection]
