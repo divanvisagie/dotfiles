@@ -14,3 +14,7 @@ brew install wallpaper
 brew install just
 
 sh ~/.dotfiles/skhd/install.sh
+
+# Fix alacritty font rendering
+# https://github.com/alacritty/alacritty/issues/7333#issuecomment-1784737226
+defaults -currentHost write -g AppleFontSmoothing -int 0
