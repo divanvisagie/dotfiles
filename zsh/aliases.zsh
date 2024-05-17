@@ -12,7 +12,6 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
-# zsh syngax highlighting 
 zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 
 autoload -U compinit && compinit
