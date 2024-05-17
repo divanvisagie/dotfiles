@@ -9,9 +9,9 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
 # zsh syngax highlighting 
 zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 
@@ -20,6 +20,26 @@ autoload -U compinit && compinit
 ZSH_THEME="powerlevel10k/powerlevel10k"
 export TERM=xterm-256color
 export EDITOR='nvim'
+
+# Keybindings
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt sharehistory
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive completion matching
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # Use LS_COLORS for completion colors
 
 # source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # plugins=(git history zsh-autosuggestions zsh-syntax-highlighting)
