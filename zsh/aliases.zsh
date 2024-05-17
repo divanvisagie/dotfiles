@@ -14,6 +14,20 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 
+# Add in snippets
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::yarn
+zinit snippet OMZP::rust
+# if on ubuntu
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    zinit snippet OMZP::ubuntu
+fi
+# if on mac
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    zinit snippet OMZP::brew
+fi
+
 autoload -U compinit && compinit
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -39,9 +53,6 @@ setopt sharehistory
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive completion matching
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # Use LS_COLORS for completion colors
-
-# source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# plugins=(git history zsh-autosuggestions zsh-syntax-highlighting)
 
 # Aliases
 alias cb='git branch --show-current'
@@ -91,6 +102,8 @@ function today() {
     fi
 }
 
+# Shell integrations
 eval "$(direnv hook zsh)"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
