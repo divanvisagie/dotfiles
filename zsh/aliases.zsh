@@ -12,6 +12,8 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+# zsh syngax highlighting 
+zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 
 autoload -U compinit && compinit
 
@@ -19,14 +21,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 export TERM=xterm-256color
 export EDITOR='nvim'
 
-source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-plugins=(git history zsh-autosuggestions zsh-syntax-highlighting)
+# source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# plugins=(git history zsh-autosuggestions zsh-syntax-highlighting)
 
 # Aliases
 alias cb='git branch --show-current'
 alias uuid="uuidgen | tr 'A-F' 'a-f'"
 alias sf="source ~/.zshrc"
-alias ls="eza --all --group-directories-first --icons"
+alias ls="eza --group-directories-first"
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias mac="openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/:$//'"
 alias gtop='git log -1 --format="%H" | cat | xargs echo -n | pbcopy'
