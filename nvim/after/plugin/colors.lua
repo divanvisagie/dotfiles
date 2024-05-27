@@ -45,7 +45,6 @@ local function isDarkModeEnabledLinux()
     -- ignoring leading/trailing quotes and whitespace
     local pattern = "'.*prefer%-dark.*'"
     local isDark = darkModeOutput:match(pattern) ~= nil
-    print(isDark)
     return isDark
 end
 
