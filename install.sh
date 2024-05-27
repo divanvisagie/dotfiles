@@ -32,6 +32,7 @@ cargo install hurl
 cargo install cargo-watch
 cargo install gitui --locked
 cargo install zoxide
+cargo install --locked yazi-fm yazi-cli # Terminal based file browser
 
 # Set up working directories if they do not exist
 if [ ! -d ~/Projects ]; then
