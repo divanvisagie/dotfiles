@@ -30,6 +30,8 @@ set backspace=indent,eol,start
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+" Set the selection background color to a specific grey and text color to white for terminal
+" highlight Visual ctermbg=grey ctermfg=white
 
 " let g:airline_theme='bubblegum'
 " Split down and to the right instead of left and to the top which is the
@@ -38,3 +40,28 @@ set splitbelow
 set splitright
 let mapleader=" "
 
+" Define the function to set colors based on background
+function! SetColors()
+    if &background == "dark"
+        " Set colors for dark background
+        highlight Visual ctermbg=DarkGray ctermfg=White
+        highlight LineNr ctermfg=DarkGray
+        highlight CursorLineNr ctermfg=LightGray
+        highlight SignColumn ctermbg=Black ctermfg=DarkGray
+    elseif &background == "light"
+        " Set colors for light background
+        highlight Visual ctermbg=LightGray ctermfg=Black
+        highlight LineNr ctermfg=DarkGray
+        highlight CursorLineNr ctermfg=Gray
+        highlight SignColumn ctermbg=White ctermfg=DarkGray
+    endif
+endfunction
+
+" Automatically set colors based on the background
+augroup ChangeColors
+    autocmd!
+    autocmd OptionSet background call SetColors()
+augroup END
+
+" Manually call the function based on the current background
+call SetColors()
