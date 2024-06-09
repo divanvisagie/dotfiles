@@ -39,7 +39,7 @@ local function isDarkModeEnabledLinux()
     handle:close()
 
     -- Debugging the output
-    print("'" .. darkModeOutput .. "'")
+    -- print("'" .. darkModeOutput .. "'")
 
     -- Using pattern matching to search for 'Yaru-dark' within the output,
     -- ignoring leading/trailing quotes and whitespace
