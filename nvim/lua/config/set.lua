@@ -15,9 +15,12 @@ vim.opt.foldmethod = "indent"
 -- do not fold by default
 vim.opt.foldlevel = 99
 
+--set default splitting behaviour
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 vim.o.termguicolors = true
 vim.cmd [[colorscheme default]]
-
 
 vim.api.nvim_set_keymap('n', '<C-j>', ':resize -2<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-k>', ':resize +2<CR>', {noremap = true})
