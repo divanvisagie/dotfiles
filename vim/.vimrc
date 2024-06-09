@@ -87,7 +87,7 @@ nnoremap <leader>rg :call Ripgrep(input('Rg Search: '))<CR>
 " Function to search for file names using ripgrep and populate the quickfix list
 function! RipgrepFilesByName(pattern)
    " Use ripgrep to search for files matching the pattern (including hidden files)
-   let l:command = "rg --files --hidden --glob '!.git/*'" . shellescape(a:pattern)
+   let l:command = 'rg --files --hidden --glob "!.git/*" | rg ' . shellescape(a:pattern)
    let l:output = systemlist(l:command)
    " Convert ripgrep output to quickfix format: 'file:line:column:text'
    let l:quickfix_list = []
