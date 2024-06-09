@@ -1,4 +1,5 @@
 syntax on "Basic syntax highlighting 
+set path+=** " Make sure find can search deep into the directory
 
 set nocompatible "disable backward compatibility with vi
 set laststatus=2 "show status line
