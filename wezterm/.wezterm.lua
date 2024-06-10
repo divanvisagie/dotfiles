@@ -5,7 +5,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 -- set no window buttons
-config.window_decorations = "NONE"
+config.window_decorations = "RESIZE"
 
 -- This is where you actually apply your config choices
 
@@ -13,7 +13,7 @@ config.window_decorations = "NONE"
 config.color_scheme = 'rose-pine-dawn'
 config.font = wezterm.font("MesloLGS NF")
 -- font size
-config.font_size = 16.0
+config.font_size = 18.0
 config.use_fancy_tab_bar = false
 
 config.colors = {
@@ -50,15 +50,17 @@ wezterm.on(
   function(tab, tabs, panes, config, hover, max_width)
     local pane = tab.active_pane
     local title = basename(pane.foreground_process_name)
-      .. ' '
+      .. ' :'
       .. tab.tab_index + 1
     local color = '#32302f'
+    local fgcolor = '#777777'
     if tab.is_active then
       color = '#faf4ed'
+      fgcolor = '#32302f'
     end
     return {
-      -- set color to rose pine background color
-       { Background = { Color = color } },
+      { Background = { Color = color } },
+      { Foreground = { Color = fgcolor} },
       { Text = ' ' .. title .. ' ' },
     }
   end
