@@ -4,6 +4,9 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- set no window buttons
+config.window_decorations = "NONE"
+
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
@@ -49,11 +52,13 @@ wezterm.on(
     local title = basename(pane.foreground_process_name)
       .. ' '
       .. tab.tab_index + 1
-    local color = 'navy'
+    local color = '#32302f'
     if tab.is_active then
-      color = 'blue'
+      color = '#faf4ed'
     end
     return {
+      -- set color to rose pine background color
+       { Background = { Color = color } },
       { Text = ' ' .. title .. ' ' },
     }
   end
