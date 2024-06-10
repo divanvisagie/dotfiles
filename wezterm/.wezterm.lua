@@ -10,7 +10,28 @@ config.window_decorations = "RESIZE"
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = 'rose-pine-dawn'
+-- config.color_scheme = 'rose-pine-dawn'
+-- config.color_scheme = 'Gruvbox Material (Gogh)'
+
+-- Function to choose a color scheme based on appearance
+local function scheme_for_appearance(appearance)
+    if appearance:find("Dark") then
+        return "Gruvbox Material (Gogh)"
+    else
+        return "rose-pine-dawn"
+    end
+end
+
+wezterm.on('window-config-reloaded', function(window, pane)
+    local overrides = window:get_config_overrides() or {}
+    local appearance = window:get_appearance()
+    local scheme = scheme_for_appearance(appearance)
+    if overrides.color_scheme ~= scheme then
+        overrides.color_scheme = scheme
+        window:set_config_overrides(overrides)
+    end
+end)
+
 config.font = wezterm.font("MesloLGS NF")
 -- font size
 config.font_size = 18.0
