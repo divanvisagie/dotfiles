@@ -85,6 +85,15 @@ function! Ripgrep(pattern)
 endfunction
 nnoremap <leader>rg :call Ripgrep(input('Rg Search: '))<CR>
 
+" Same as ripgrep but for csep
+function! Csep(pattern)
+   " Use csep to search for the pattern and populate the quickfix list
+   let l:command = 'csep --vimgrep ' . shellescape(a:pattern)
+   cexpr systemlist(l:command)
+   copen
+endfunction
+nnoremap <leader>cs :call Csep(input('Csep Search: '))<CR>
+
 " Function to search for file names using ripgrep and populate the quickfix list
 function! RipgrepFilesByName(pattern)
    " Use ripgrep to search for files matching the pattern (including hidden files)
