@@ -7,15 +7,10 @@ vim.keymap.set('n', '<leader>ff', function()
   })
 end, { desc = '[F]ind [F]iles'})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = '[G]it Files'})
+
 vim.keymap.set('n', '<leader>fs', function()
 	builtin.grep_string( { search = vim.fn.input("Grep > ") });
 end, { desc = '[F]ind grep [S]tring'})
-
-vim.keymap.set('n', '<leader>cs', function()
-  builtin.find_files( { 
-    find_command = {'csep', '--vimgrep'},
-  });
-end, { desc = '[C]sep'})
 
 
 local function Csep(pattern)
@@ -27,6 +22,9 @@ local function Csep(pattern)
     
     -- Set the quickfix list with the command output
     vim.fn.setqflist({}, 'r', { title = 'Csep Search', lines = output })
+    
+    -- put it in telescope
+    -- builtin.quickfix({results = output, title = 'Csep Search'})
     
     -- Open the quickfix window
     vim.cmd('copen')
