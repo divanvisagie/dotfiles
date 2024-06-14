@@ -113,6 +113,11 @@ function yz() {
 	rm -f -- "$tmp"
 }
 
+function httpserver () {
+    local port="${1:-8000}"
+    python3 -m http.server "$port"
+}
+
 # Shell integrations
 eval "$(direnv hook zsh)"
 

@@ -92,7 +92,10 @@ require("lazy").setup({
     {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
 
     -- hex editing
-    { 'RaafatTurki/hex.nvim' }
+    { 'RaafatTurki/hex.nvim' },
+
+    -- react automatically to dark mode changes
+    'f-person/auto-dark-mode.nvim'
 })
 
 

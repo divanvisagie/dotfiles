@@ -6,12 +6,20 @@ local config = wezterm.config_builder()
 
 -- set no window buttons
 config.window_decorations = "RESIZE"
+config.font = wezterm.font("MesloLGS NF")
+-- font size
+config.font_size = 20.0
+config.use_fancy_tab_bar = false
 
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
--- config.color_scheme = 'rose-pine-dawn'
--- config.color_scheme = 'Gruvbox Material (Gogh)'
+-- only show bar if there is more than one tab
+config.hide_tab_bar_if_only_one_tab = true
+-- dont pad the window
+config.window_padding = {
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
 
 -- Function to choose a color scheme based on appearance
 local function scheme_for_appearance(appearance)
@@ -32,10 +40,6 @@ wezterm.on('window-config-reloaded', function(window, pane)
     end
 end)
 
-config.font = wezterm.font("MesloLGS NF")
--- font size
-config.font_size = 18.0
-config.use_fancy_tab_bar = false
 
 config.colors = {
   tab_bar = {

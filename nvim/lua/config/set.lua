@@ -1,6 +1,7 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
-
+-- dont use swap files
+vim.opt.swapfile = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.wrap = false

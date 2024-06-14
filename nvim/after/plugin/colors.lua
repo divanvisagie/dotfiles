@@ -48,19 +48,18 @@ local function isDarkModeEnabledLinux()
     return isDark
 end
 
-local function isDarkModeEnabled()
-    -- generic check for mac and linux
-    -- first checkt if the os is mac
-    if vim.fn.has("mac") == 1 then
-        return isDarkModeEnabledMac()
-    else
-        return isDarkModeEnabledLinux()
-    end
-    return true
-end
+local auto_dark_mode = require('auto-dark-mode')
 
-if isDarkModeEnabled() then
-    Dark()
-else
-    Light()
-end
+auto_dark_mode.setup({
+	update_interval = 1000,
+	set_dark_mode = function()
+		-- vim.api.nvim_set_option('background', 'dark')
+		-- vim.cmd('colorscheme gruvbox')
+        Dark()
+	end,
+	set_light_mode = function()
+		-- vim.api.nvim_set_option('background', 'light')
+		-- vim.cmd('colorscheme gruvbox')
+        Light()
+	end,
+})

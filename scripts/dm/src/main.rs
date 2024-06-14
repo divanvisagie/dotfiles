@@ -1,6 +1,9 @@
-use std::{env, process::Command};
-
+use std::process::Command;
 use clap::Parser;
+
+use crate::switcher::SwitcherImpl;
+
+mod switcher;
 
 fn get_is_dark_mode() -> bool {
     if cfg!(target_os = "linux") {
@@ -21,130 +24,6 @@ fn get_is_dark_mode() -> bool {
         return theme.contains("Dark");
     }
     panic!("Unsupported OS");
-}
-
-fn set_alacritty_theme(dark: bool) {
-    let alacritty_config = std::fs::read_to_string(
-        std::env::var("HOME").unwrap() + "/.config/alacritty/alacritty.toml",
-    )
-    .unwrap();
-
-    // break away if the first line is not importing a path that contains the word "themes"
-    if !alacritty_config.contains("themes") {
-        println!("No themes found in alacritty config");
-        return;
-    }
-
-    //remove first line from alacritty config
-    let alacritty_config = alacritty_config
-        .lines()
-        .skip(1)
-        .collect::<Vec<_>>()
-        .join("\n");
-
-    let new_first_line = if dark {
-        vec![
-            r###"import = ["~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]"###.to_string(),
-            alacritty_config,
-        ]
-        .join("\n")
-    } else {
-        vec![
-            r###"import = ["~/.config/alacritty/themes/themes/rose-pine-dawn.toml"]"###.to_string(),
-            alacritty_config,
-        ]
-        .join("\n")
-    };
-
-    std::fs::write(
-        std::env::var("HOME").unwrap() + "/.config/alacritty/alacritty.toml",
-        new_first_line,
-    )
-    .unwrap();
-}
-
-fn set_gtk_theme(dark: bool) {
-    if dark {
-        Command::new("gsettings")
-            .args(&[
-                "set",
-                "org.gnome.desktop.interface",
-                "color-scheme",
-                "prefer-dark",
-            ])
-            .output()
-            .expect("Failed to execute command");
-    } else {
-        Command::new("gsettings")
-            .args(&[
-                "set",
-                "org.gnome.desktop.interface",
-                "color-scheme",
-                "default",
-            ])
-            .output()
-            .expect("Failed to execute command");
-    }
-}
-
-fn set_gtk_wallpaper(dark: bool) {
-    let image_name = if dark { "dark.jpg" } else { "light.jpg" };
-
-    if let Ok(home_dir) = env::var("HOME") {
-        let wallpaper_path = format!("file:///{}/.dotfiles/wallpapers/{}", home_dir, image_name);
-
-        match Command::new("gsettings")
-            .args(&[
-                "set",
-                "org.gnome.desktop.background",
-                "picture-uri",
-                &wallpaper_path,
-            ])
-            .output()
-        {
-            Ok(_) => {
-                println!("Set wallpaper to {}", image_name);
-            }
-            Err(e) => {
-                println!("Failed to set wallpaper: {}", e);
-            }
-        }
-    }
-}
-fn set_apple_dark_mode(dark: bool) {
-    if dark {
-        Command::new("osascript")
-            .args(&["-e", "tell application \"System Events\" to tell appearance preferences to set dark mode to true"])
-            .output()
-            .expect("Failed to execute command");
-    } else {
-        Command::new("osascript")
-            .args(&["-e", "tell application \"System Events\" to tell appearance preferences to set dark mode to false"])
-            .output()
-            .expect("Failed to execute command");
-    }
-}
-
-fn set_apple_wallpaper(dark: bool) {
-    let image_name = if dark { "dark.jpg" } else { "light.jpg" };
-
-    if let Ok(home_dir) = env::var("HOME") {
-        let wallpaper_path = format!("{}/.dotfiles/wallpapers/{}", home_dir, image_name);
-
-        match Command::new("wallpaper")
-            .args(&["set", &wallpaper_path])
-            .output()
-        {
-            Ok(_) => {
-                println!("Set wallpaper to {}", image_name);
-            }
-            Err(e) => {
-                println!("Failed to set wallpaper: {}", e);
-            }
-        }
-    } else {
-        println!("Could not find HOME directory");
-    }
 }
 
 fn reload_tmux() {
@@ -177,26 +56,14 @@ fn main() {
         return;
     }
 
-    if let Some(dark) = args.force_dark {
-        println!("Force dark mode: {}", dark);
-        set_alacritty_theme(dark);
-        if cfg!(target_os = "macos") {
-            set_apple_dark_mode(dark);
-            set_apple_wallpaper(dark);
-        } else {
-            set_gtk_theme(!is_dark_mode);
-        }
+    if let Some(force_dark) = args.force_dark {
+        let switcher = SwitcherImpl::new();
+        switcher.switch_all(force_dark);
+        reload_tmux();
         return;
     }
 
-    set_alacritty_theme(!is_dark_mode);
-    if cfg!(target_os = "macos") {
-        set_apple_dark_mode(!is_dark_mode);
-        set_apple_wallpaper(!is_dark_mode);
-    } else {
-        set_gtk_theme(!is_dark_mode);
-    }
-    // sleep
-    // std::thread::sleep(std::time::Duration::from_secs(1));
+    let switcher = SwitcherImpl::new();
+    switcher.switch_all(!is_dark_mode);
     reload_tmux();
 }

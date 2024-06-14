@@ -8,7 +8,7 @@ local nvim_lsp = require("lspconfig")
 
 nvim_lsp.tsserver.setup {
   init_options = {
-    maxTsServerMemory = 9192,
+    maxTsServerMemory = 8192,
     -- disableAutomaticTypingAcquisition = true,
   },
   settings = {
