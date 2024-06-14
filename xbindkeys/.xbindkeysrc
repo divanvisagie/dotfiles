@@ -1,15 +1,3 @@
-"sh ~/.dotfiles/xbindkeys/focus_browser.sh"
-Alt+B
-
-"sh ~/.dotfiles/xbindkeys/focus_terminal.sh"
-Alt+T
-
-"sh ~/.dotfiles/xbindkeys/focus_telegram.sh"
-Alt+G
-
-"xdotool search --name 'Steam' windowactivate"
-Alt+S
-
 "xdotool getactivewindow windowkill"
 Alt+Q
 
