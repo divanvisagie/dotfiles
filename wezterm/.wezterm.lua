@@ -4,16 +4,14 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- set no window buttons
-config.window_decorations = "RESIZE"
-config.font = wezterm.font("MesloLGS NF")
--- font size
-config.font_size = 20.0
+-- Set no window buttons
 config.use_fancy_tab_bar = false
 
--- only show bar if there is more than one tab
-config.hide_tab_bar_if_only_one_tab = true
--- dont pad the window
+
+-- Only show bar if there is more than one tab
+-- config.hide_tab_bar_if_only_one_tab = true
+--
+-- Don't pad the window
 config.window_padding = {
   left = 0,
   right = 0,
@@ -30,14 +28,26 @@ local function scheme_for_appearance(appearance)
     end
 end
 
+if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
+    config.font = wezterm.font("Ubuntu Mono")
+    config.font_size = 17.0
+    config.window_decorations = "NONE"
+else
+    config.font = wezterm.font("MesloLGS NF")
+    config.font_size = 20.0
+    config.window_decorations = "RESIZE"
+end
+
 wezterm.on('window-config-reloaded', function(window, pane)
     local overrides = window:get_config_overrides() or {}
     local appearance = window:get_appearance()
     local scheme = scheme_for_appearance(appearance)
+
     if overrides.color_scheme ~= scheme then
         overrides.color_scheme = scheme
         window:set_config_overrides(overrides)
     end
+
 end)
 
 
@@ -45,23 +55,8 @@ config.colors = {
   tab_bar = {
     -- The color of the inactive tab bar edge/divider
     inactive_tab_edge = '#575757',
-
   },
 }
-
-wezterm.on('format-window-title', function(tab, pane, tabs, panes, config)
-  local zoomed = ''
-  if tab.active_pane.is_zoomed then
-    zoomed = '[Z] '
-  end
-
-  local index = ''
-  if #tabs > 1 then
-    index = string.format('- [%d/%d] ', tab.tab_index + 1, #tabs)
-  end
-
-  return zoomed .. index .. tab.active_pane.title
-end)
 
 -- Equivalent to POSIX basename(3)
 -- Given "/foo/bar" returns "bar"
@@ -79,17 +74,35 @@ wezterm.on(
       .. tab.tab_index + 1
     local color = '#32302f'
     local fgcolor = '#777777'
+
     if tab.is_active then
-      color = '#faf4ed'
-      fgcolor = '#32302f'
+      -- We detect dark mode by detecting the theme
+      if config.color_scheme == 'rose-pine-dawn' then
+        color = '#faf4ed'
+        fgcolor = '#32302f'
+      else
+        color = '#282828'
+        fgcolor = '#928374'
+      end
     end
+
+    -- Get the name of the folder we are in
+    local dir_name = ''
+    if pane then
+      -- Pane to string
+      local pane_str = tostring(pane)
+      print(pane_str)
+    end
+
     return {
       { Background = { Color = color } },
       { Foreground = { Color = fgcolor} },
-      { Text = ' ' .. title .. ' ' },
+      { Text = ' ' .. title .. ' ' .. dir_name },
     }
   end
 )
+
+-- key bindings
 config.keys = {
   -- Set ctrl +t to create a new tab
   {key="t", mods="CTRL", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
@@ -116,5 +129,5 @@ config.keys = {
 
 }
 
--- and finally, return the configuration to wezterm
+-- We have to return the config
 return config
