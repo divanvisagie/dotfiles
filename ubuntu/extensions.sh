@@ -12,14 +12,7 @@ sudo cp ~/.local/share/gnome-shell/extensions/blur-my-shell\@aunetx/schemas/org.
 sudo cp ~/.local/share/gnome-shell/extensions/tactile@lundal.io/schemas/org.gnome.shell.extensions.tactile.gschema.xml /usr/share/glib-2.0/schemas/
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
-# Configure Tactile
-gsettings set org.gnome.shell.extensions.tactile col-0 1
-gsettings set org.gnome.shell.extensions.tactile col-1 2
-gsettings set org.gnome.shell.extensions.tactile col-2 2
-gsettings set org.gnome.shell.extensions.tactile col-3 1
-gsettings set org.gnome.shell.extensions.tactile row-0 1
-gsettings set org.gnome.shell.extensions.tactile row-1 1
-gsettings set org.gnome.shell.extensions.tactile gap-size 8
+
 
 # Configure Blur My Shell
 # -----------------------
@@ -27,3 +20,24 @@ gsettings set org.gnome.shell.extensions.tactile gap-size 8
 # Load dconf settings for blur my shell
 # captured with: dconf dump /org/gnome/shell/extensions/blur-my-shell/ > blur-my-shell-settings.dconf
 dconf load /org/gnome/shell/extensions/blur-my-shell/ < ~/.dotfiles/ubuntu/blur-my-shell-settings.dconf
+
+# Configure Tactile
+TACTILE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
+if [ "$TACTILE" = "desktop" ]; then
+	echo "Installing desktop settings"
+	# Load dconf settings for tactile
+	# captured with: dconf dump /org/gnome/shell/extensions/tactile/ > tactile-settings.dconf
+    # dconf load /org/gnome/shell/extensions/tactile/ < ~/.dotfiles/ubuntu/tactile-settings.dconf
+	gsettings set org.gnome.shell.extensions.tactile col-0 1
+	gsettings set org.gnome.shell.extensions.tactile col-1 2
+	gsettings set org.gnome.shell.extensions.tactile col-2 2
+	gsettings set org.gnome.shell.extensions.tactile col-3 1
+	gsettings set org.gnome.shell.extensions.tactile row-0 1
+	gsettings set org.gnome.shell.extensions.tactile row-1 1
+	gsettings set org.gnome.shell.extensions.tactile gap-size 8
+else 
+	echo "Installing laptop settings"
+	# Load dconf settings for tactile
+	# captured with: dconf dump /org/gnome/shell/extensions/tactile/ > tactile-settings.dconf
+	dconf load /org/gnome/shell/extensions/tactile/ < ~/.dotfiles/ubuntu/tactile-settings-laptop.dconf
+fi
