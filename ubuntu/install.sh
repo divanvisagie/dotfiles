@@ -17,30 +17,55 @@ if ! [ -x "$(command -v gum)" ]; then
 	cd -
 fi
 
-sudo apt-get install avahi-daemon -y # install mdns 
-sudo apt-get install build-essential -y
-sudo apt-get install curl git -y
-sudo apt-get install heif-gdk-pixbuf -y # heic support
-sudo apt-get install neofetch -y
-sudo apt-get install openssh-server -y
-sudo apt-get install gnome-sushi -y # quick look functionality
-sudo apt-get install wmctrl -y
-sudo apt-get install xbindkeys -y
-sudo apt-get install xclip -y
-sudo apt-get install xdotool -y
-sudo apt-get install libxml2-dev -y
-sudo apt-get install librust-servo-fontconfig-sys-dev -y
-sudo apt-get install ninja-build -y
-sudo apt-get install gnome-tweaks -y
-sudo apt-get install ninja-build gettext cmake unzip curl build-essential -y #needed for neovim build
-sudo apt-get install libnsl-dev -y #neovim needs this too
-sudo apt-get install libssl-dev -y #needed for rust dev 
-sudo apt-get install libglib2.0-dev -y
-sudo apt-get install psensor -y
-sudo apt-get install direnv -y
-sudo apt-get install just -y
-sudo apt-get install gnome-shell-extensions -y
-sudo apt install wl-clipboard -y
+# Define an array of packages to be installed
+packages=(
+	"avahi-daemon"
+	"build-essential" 
+	"cmake" 
+	"curl" 
+	"direnv"
+	"fonts-dejavu"
+	"gettext" 
+	"git" 
+	"gnome-shell-extensions" 
+	"gnome-sushi"
+	"gnome-tweaks"
+	"heif-gdk-pixbuf" 
+	"just" 
+	"libglib2.0-dev" 
+	"libnsl-dev"
+	"librust-servo-fontconfig-sys-dev" 
+	"libssl-dev"
+	"libxml2-dev"
+	"ninja-build"
+	"openssh-server"
+	"psensor"
+	"unzip"
+	"wl-clipboard" 
+	"wmctrl"
+)
+
+# Function to check if a package is installed
+is_installed() {
+  dpkg -l "$1" &> /dev/null
+}
+
+for package in "${packages[@]}"; do
+  if ! is_installed "$package"; then
+    echo "Installing $package ..."
+    sudo apt-get install "$package" -y
+  else
+    echo "$package is already installed. Skipping."
+  fi
+done
+
+XWINDOWS=$(gum choose "Do you want to install X related packages?" "yes" "no")
+if [ "$XWINDOWS" = "yes" ]; then
+	# X stuff for systems running Nvidia 
+	sudo apt-get install xbindkeys -y
+	sudo apt-get install xclip -y
+	sudo apt-get install xdotool -y
+fi
 
 if ! [ -x "$(command -v brave)" ]; then
 	snap install brave
@@ -66,7 +91,7 @@ fi
 # Set up fastfetch
 sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
 sudo apt update -y
-sudo apt install -y fastfetch
+sudo apt-get install -y fastfetch
 
 # Github Cli
 if ! [ -x "$(command -v gh)" ]; then
