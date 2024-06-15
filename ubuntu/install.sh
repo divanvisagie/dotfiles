@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Ensure computer doesn't go to sleep or lock while installing
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.desktop.session idle-delay 0
@@ -21,7 +23,10 @@ fi
 if [ -z "$MACHINE_TYPE" ]; then
 	export MACHINE_TYPE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
 fi
-XWINDOWS=$(gum choose "Do you want to install X11 related packages?" "yes" "no")
+
+if [ -z "$XWINDOWS" ]; then
+	export XWINDOWS=$(gum choose "Do you want to install X11 related packages?" "yes" "no")
+fi
 
 # Define an array of packages to be installed
 packages=(
@@ -120,9 +125,12 @@ if ! [ -x "$(command -v tailscale)" ]; then
 fi
 
 # Desktop stuff
-sh ~/.dotfiles/xbindkeys/install.sh
-sh ~/.dotfiles/ubuntu/extensions.sh
-sh ~/.dotfiles/ubuntu/keybinds.sh
+if [ "$XWINDOWS" = "yes" ]; then
+	echo "Installing xbindkeys packages..."
+	~/.dotfiles/xbindkeys/install.sh
+fi
+~/.dotfiles/ubuntu/extensions.sh
+~/.dotfiles/ubuntu/keybinds.sh
 
 # Revert to normal idle and lock settings
 gsettings set org.gnome.desktop.screensaver lock-enabled true

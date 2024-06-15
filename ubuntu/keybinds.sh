@@ -14,3 +14,4 @@ gsettings set org.gnome.shell.keybindings switch-to-application-5 "['<Alt>m']"
 
 # Full-screen with title/navigation bar
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Shift>F11']"
+

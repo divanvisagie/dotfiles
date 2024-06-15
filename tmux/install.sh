@@ -6,6 +6,8 @@ if [ ! -f ~/.tmux.conf ]; then
 	ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 fi
 
+echo "Tmux is already installed via the package manager"
+echo "but we can get a more recent version from source."
 gum confirm "Do you want to update/install tmux from source?"
 
 # Clone tmux if it does not exist

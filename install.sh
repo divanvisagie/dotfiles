@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# generated with toilet -f future "dotfiles"
+cat << 'EOF'
+
+╺┳┓┏━┓╺┳╸┏━╸╻╻  ┏━╸┏━┓
+ ┃┃┃ ┃ ┃ ┣╸ ┃┃  ┣╸ ┗━┓
+╺┻┛┗━┛ ╹ ╹  ╹┗━╸┗━╸┗━┛
+
+EOF
+
+echo "This script will install all the dotfiles and tools I use on a fresh system."
+gum confirm "Do you want to continue?"
+# CONTINUE=$(gum choose "Do you want to continue?" "yes" "no")
+# if [ "$CONTINUE" = "no" ]; then
+# 	exit 0
+# fi
 # Alert user if they are running in sh, since the script only 
 # is compatible with bash/zsh arrays
 if [ -z "$BASH_VERSION" ] && [ -z "$ZSH_VERSION" ]; then
@@ -18,7 +33,7 @@ fi
 # Perform OS specific installs
 OS=$(uname)
 if [[ "$OS" == "Linux" ]]; then
-	echo "Linux detected"
+	echo "Linux detected..."
 	./ubuntu/install.sh
 else
 	./macos/install.sh
@@ -62,3 +77,8 @@ echo "Installing dark mode switcher..."
 cd ~/.dotfiles/scripts/dm
 cargo install --path .
 cd ~/.dotfiles
+
+cat << 'EOF'
+
+Installation complete!
+EOF
