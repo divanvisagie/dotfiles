@@ -21,9 +21,11 @@ sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 # captured with: dconf dump /org/gnome/shell/extensions/blur-my-shell/ > blur-my-shell-settings.dconf
 dconf load /org/gnome/shell/extensions/blur-my-shell/ < ~/.dotfiles/ubuntu/blur-my-shell-settings.dconf
 
-# Configure Tactile
-TACTILE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
-if [ "$TACTILE" = "desktop" ]; then
+# if the machine type variable is empty we have to get it
+if [ -z "$MACHINE_TYPE" ]; then
+	MACHINE_TYPE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
+fi
+if [ "$MACHINE_TYPE" = "desktop" ]; then
 	echo "Installing desktop settings"
 	# Load dconf settings for tactile
 	# captured with: dconf dump /org/gnome/shell/extensions/tactile/ > tactile-settings.dconf

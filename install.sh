@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Alert user if they are running in sh, since the script only 
+# is compatible with bash/zsh arrays
+if [ -z "$BASH_VERSION" ] && [ -z "$ZSH_VERSION" ]; then
+	echo "Please run this script in bash or zsh, you can do this by simply running ./install.sh"
+	exit 1
+fi
+
 if ! [ -x "$(command -v node)" ]; then
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 	export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -12,9 +19,9 @@ fi
 OS=$(uname)
 if [[ "$OS" == "Linux" ]]; then
 	echo "Linux detected"
-	sh ./ubuntu/install.sh
+	./ubuntu/install.sh
 else
-	sh ./macos/install.sh
+	./macos/install.sh
 fi
 
 sh ~/.dotfiles/zsh/install.sh
@@ -45,10 +52,10 @@ if [ ! -d ~/Projects/com.github ]; then
 fi
 
 # Install configs
-sh ~/.dotfiles/tmux/install.sh
-sh ~/.dotfiles/git/install.sh
-sh ~/.dotfiles/alacritty/install.sh
-sh ~/.dotfiles/nvim/install.sh
+~/.dotfiles/tmux/install.sh
+~/.dotfiles/git/install.sh
+~/.dotfiles/alacritty/install.sh
+~/.dotfiles/nvim/install.sh
 
 # Install custom tools
 echo "Installing dark mode switcher..."

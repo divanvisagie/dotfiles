@@ -4,6 +4,7 @@
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.desktop.session idle-delay 0
 
+
 sudo apt update
 sudo apt upgrade
 
@@ -16,6 +17,11 @@ if ! [ -x "$(command -v gum)" ]; then
 	rm gum.deb
 	cd -
 fi
+
+if [ -z "$MACHINE_TYPE" ]; then
+	export MACHINE_TYPE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
+fi
+XWINDOWS=$(gum choose "Do you want to install X11 related packages?" "yes" "no")
 
 # Define an array of packages to be installed
 packages=(
@@ -59,7 +65,6 @@ for package in "${packages[@]}"; do
   fi
 done
 
-XWINDOWS=$(gum choose "Do you want to install X related packages?" "yes" "no")
 if [ "$XWINDOWS" = "yes" ]; then
 	# X stuff for systems running Nvidia 
 	sudo apt-get install xbindkeys -y
@@ -77,7 +82,9 @@ if ! [ -x "$(command -v flatpak)" ]; then
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 fi
 
-flatpak install flathub com.github.d4nj1.tlpui
+if [ "$MACHINE_TYPE" = "laptop" ]; then
+	flatpak install flathub com.github.d4nj1.tlpui
+fi
 
 # Set up proton vpn
 if ! [ -x "$(command -v protonvpn-app)" ]; then
