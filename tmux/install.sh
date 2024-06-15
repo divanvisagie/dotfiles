@@ -1,17 +1,31 @@
-if [ ! -d ~/.tmux ]; then
+#!/bin/bash
+
+set -e # The script will exit if it hits an error code
+
+if [ ! -f ~/.tmux.conf ]; then
 	ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 fi
 
-if [ ! -d ~/.tmux/plugins/tpm ]; then
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
+gum confirm "Do you want to update/install tmux from source?"
 
-# clone tmux if it does not exist
+# Clone tmux if it does not exist
 if [ ! -d ~/Projects/github.com/tmux/tmux ]; then
 	mkdir ~/Projects/github.com/tmux
 	cd ~/Projects/github.com/tmux
 	git clone git@github.com:tmux/tmux.git
 	cd tmux
-	make install
-	cd ~
 fi
+
+cd ~/Projects/github.com/tmux/tmux
+if ! [ -x "$(command -v tmux)" ]; then
+	./autogen.sh
+	./configure && make
+	sudo make install
+else 
+	gum confirm "Do you want to update tmux?"
+	git pull
+	./autogen.sh
+	./configure
+	sudo make install
+fi
+cd ~

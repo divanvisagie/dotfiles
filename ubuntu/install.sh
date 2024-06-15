@@ -25,6 +25,7 @@ XWINDOWS=$(gum choose "Do you want to install X11 related packages?" "yes" "no")
 
 # Define an array of packages to be installed
 packages=(
+	"autoconf"
 	"avahi-daemon"
 	"build-essential" 
 	"cmake" 
@@ -38,17 +39,21 @@ packages=(
 	"gnome-tweaks"
 	"heif-gdk-pixbuf" 
 	"just" 
+	"libevent-dev" # need for building tmux
 	"libglib2.0-dev" 
 	"libnsl-dev"
 	"librust-servo-fontconfig-sys-dev" 
 	"libssl-dev"
 	"libxml2-dev"
+	"ncurses-dev"
 	"ninja-build"
 	"openssh-server"
 	"psensor"
+	"tmux"
 	"unzip"
 	"wl-clipboard" 
 	"wmctrl"
+	"yacc"
 )
 
 # Function to check if a package is installed
