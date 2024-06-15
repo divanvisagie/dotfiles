@@ -22,19 +22,8 @@ gsettings set org.gnome.shell.extensions.tactile row-1 1
 gsettings set org.gnome.shell.extensions.tactile gap-size 8
 
 # Configure Blur My Shell
-gsettings set org.gnome.shell.extensions.blur-my-shell.appfolder blur false
-gsettings set org.gnome.shell.extensions.blur-my-shell.lockscreen blur false
-gsettings set org.gnome.shell.extensions.blur-my-shell.screenshot blur false
-gsettings set org.gnome.shell.extensions.blur-my-shell.window-list blur false
-gsettings set org.gnome.shell.extensions.blur-my-shell.panel blur true
-gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background-dynamically true
-gsettings set org.gnome.shell.extensions.blur-my-shell.panel brightness 0.6
-gsettings set org.gnome.shell.extensions.blur-my-shell.panel sigma 30
-gsettings set org.gnome.shell.extensions.blur-my-shell.panel pipeline 'pipeline_default'
-gsettings set org.gnome.shell.extensions.blur-my-shell.overview blur true
-gsettings set org.gnome.shell.extensions.blur-my-shell.overview pipeline 'pipeline_default'
-gsettings set org.gnome.shell.extensions.blur-my-shell.dash-to-dock blur true
-gsettings set org.gnome.shell.extensions.blur-my-shell.dash-to-dock brightness 0.6
-gsettings set org.gnome.shell.extensions.blur-my-shell.dash-to-dock sigma 30
-gsettings set org.gnome.shell.extensions.blur-my-shell.dash-to-dock static-blur true
-gsettings set org.gnome.shell.extensions.blur-my-shell.dash-to-dock style-dash-to-dock 0
+# -----------------------
+# Can be set like: gsettings set org.gnome.shell.extensions.blur-my-shell.panel blur true
+# Load dconf settings for blur my shell
+# captured with: dconf dump /org/gnome/shell/extensions/blur-my-shell/ > blur-my-shell-settings.dconf
+dconf load /org/gnome/shell/extensions/blur-my-shell/ < ~/.dotfiles/ubuntu/blur-my-shell-settings.dconf
