@@ -9,7 +9,7 @@ config.use_fancy_tab_bar = false
 
 
 -- Only show bar if there is more than one tab
--- config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = true
 --
 -- Don't pad the window
 config.window_padding = {
@@ -17,6 +17,26 @@ config.window_padding = {
   right = 0,
   top = 0,
   bottom = 0,
+}
+
+config.bold_brightens_ansi_colors = false
+
+-- Set font rules to disable bolding and italics
+config.font_rules = {
+  {
+    -- Matcher
+    italic = true, 
+    -- Setter
+    -- We show regular here, not italic
+    font = wezterm.font("MesloLGS NF", {weight="Regular"}),
+  },
+  {
+    -- Matcher
+    intensity = "Bold",
+    -- Setter
+    -- We show regular here, not bold
+    font = wezterm.font("MesloLGS NF", {weight="Regular"}),
+  },
 }
 
 -- Function to choose a color scheme based on appearance
@@ -29,7 +49,7 @@ local function scheme_for_appearance(appearance)
 end
 
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
-    config.font = wezterm.font("Ubuntu Mono")
+    config.font = wezterm.font("MesloLGS NF")
     config.font_size = 17.0
     config.window_decorations = "NONE"
 else
