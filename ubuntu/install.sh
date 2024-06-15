@@ -32,19 +32,26 @@ sudo apt-get install just -y
 sudo apt-get install gnome-shell-extensions -y
 sudo apt install wl-clipboard -y
 
-snap install brave
+if ! [ -x "$(command -v brave)" ]; then
+	snap install brave
+fi
 
 # Set up flatpak
-sudo apt-get install flatpak -y
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+if ! [ -x "$(command -v flatpak)" ]; then
+	sudo apt install flatpak -y
+	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+fi
+
 flatpak install flathub com.github.d4nj1.tlpui
 
 # Set up proton vpn
-wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
-sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
-sudo apt-get install proton-vpn-gnome-desktop
-sudo apt-get install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator
-rm protonvpn-stable-release_1.0.3-3_all.deb
+if ! [ -x "$(command -v protonvpn-app)" ]; then
+	wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
+	sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
+	sudo apt-get install proton-vpn-gnome-desktop
+	sudo apt-get install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator
+	rm protonvpn-stable-release_1.0.3-3_all.deb
+fi
 
 # Set up fastfetch
 sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
@@ -52,11 +59,13 @@ sudo apt update -y
 sudo apt install -y fastfetch
 
 # Github Cli
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
-	sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
-	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
-	sudo apt update &&
-	sudo apt install gh -y
+if ! [ -x "$(command -v gh)" ]; then
+	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
+		sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+		echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+		sudo apt update &&
+		sudo apt install gh -y
+fi
 
 # Tailscale
 if ! [ -x "$(command -v tailscale)" ]; then
@@ -64,12 +73,14 @@ if ! [ -x "$(command -v tailscale)" ]; then
 fi
 
 # Install gum
-cd /tmp
-GUM_VERSION="0.14.1" # Use known good version
-wget -O gum.deb "https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
-sudo apt install -y ./gum.deb
-rm gum.deb
-cd -
+if ! [ -x "$(command -v gum)" ]; then
+	cd /tmp
+	GUM_VERSION="0.14.1" # Use known good version
+	wget -O gum.deb "https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
+	sudo apt install -y ./gum.deb
+	rm gum.deb
+	cd -
+fi
 
 # Desktop stuff
 sh ~/.dotfiles/xbindkeys/install.sh

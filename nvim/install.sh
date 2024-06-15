@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e # The script will exit if it hits an error code
+
 if [ ! -d ~/.config/nvim ]; then
 	ln -s ~/.dotfiles/nvim/ ~/.config/
 fi
@@ -12,6 +15,12 @@ fi
 cd ~/Projects/com.github/neovim/neovim
 ## only build if nvim not present
 if ! [ -x "$(command -v nvim)" ]; then
+	make CMAKE_BUILD_TYPE=Release
+	sudo make install
+else
+	# Update if we already have it
+	gum confirm "Do you want to update nvim?"
+	git pull
 	make CMAKE_BUILD_TYPE=Release
 	sudo make install
 fi
