@@ -32,6 +32,8 @@ sudo apt-get install just -y
 sudo apt-get install gnome-shell-extensions -y
 sudo apt install wl-clipboard -y
 
+snap install brave
+
 # Set up flatpak
 sudo apt-get install flatpak -y
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
