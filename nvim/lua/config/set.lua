@@ -21,7 +21,6 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.o.termguicolors = true
-vim.cmd [[colorscheme default]]
 
 vim.api.nvim_set_keymap('n', '<C-j>', ':resize -2<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-k>', ':resize +2<CR>', {noremap = true})

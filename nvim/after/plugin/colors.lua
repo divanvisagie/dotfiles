@@ -18,38 +18,8 @@ function Light()
     vim.o.background = "light"
 end
 
-local function isDarkModeEnabledMac()
-    local darkModeOutput = os.execute("defaults read -g AppleInterfaceStyle 2>/dev/null")
-    return darkModeOutput == 0
-end
-
-
-local function isDarkModeEnabledLinux()
-    local commandString = "gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null"
-
-    -- Attempt to open the command output
-    local handle = io.popen(commandString)
-    if not handle then
-        print("Failed to execute command")
-        return false
-    end
-
-    -- Get the output and ensure the file handle is closed
-    local darkModeOutput = handle:read("*a")
-    handle:close()
-
-    -- Debugging the output
-    -- print("'" .. darkModeOutput .. "'")
-
-    -- Using pattern matching to search for 'Yaru-dark' within the output,
-    -- ignoring leading/trailing quotes and whitespace
-    local pattern = "'.*prefer%-dark.*'"
-    local isDark = darkModeOutput:match(pattern) ~= nil
-    return isDark
-end
 
 local auto_dark_mode = require('auto-dark-mode')
-
 auto_dark_mode.setup({
 	update_interval = 1000,
 	set_dark_mode = function()
@@ -63,3 +33,15 @@ auto_dark_mode.setup({
         Light()
 	end,
 })
+
+-- Disable italics on certain identifiers
+local hl_groups = {
+  "Comment", "Function", "Identifier", "Statement", "Type", "Keyword", "Conditional",
+  "Repeat", "Operator", "PreProc", "Include", "Define", "Macro", "PreCondit", "StorageClass",
+  "Structure", "Typedef", "Tag", "Label", "Special", "SpecialChar", "Delimiter", "SpecialComment",
+  "Debug", "Underlined", "Ignore", "Error", "Todo"
+}
+
+for _, group in ipairs(hl_groups) do
+  vim.cmd(string.format("highlight %s cterm=NONE gui=NONE", group))
+end
