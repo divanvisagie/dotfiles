@@ -133,6 +133,7 @@ impl Switcher for LinuxSwitcher {
 
     fn switch_all(&self, dark: bool) {
         self.switch_theme(dark);
+        self.switch_alacritty(dark);
     }
 }
 
