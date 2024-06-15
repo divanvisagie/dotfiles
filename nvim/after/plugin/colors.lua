@@ -18,6 +18,16 @@ function Light()
     vim.o.background = "light"
 end
 
+local function isDarkMode()
+    local darkModeOutput = os.execute("dm -c")
+    return darkModeOutput == 'true'
+end
+
+if isDarkMode() then
+    Dark()
+else
+    Light()
+end
 
 local auto_dark_mode = require('auto-dark-mode')
 auto_dark_mode.setup({
