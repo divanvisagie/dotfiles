@@ -1,12 +1,13 @@
 # dotfiles
 
-Welcome to 'dotfiles'! This is a repository of my personal dotfiles, which I 
-use to configure my system. The goal is to be able to get myself up and running
-on a new system as quickly as possible across MacOS and Linux.
+Welcome to 'dotfiles'! This is a repository of my personal dotfiles, which I
+use to configure my system and development environment. The goal is to be able
+to get myself up and running on a new system as quickly as possible across
+MacOS and Linux.
 
 ## Disclaimer
 I share these files publicly as a method of knowledge sharing only, I do not 
-intend to provide supper or maintain these files for anyone else. If you find
+intend to provide support or maintain these files for anyone else. If you find
 them useful, steal the parts you like and leave the rest. I subscribe to the 
 idea of a PDE (Personal Development Environment) and I encourage you to do the
 same.
@@ -24,7 +25,7 @@ in ~/.dotfiles, all of the paths in the configurations depend on this idea.
 
 So installation is first simply to clone the repository into the home directory
 ```sh
-git clone git://github.com/divanvisagie/dotfiles.git ~/.dotfiles
+git clone git@github.com:divanvisagie/dotfiles.git ~/.dotfiles
 ```
 
 Then to run the installation script. 
@@ -35,5 +36,5 @@ dotfiles. It is not perfect and it is not guaranteed to work, but that is fine
 for a single user product, its better to keep things simple.
 
 ```sh
-install.sh
+./install.sh
 ```
