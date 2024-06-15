@@ -9,7 +9,9 @@ if ! [ -x "$(command -v node)" ]; then
 fi
 
 # Perform OS specific installs
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+OS=$(uname)
+if [[ "$OS" == "Linux" ]]; then
+	echo "Linux detected"
 	sh ./ubuntu/install.sh
 else
 	sh ./macos/install.sh

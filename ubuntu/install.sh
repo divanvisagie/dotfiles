@@ -7,6 +7,16 @@ gsettings set org.gnome.desktop.session idle-delay 0
 sudo apt update
 sudo apt upgrade
 
+# Install gum
+if ! [ -x "$(command -v gum)" ]; then
+	cd /tmp
+	GUM_VERSION="0.14.1" # Use known good version
+	wget -O gum.deb "https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
+	sudo apt install -y ./gum.deb
+	rm gum.deb
+	cd -
+fi
+
 sudo apt-get install avahi-daemon -y # install mdns 
 sudo apt-get install build-essential -y
 sudo apt-get install curl git -y
@@ -70,16 +80,6 @@ fi
 # Tailscale
 if ! [ -x "$(command -v tailscale)" ]; then
 	curl -fsSL https://tailscale.com/install.sh | sh
-fi
-
-# Install gum
-if ! [ -x "$(command -v gum)" ]; then
-	cd /tmp
-	GUM_VERSION="0.14.1" # Use known good version
-	wget -O gum.deb "https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
-	sudo apt install -y ./gum.deb
-	rm gum.deb
-	cd -
 fi
 
 # Desktop stuff
