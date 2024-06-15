@@ -51,6 +51,7 @@ sh ~/.dotfiles/alacritty/install.sh
 sh ~/.dotfiles/nvim/install.sh
 
 # Install custom tools
+echo "Installing dark mode switcher..."
 cd ~/.dotfiles/scripts/dm
 cargo install --path .
 cd ~/.dotfiles
