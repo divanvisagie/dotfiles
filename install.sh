@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Alert user if they are running in sh, since the script only 
+# is compatible with bash/zsh arrays
+
+if [ -z "$BASH_VERSION" ] && [ -z "$ZSH_VERSION" ]; then
+	echo "Please run this script in bash or zsh, you can do this by simply running ./install.sh"
+	exit 1
+fi
+
+clear
 # generated with toilet -f future "dotfiles"
 cat << 'EOF'
 
@@ -10,16 +19,10 @@ cat << 'EOF'
 EOF
 
 echo "This script will install all the dotfiles and tools I use on a fresh system."
-gum confirm "Do you want to continue?"
-# CONTINUE=$(gum choose "Do you want to continue?" "yes" "no")
-# if [ "$CONTINUE" = "no" ]; then
-# 	exit 0
-# fi
-# Alert user if they are running in sh, since the script only 
-# is compatible with bash/zsh arrays
-if [ -z "$BASH_VERSION" ] && [ -z "$ZSH_VERSION" ]; then
-	echo "Please run this script in bash or zsh, you can do this by simply running ./install.sh"
-	exit 1
+# gum confirm "Do you want to continue?"
+CONTINUE=$(gum choose "Do you want to continue?" "yes" "no")
+if [ "$CONTINUE" = "no" ]; then
+	exit 0
 fi
 
 if ! [ -x "$(command -v node)" ]; then
@@ -58,6 +61,9 @@ cargo install gitui --locked
 cargo install zoxide
 cargo install --locked yazi-fm yazi-cli # Terminal based file browser
 
+# Clear the terminal
+clear
+
 # Set up working directories if they do not exist
 if [ ! -d ~/Projects ]; then
 	mkdir ~/Projects
@@ -68,9 +74,13 @@ fi
 
 # Install configs
 ~/.dotfiles/tmux/install.sh
+clear
 ~/.dotfiles/git/install.sh
+clear
 ~/.dotfiles/alacritty/install.sh
+clear
 ~/.dotfiles/nvim/install.sh
+clear
 
 # Install custom tools
 echo "Installing dark mode switcher..."

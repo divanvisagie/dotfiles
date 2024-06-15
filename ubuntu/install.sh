@@ -20,6 +20,7 @@ if ! [ -x "$(command -v gum)" ]; then
 	cd -
 fi
 
+clear
 if [ -z "$MACHINE_TYPE" ]; then
 	export MACHINE_TYPE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
 fi
