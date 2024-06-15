@@ -8,7 +8,9 @@ fi
 
 echo "Tmux is already installed via the package manager"
 echo "but we can get a more recent version from source."
-gum confirm "Do you want to update/install tmux from source?"
+if ! gum confirm "Do you want to update/install tmux from source?"; then 
+	exit 0
+fi
 
 # Clone tmux if it does not exist
 if [ ! -d ~/Projects/github.com/tmux/tmux ]; then
@@ -24,10 +26,11 @@ if ! [ -x "$(command -v tmux)" ]; then
 	./configure && make
 	sudo make install
 else 
-	gum confirm "Do you want to update tmux?"
-	git pull
-	./autogen.sh
-	./configure
-	sudo make install
+	if gum confirm "Do you want to update tmux?"; then 
+		git pull
+		./autogen.sh
+		./configure
+		sudo make install
+	fi
 fi
 cd ~

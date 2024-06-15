@@ -6,10 +6,17 @@ set -e
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.desktop.session idle-delay 0
 
+cat << 'EOF'
+	
+Updating and upgrading system packages...
+EOF
 
 sudo apt update
 sudo apt upgrade
+clear
 
+echo "Installing gum to bootstrap script..."
+# gum spin --spinner dot --title "Updating package sources..." -- sudo apt update
 # Install gum
 if ! [ -x "$(command -v gum)" ]; then
 	cd /tmp
@@ -19,8 +26,8 @@ if ! [ -x "$(command -v gum)" ]; then
 	rm gum.deb
 	cd -
 fi
-
 clear
+
 if [ -z "$MACHINE_TYPE" ]; then
 	export MACHINE_TYPE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
 fi
@@ -29,6 +36,8 @@ if [ -z "$XWINDOWS" ]; then
 	export XWINDOWS=$(gum choose "Do you want to install X11 related packages?" "yes" "no")
 fi
 
+
+echo "Installing missing packages..."
 # Define an array of packages to be installed
 packages=(
 	"autoconf"
@@ -82,11 +91,14 @@ if [ "$XWINDOWS" = "yes" ]; then
 	sudo apt-get install xclip -y
 	sudo apt-get install xdotool -y
 fi
+clear
 
+echo "Installing snap packages..."
 if ! [ -x "$(command -v brave)" ]; then
 	snap install brave
 fi
-
+echo ""
+echo "Installing flatpak packages..."
 # Set up flatpak
 if ! [ -x "$(command -v flatpak)" ]; then
 	sudo apt install flatpak -y
@@ -96,16 +108,23 @@ fi
 if [ "$MACHINE_TYPE" = "laptop" ]; then
 	flatpak install flathub com.github.d4nj1.tlpui
 fi
+clear
+echo ""
+echo "Installing other packages..."
 
-# Set up proton vpn
-if ! [ -x "$(command -v protonvpn-app)" ]; then
-	wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
-	sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
-	sudo apt-get install proton-vpn-gnome-desktop
-	sudo apt-get install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator
-	rm protonvpn-stable-release_1.0.3-3_all.deb
+if gum confirm "Do you want to install proton vpn"; then
+	# Set up proton vpn
+	if ! [ -x "$(command -v protonvpn-app)" ]; then
+		wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
+		sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
+		sudo apt-get install proton-vpn-gnome-desktop
+		sudo apt-get install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator
+		rm protonvpn-stable-release_1.0.3-3_all.deb
+	fi
 fi
 
+echo ""
+echo "Installing fastfetch..."
 # Set up fastfetch
 sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
 sudo apt update -y
@@ -122,11 +141,15 @@ fi
 
 # Tailscale
 if ! [ -x "$(command -v tailscale)" ]; then
-	curl -fsSL https://tailscale.com/install.sh | sh
+	if gum confirm "Do you want to install tailscale?"; then
+		curl -fsSL https://tailscale.com/install.sh | sh
+		clear
+	fi
 fi
 
 # Desktop stuff
 if [ "$XWINDOWS" = "yes" ]; then
+	echo ""
 	echo "Installing xbindkeys packages..."
 	~/.dotfiles/xbindkeys/install.sh
 fi

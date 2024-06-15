@@ -19,10 +19,11 @@ if ! [ -x "$(command -v nvim)" ]; then
 	sudo make install
 else
 	# Update if we already have it
-	gum confirm "Do you want to update nvim?"
-	git pull
-	make CMAKE_BUILD_TYPE=Release
-	sudo make install
+	if gum confirm "Do you want to update nvim?"; then 
+		git pull
+		make CMAKE_BUILD_TYPE=Release
+		sudo make install
+	fi
 fi
 cd ~
 

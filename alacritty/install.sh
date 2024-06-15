@@ -20,10 +20,11 @@ if ! [ -x "$(command -v alacritty)" ]; then
 	sudo desktop-file-install extra/linux/Alacritty.desktop
 	sudo update-desktop-database
 else 
-	gum confirm "Do you want to update alacritty?"
-	git pull
-	cargo build --release
-	sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
-	sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+	if gum confirm "Do you want to update alacritty?"; then 
+		git pull
+		cargo build --release
+		sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+		sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+	fi
 fi
 cd ~/.dotfiles

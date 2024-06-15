@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 # Alert user if they are running in sh, since the script only 
 # is compatible with bash/zsh arrays
 
@@ -16,12 +16,14 @@ cat << 'EOF'
  ┃┃┃ ┃ ┃ ┣╸ ┃┃  ┣╸ ┗━┓
 ╺┻┛┗━┛ ╹ ╹  ╹┗━╸┗━╸┗━┛
 
+-----------------------------------------
+Installer for Divan's development system
+-----------------------------------------
+
 EOF
 
 echo "This script will install all the dotfiles and tools I use on a fresh system."
-# gum confirm "Do you want to continue?"
-CONTINUE=$(gum choose "Do you want to continue?" "yes" "no")
-if [ "$CONTINUE" = "no" ]; then
+if ! gum confirm "Do you want to continue?"; then
 	exit 0
 fi
 
