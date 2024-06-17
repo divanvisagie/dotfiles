@@ -6,17 +6,12 @@ require("neodev").setup({
 
 local nvim_lsp = require("lspconfig")
 
-nvim_lsp.tsserver.setup {
-  init_options = {
-    maxTsServerMemory = 8192,
-    -- disableAutomaticTypingAcquisition = true,
-  },
+nvim_lsp.vtsls.setup {
   settings = {
-    preferences = {
-      includeCompletionsForModuleExports = true,
-      includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-      includeInlayFunctionParameterTypeHints = true, -- Enable type inlay hints for function parameters
-      importModuleSpecifier = "relative",  
+    typescript = {
+      tsserver = {
+        maxTsServerMemory = 6 * 1024,
+      },
     },
   },
 }
@@ -26,12 +21,12 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-    'tsserver',
     'rust_analyzer',
     'eslint',
     'jsonls',
     'yamlls',
-    'gopls'
+    'gopls',
+    'vtsls' -- tsserver replacement
 })
 
 nvim_lsp.rust_analyzer.setup({
