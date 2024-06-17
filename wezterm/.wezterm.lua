@@ -1,15 +1,20 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
+-- Dynamically get the home directory
+local home = os.getenv("HOME")
+package.path = package.path .. ';' .. home .. '/.dotfiles/wezterm/theme/?.lua' -- Add path to imports
+local light_theme = require 'rosepinedawn'
+local dark_theme = require 'gruvboxdark'
+
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
 -- Set no window buttons
 config.use_fancy_tab_bar = false
 
-
 -- Only show bar if there is more than one tab
-config.hide_tab_bar_if_only_one_tab = true
+-- config.hide_tab_bar_if_only_one_tab = true
 --
 -- Don't pad the window
 config.window_padding = {
@@ -48,12 +53,20 @@ local function scheme_for_appearance(appearance)
     end
 end
 
+-- Function to select theme based on appearance
+local function get_theme(appearance)
+  if appearance:find("Dark") then
+    return require 'gruvboxdark'
+  else
+    return require 'rosepinedawn'
+  end
+end
+
+config.font = wezterm.font("MesloLGS NF")
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
-    config.font = wezterm.font("MesloLGS NF")
     config.font_size = 17.0
     config.window_decorations = "NONE"
 else
-    config.font = wezterm.font("MesloLGS NF")
     config.font_size = 20.0
     config.window_decorations = "RESIZE"
 end
@@ -62,36 +75,33 @@ wezterm.on('window-config-reloaded', function(window, pane)
     local overrides = window:get_config_overrides() or {}
     local appearance = window:get_appearance()
     local scheme = scheme_for_appearance(appearance)
+    local override_theme = get_theme(appearance)
 
-    if overrides.color_scheme ~= scheme then
         overrides.color_scheme = scheme
+        overrides.colors = override_theme
         window:set_config_overrides(overrides)
-    end
 
 end)
 
-
-config.colors = {
-  tab_bar = {
-    -- The color of the inactive tab bar edge/divider
-    inactive_tab_edge = '#575757',
-  },
-}
-
--- Equivalent to POSIX basename(3)
--- Given "/foo/bar" returns "bar"
--- Given "c:\\foo\\bar" returns "bar"
-function basename(s)
-  return string.gsub(s, '(.*[/\\])(.*)', '%2')
+function tab_title(tab_info)
+  local title = tab_info.tab_title
+  -- if the tab title is explicitly set, take that
+  if title and #title > 0 then
+    return title
+  end
+  -- Otherwise, use the title from the active pane
+  -- in that tab
+  local active_pane = tab_info.active_pane
+  return active_pane.title
 end
 
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
     local pane = tab.active_pane
-    local title = basename(pane.foreground_process_name)
-      .. ' :'
-      .. tab.tab_index + 1
+    -- local title = tab.tab_index.. ': ' .. tab.active_pane.title
+    local title = tab_title(tab)
+
     local color = '#32302f'
     local fgcolor = '#777777'
 
@@ -106,18 +116,10 @@ wezterm.on(
       end
     end
 
-    -- Get the name of the folder we are in
-    local dir_name = ''
-    if pane then
-      -- Pane to string
-      local pane_str = tostring(pane)
-      print(pane_str)
-    end
-
     return {
       { Background = { Color = color } },
       { Foreground = { Color = fgcolor} },
-      { Text = ' ' .. title .. ' ' .. dir_name },
+      { Text = ' ' .. tab.tab_index+1 .. ': ' .. title .. ' '},
     }
   end
 )
