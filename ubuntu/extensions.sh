@@ -18,7 +18,7 @@ sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 # -----------------------
 # Can be set like: gsettings set org.gnome.shell.extensions.blur-my-shell.panel blur true
 # Load dconf settings for blur my shell
-# captured with: dconf dump /org/gnome/shell/extensions/blur-my-shell/ > blur-my-shell-settings.dconf
+# captured with: dconf dump /org/gnome/shell/extensions/blur-my-shell/ > ~/.dotfiles/ubuntu/blur-my-shell-settings.dconf
 dconf load /org/gnome/shell/extensions/blur-my-shell/ < ~/.dotfiles/ubuntu/blur-my-shell-settings.dconf
 
 # if the machine type variable is empty we have to get it

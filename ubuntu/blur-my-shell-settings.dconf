@@ -22,8 +22,11 @@ static-blur=true
 style-dash-to-dock=0
 unblur-in-overview=false
 
+[dash-to-panel]
+blur-original-panel=true
+
 [lockscreen]
-blur=false
+blur=true
 pipeline='pipeline_default'
 
 [overview]
@@ -33,15 +36,17 @@ pipeline='pipeline_default'
 [panel]
 blur=true
 brightness=0.59999999999999998
+force-light-text=false
 override-background=true
 override-background-dynamically=true
 pipeline='pipeline_default'
 sigma=30
 static-blur=true
 style-panel=0
+unblur-in-overview=false
 
 [screenshot]
-blur=false
+blur=true
 pipeline='pipeline_default'
 
 [window-list]
