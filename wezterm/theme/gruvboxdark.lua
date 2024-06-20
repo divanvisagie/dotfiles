@@ -8,7 +8,7 @@ return {
 
   -- Primary colors
   foreground = "#d4be98", -- Primary foreground
-  background = "#1d2021", -- Primary background
+  background = "#282828", -- Primary background
 
   -- Cursor colors
   cursor_bg = "#d4be98", -- Cursor background (matching foreground)
