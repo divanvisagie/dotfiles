@@ -1,29 +1,6 @@
 -- https://davelage.com/posts/nvim-dap-getting-started/
 local dap = require('dap')
 
--- Typescript debug config
-dap.adapters["pwa-node"] = {
-  type = "server",
-  host = "localhost",
-  port = "${port}",
-  executable = {
-    command = "node",
-    -- 💀 Make sure to update this path to point to your installation
-    args = {"~/.local/share/nvim/mason/bin/js-debug-adapter", "${port}"},
-  }
-}
-
-dap.configurations.typescript = {
-  {
-    type = 'pwa-node',
-    request = 'attach',
-    name = "Attach to Process",
-    processId = require'dap.utils'.pick_process,
-    cwd = "${workspaceFolder}",
-    attachSimplePort = 9229,  -- default debug port for Node.js
-  },
-}
-
 -- Rust debug config
 dap.adapters.lldb = {
   type = 'executable',
@@ -54,16 +31,29 @@ require('dap').configurations.rust = {
 }
 vim.api.nvim_set_keymap('n', '<leader>dc', ':lua require"dap".continue()<CR>', { noremap = true, silent = true })
 
-local n = "n"
-vim.keymap.set(n, '<leader>dk', function() require('dap').continue() end)
-vim.keymap.set(n, '<leader>dl', function() require('dap').run_last() end)
-vim.keymap.set(n, '<leader>b', function() require('dap').toggle_breakpoint() end)
--- nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
--- nnoremap <silent> <F10> <Cmd>lua require'dap'.step_over()<CR>
--- nnoremap <silent> <F11> <Cmd>lua require'dap'.step_into()<CR>
--- nnoremap <silent> <F12> <Cmd>lua require'dap'.step_out()<CR>
--- nnoremap <silent> <Leader>b <Cmd>lua require'dap'.toggle_breakpoint()<CR>
--- nnoremap <silent> <Leader>B <Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
--- nnoremap <silent> <Leader>lp <Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
--- nnoremap <silent> <Leader>dr <Cmd>lua require'dap'.repl.open()<CR>
--- nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
+-- Create an autocommand group for Rust file bindings
+vim.api.nvim_create_augroup('RustBindings', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  group = 'RustBindings',
+  pattern = 'rust',
+  callback = function()
+    local n = "n"
+    vim.keymap.set(n, '<leader>dk', function() require('dap').continue() end)
+    vim.keymap.set(n, '<leader>dl', function() require('dap').run_last() end)
+    vim.keymap.set(n, '<leader>b', function() require('dap').toggle_breakpoint() end)
+  end,
+})
+
+-- TypeScript
+-- Create an autocommand group for TypeScript file bindings
+vim.api.nvim_create_augroup('TypeScriptBindings', { clear = true })
+
+-- Define key mappings for TypeScript files
+vim.api.nvim_create_autocmd('FileType', {
+  group = 'TypeScriptBindings',
+  pattern = 'typescript',
+  callback = function()
+    -- Set keybinding to insert console.log on the next line
+    vim.api.nvim_buf_set_keymap(0, 'n', '<Leader>b', "oconsole.log('BREAKPOINT', this || 'no value');<ESC>", { noremap = true, silent = true })
+  end,
+})
