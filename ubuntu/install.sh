@@ -106,6 +106,7 @@ if ! [ -x "$(command -v flatpak)" ]; then
 fi
 
 if [ "$MACHINE_TYPE" = "laptop" ]; then
+	sudo apt install tlp
 	flatpak install flathub com.github.d4nj1.tlpui
 fi
 clear
