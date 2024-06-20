@@ -11,10 +11,10 @@ local dark_theme = require 'gruvboxdark'
 local config = wezterm.config_builder()
 
 -- Set no window buttons
-config.use_fancy_tab_bar = false
+config.use_fancy_tab_bar = true
 
 -- Only show bar if there is more than one tab
--- config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = true
 --
 -- Don't pad the window
 config.window_padding = {
@@ -119,37 +119,10 @@ wezterm.on(
     return {
       { Background = { Color = color } },
       { Foreground = { Color = fgcolor} },
-      { Text = ' ' .. tab.tab_index+1 .. ': ' .. title .. ' '},
+      { Text = ' ' .. tab.tab_index+1 .. ' │ ' .. title .. ' │'},
     }
   end
 )
-
--- key bindings
-config.keys = {
-  -- Set ctrl +t to create a new tab
-  {key="t", mods="CTRL", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
-  -- switch to tab with ctrl + number
-  {key="1", mods="CTRL", action=wezterm.action{ActivateTab=0}},
-  {key="2", mods="CTRL", action=wezterm.action{ActivateTab=1}},
-  {key="3", mods="CTRL", action=wezterm.action{ActivateTab=2}},
-  {key="4", mods="CTRL", action=wezterm.action{ActivateTab=3}},
-  {key="5", mods="CTRL", action=wezterm.action{ActivateTab=4}},
-  {key="6", mods="CTRL", action=wezterm.action{ActivateTab=5}},
-  {key="7", mods="CTRL", action=wezterm.action{ActivateTab=6}},
-  {key="8", mods="CTRL", action=wezterm.action{ActivateTab=7}},
-  {key="9", mods="CTRL", action=wezterm.action{ActivateTab=8}},
-  -- also use alt + number
-  {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
-  {key="2", mods="ALT", action=wezterm.action{ActivateTab=1}},
-  {key="3", mods="ALT", action=wezterm.action{ActivateTab=2}},
-  {key="4", mods="ALT", action=wezterm.action{ActivateTab=3}},
-  {key="5", mods="ALT", action=wezterm.action{ActivateTab=4}},
-  {key="6", mods="ALT", action=wezterm.action{ActivateTab=5}},
-  {key="7", mods="ALT", action=wezterm.action{ActivateTab=6}},
-  {key="8", mods="ALT", action=wezterm.action{ActivateTab=7}},
-  {key="9", mods="ALT", action=wezterm.action{ActivateTab=8}},
-
-}
 
 -- We have to return the config
 return config
