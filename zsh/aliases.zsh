@@ -1,8 +1,3 @@
-# # ZSH setup
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
@@ -21,6 +16,7 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::yarn
 zinit snippet OMZP::rust
+
 # if on ubuntu
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     zinit snippet OMZP::ubuntu
@@ -83,9 +79,9 @@ function strp() {
   '
 }
 
-function nocol() {
-    sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"
-}
+# function nocol() {
+#     sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"
+# }
 
 function kb() {
     for job in $(jobs -p); do kill -9 $job; done
