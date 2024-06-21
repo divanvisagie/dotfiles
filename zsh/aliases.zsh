@@ -80,7 +80,7 @@ function strp() {
 }
 
 # function nocol() {
-#     sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"
+#     sed -u -e "s,\x1B\[[0-9;]*[a-zA-Z],,g" -e 's/\r//' 
 # }
 
 function kb() {
