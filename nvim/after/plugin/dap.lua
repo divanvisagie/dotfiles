@@ -56,7 +56,7 @@ function Insert_console_log()
   file_name = vim.fn.fnamemodify(file_name, ':~:.')
 
   -- Construct the console.log statement
-  local log_statement = string.format("console.log('BREAKPOINT', '%d:%s', this || '');", line_num+1, file_name)
+  local log_statement = string.format("console.log('BREAK', '%s:%d', this || '');", file_name, line_num+1)
 
   -- Use nvim_buf_set_lines to insert the log statement
   vim.api.nvim_buf_set_lines(0, line_num, line_num, false, { log_statement })
