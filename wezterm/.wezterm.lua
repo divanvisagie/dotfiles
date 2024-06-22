@@ -24,6 +24,11 @@ config.window_padding = {
   bottom = 0,
 }
 
+config.inactive_pane_hsb = {
+  saturation = 1,
+  brightness = 1,
+}
+
 config.bold_brightens_ansi_colors = false
 
 -- Set font rules to disable bolding and italics
