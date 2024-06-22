@@ -1,8 +1,9 @@
 #!/bin/bash
 
 #if there is no ~/.zshrc, create it
-if [ ! -f ~/.zshrc ]; then
-	ln -s ~/.dotfiles/zsh/ ~/.zsh
+if [ ! -d ~/.zsh ]; then
+	rm ~/.zsh
+	ln -s ~/.dotfiles/zsh ~/.zsh
 fi
 
 # Starship prompt

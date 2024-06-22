@@ -11,6 +11,9 @@ cat << 'EOF'
 Updating and upgrading system packages...
 EOF
 
+sudo add-apt-repository -y ppa:neovim-ppa/stable
+# Set up fastfetch
+sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
 sudo apt update
 sudo apt upgrade
 clear
@@ -65,6 +68,8 @@ packages=(
 	"openssh-server"
 	"psensor"
 	"tmux"
+	"neovim"
+	"fastfetch"
 	"unzip"
 	"wl-clipboard" 
 	"wmctrl"
@@ -92,6 +97,8 @@ if [ "$XWINDOWS" = "yes" ]; then
 	sudo apt-get install xdotool -y
 fi
 clear
+
+
 
 ################################################
 # Install snaps
@@ -136,12 +143,6 @@ if gum confirm "Do you want to install proton vpn"; then
 	fi
 fi
 
-echo ""
-echo "Installing fastfetch..."
-# Set up fastfetch
-sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
-sudo apt update -y
-sudo apt-get install -y fastfetch
 
 # Github Cli
 if ! [ -x "$(command -v gh)" ]; then
@@ -159,6 +160,9 @@ if ! [ -x "$(command -v tailscale)" ]; then
 		clear
 	fi
 fi
+
+sudo apt-get update
+sudo apt-get install neovim
 
 # Desktop stuff
 if [ "$XWINDOWS" = "yes" ]; then
