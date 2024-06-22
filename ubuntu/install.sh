@@ -93,11 +93,18 @@ if [ "$XWINDOWS" = "yes" ]; then
 fi
 clear
 
+################################################
+# Install snaps
+################################################
 echo "Installing snap packages..."
 if ! [ -x "$(command -v brave)" ]; then
 	snap install brave
 fi
 echo ""
+
+################################################
+# Install flatpacks
+################################################
 echo "Installing flatpak packages..."
 # Set up flatpak
 if ! [ -x "$(command -v flatpak)" ]; then
@@ -105,6 +112,7 @@ if ! [ -x "$(command -v flatpak)" ]; then
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 fi
 
+flatpak install flathub org.wezfurlong.wezterm
 if [ "$MACHINE_TYPE" = "laptop" ]; then
 	sudo apt install tlp
 	flatpak install flathub com.github.d4nj1.tlpui
@@ -113,6 +121,9 @@ clear
 echo ""
 echo "Installing other packages..."
 
+################################################
+# Install custom PPAs
+################################################
 if gum confirm "Do you want to install proton vpn"; then
 	# Set up proton vpn
 	if ! [ -x "$(command -v protonvpn-app)" ]; then
