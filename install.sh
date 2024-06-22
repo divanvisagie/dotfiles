@@ -76,11 +76,10 @@ fi
 
 # Install configs
 ~/.dotfiles/tmux/install.sh
-clear
 ~/.dotfiles/git/install.sh
-clear
 ~/.dotfiles/alacritty/install.sh
-clear
+~/.dotfiles/wezterm/install.sh
+~/.dotfiles/vim/install.sh
 ~/.dotfiles/nvim/install.sh
 clear
 

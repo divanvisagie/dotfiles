@@ -44,7 +44,6 @@ pub trait Switcher {
         .unwrap();
     }
     fn switch_all(&self, dark: bool) {
-        self.switch_alacritty(dark);
         self.switch_wallpaper(dark);
         self.switch_theme(dark);
     }
@@ -133,7 +132,6 @@ impl Switcher for LinuxSwitcher {
 
     fn switch_all(&self, dark: bool) {
         self.switch_theme(dark);
-        self.switch_alacritty(dark);
     }
 }
 
