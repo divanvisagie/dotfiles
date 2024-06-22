@@ -106,6 +106,7 @@ echo "Installing snap packages..."
 if ! [ -x "$(command -v brave)" ]; then
 	snap install telegram-desktop
 	snap install brave
+	snap install spotify
 fi
 echo ""
 

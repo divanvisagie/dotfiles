@@ -51,20 +51,30 @@ if ! [ -x "$(command -v rustc)" ]; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
-# install useful rust tools
-cargo install exa
-cargo install bat
-cargo install du-dust
-cargo install ripgrep
-cargo install cgip
-cargo install hurl
-cargo install cargo-watch
-cargo install gitui --locked
-cargo install zoxide
-cargo install --locked yazi-fm yazi-cli # Terminal based file browser
+# Define the list of tools to install
+tools=(
+	"exa"
+	"bat"
+	"du-dust"
+	"ripgrep"
+	"cgip"
+	"hurl"
+	"cargo-watch"
+	"gitui --locked"
+	"zoxide"
+	"yazi-fm --locked"
+	"yazi-cli --locked"
+)
 
-# Clear the terminal
-clear
+# Iterate over the tools and install them if they are not already available
+for tool in "${tools[@]}"; do
+	if ! command -v ${tool%% *} &> /dev/null; then
+		echo "${tool%% *} could not be found, installing..."
+		cargo install $tool
+	else
+		echo "${tool%% *} is already installed."
+	fi
+done
 
 # Set up working directories if they do not exist
 if [ ! -d ~/Projects ]; then
@@ -81,7 +91,6 @@ fi
 ~/.dotfiles/wezterm/install.sh
 ~/.dotfiles/vim/install.sh
 ~/.dotfiles/nvim/install.sh
-clear
 
 # Install custom tools
 echo "Installing dark mode switcher..."
