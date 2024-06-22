@@ -168,6 +168,11 @@ fi
 ~/.dotfiles/ubuntu/extensions.sh
 ~/.dotfiles/ubuntu/keybinds.sh
 
+# Set Brave to position 1 in the dock
+# Set Wezterm to position 2 in the dock
+gsettings set org.gnome.shell favorite-apps "['brave-browser.desktop', 'org.wezfurlong.wezterm.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.Terminal.desktop', 'code.desktop', 'slack_slack.desktop', 'discord.desktop', 'spotify_spotify.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Evolution.desktop', 'org.gnome.Maps.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Music.desktop', 'org.gnome.Photos.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Evolution.desktop', 'org.gnome.Maps.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Music.desktop', 'org.gnome.Photos.desktop']"
+
+
 # Revert to normal idle and lock settings
 gsettings set org.gnome.desktop.screensaver lock-enabled true
 gsettings set org.gnome.desktop.session idle-delay 300
