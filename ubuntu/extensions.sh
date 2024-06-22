@@ -43,3 +43,6 @@ else
 	# captured with: dconf dump /org/gnome/shell/extensions/tactile/ > tactile-settings.dconf
 	dconf load /org/gnome/shell/extensions/tactile/ < ~/.dotfiles/ubuntu/tactile-settings-laptop.dconf
 fi
+
+# Disable animations when swapping workspace
+gsettings set org.gnome.desktop.interface enable-animations false
