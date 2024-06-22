@@ -15,7 +15,7 @@ zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::yarn
-zinit snippet OMZP::rust
+# zinit snippet OMZP::rust
 
 # if on ubuntu
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -83,6 +83,7 @@ function strp() {
 #     sed -u -e "s,\x1B\[[0-9;]*[a-zA-Z],,g" -e 's/\r//' 
 # }
 
+
 function kb() {
     for job in $(jobs -p); do kill -9 $job; done
 }
@@ -113,6 +114,19 @@ function httpserver () {
     local port="${1:-8000}"
     python3 -m http.server "$port"
 }
+
+# ##################################################
+# Loaders that either execute on shell load or when 
+# a specific command is run
+# ##################################################
+
+# on directory change
+function chpwd() {
+    local title=$(basename "$PWD")
+    echo -ne "\x1b]0;$title\x1b\\"
+}
+local title=$(basename "$PWD")
+echo -ne "\x1b]0;$title\x1b\\"
 
 # Shell integrations
 eval "$(direnv hook zsh)"

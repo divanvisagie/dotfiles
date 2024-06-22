@@ -124,5 +124,35 @@ wezterm.on(
   end
 )
 
+-- Set the key bind to move right one split as alt+ctrl+l
+config.keys = {
+  {key="l", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Right"}},
+  {key="h", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Left"}},
+  {key="j", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Down"}},
+  {key="k", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Up"}},
+  -- Set ctrl +t to create a new tab
+  {key="t", mods="CTRL", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
+  -- switch to tab with ctrl + number
+  {key="1", mods="CTRL", action=wezterm.action{ActivateTab=0}},
+  {key="2", mods="CTRL", action=wezterm.action{ActivateTab=1}},
+  {key="3", mods="CTRL", action=wezterm.action{ActivateTab=2}},
+  {key="4", mods="CTRL", action=wezterm.action{ActivateTab=3}},
+  {key="5", mods="CTRL", action=wezterm.action{ActivateTab=4}},
+  {key="6", mods="CTRL", action=wezterm.action{ActivateTab=5}},
+  {key="7", mods="CTRL", action=wezterm.action{ActivateTab=6}},
+  {key="8", mods="CTRL", action=wezterm.action{ActivateTab=7}},
+  {key="9", mods="CTRL", action=wezterm.action{ActivateTab=8}},
+  -- also use alt + number
+  {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
+  {key="2", mods="ALT", action=wezterm.action{ActivateTab=1}},
+  {key="3", mods="ALT", action=wezterm.action{ActivateTab=2}},
+  {key="4", mods="ALT", action=wezterm.action{ActivateTab=3}},
+  {key="5", mods="ALT", action=wezterm.action{ActivateTab=4}},
+  {key="6", mods="ALT", action=wezterm.action{ActivateTab=5}},
+  {key="7", mods="ALT", action=wezterm.action{ActivateTab=6}},
+  {key="8", mods="ALT", action=wezterm.action{ActivateTab=7}},
+  {key="9", mods="ALT", action=wezterm.action{ActivateTab=8}},
+}
+
 -- We have to return the config
 return config
