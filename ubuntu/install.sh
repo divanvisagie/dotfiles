@@ -11,9 +11,9 @@ cat << 'EOF'
 Updating and upgrading system packages...
 EOF
 
-sudo add-apt-repository -y ppa:neovim-ppa/stable
 # Set up fastfetch
 sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+
 sudo apt update
 sudo apt upgrade
 clear
@@ -68,7 +68,6 @@ packages=(
 	"openssh-server"
 	"psensor"
 	"tmux"
-	"neovim"
 	"fastfetch"
 	"unzip"
 	"wl-clipboard" 
@@ -160,9 +159,6 @@ if ! [ -x "$(command -v tailscale)" ]; then
 		clear
 	fi
 fi
-
-sudo apt-get update
-sudo apt-get install neovim
 
 # Desktop stuff
 if [ "$XWINDOWS" = "yes" ]; then
