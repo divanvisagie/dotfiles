@@ -69,7 +69,7 @@ end
 
 config.font = wezterm.font("MesloLGS NF")
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
-    config.font_size = 17.0
+    config.font_size = 18.0
     config.window_decorations = "NONE"
 else
     config.font_size = 20.0
