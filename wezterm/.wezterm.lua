@@ -136,8 +136,8 @@ config.keys = {
   {key="j", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Down"}},
   {key="k", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Up"}},
   -- Set ctrl +t to create a new tab
-  {key="t", mods="CTRL", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
-  -- switch to tab with ctrl + number
+  {key="t", mods="SUPER", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
+  -- Switch tabs with super + number
   {key="1", mods="CTRL", action=wezterm.action{ActivateTab=0}},
   {key="2", mods="CTRL", action=wezterm.action{ActivateTab=1}},
   {key="3", mods="CTRL", action=wezterm.action{ActivateTab=2}},
@@ -147,7 +147,7 @@ config.keys = {
   {key="7", mods="CTRL", action=wezterm.action{ActivateTab=6}},
   {key="8", mods="CTRL", action=wezterm.action{ActivateTab=7}},
   {key="9", mods="CTRL", action=wezterm.action{ActivateTab=8}},
-  -- also use alt + number
+  -- Also use alt + number
   {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
   {key="2", mods="ALT", action=wezterm.action{ActivateTab=1}},
   {key="3", mods="ALT", action=wezterm.action{ActivateTab=2}},
