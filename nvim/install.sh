@@ -1,18 +1,17 @@
 #!/bin/bash
 set -e # The script will exit if it hits an error code
 
-if [ ! -d ~/.config/nvim ]; then
-	ln -s ~/.dotfiles/nvim/ ~/.config/
-fi
+rm ~/.config/nvim
+ln -s ~/.dotfiles/nvim/ ~/.config/
 
 # Clone the nvim repo if it does not exist
-if [ ! -d ~/Projects/com.github/neovim/neovim ]; then
-	mkdir ~/Projects/com.github/neovim
-	cd ~/Projects/com.github/neovim
+if [ ! -d ~/Projects/github.com/neovim/neovim ]; then
+	mkdir -p ~/Projects/github.com/neovim
+	cd ~/Projects/github.com/neovim
 	git clone git@github.com:neovim/neovim.git
 fi
 
-cd ~/Projects/com.github/neovim/neovim
+cd ~/Projects/github.com/neovim/neovim
 ## only build if nvim not present
 if ! [ -x "$(command -v nvim)" ]; then
 	make CMAKE_BUILD_TYPE=Release
