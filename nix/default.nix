@@ -5,22 +5,31 @@ pkgs.buildEnv {
   paths = [
     pkgs.autoconf
     pkgs.autogen
+    pkgs.bat
     pkgs.bun
     pkgs.clang
     pkgs.cmake
     pkgs.cowsay
+    pkgs.dust
+    pkgs.eza
     pkgs.fastfetch
     pkgs.fortune
     pkgs.gh
+    pkgs.gitui
     pkgs.go
+    pkgs.hurl
     pkgs.lolcat
     pkgs.neovim
     pkgs.nix-search-cli
     pkgs.nyancat
     pkgs.ocaml
     pkgs.odin
+    pkgs.opam
+    pkgs.ripgrep
     pkgs.tmux
     pkgs.vim
+    pkgs.yazi
     pkgs.zig
+    pkgs.zoxide
   ];
 }

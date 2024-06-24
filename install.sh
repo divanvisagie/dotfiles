@@ -48,17 +48,8 @@ fi
 
 # Define the list of tools to install
 tools=(
-	"exa"
-	"bat"
-	"du-dust"
-	"ripgrep"
 	"cgip"
-	"hurl"
 	"cargo-watch"
-	"gitui --locked"
-	"zoxide"
-	"yazi-fm --locked"
-	"yazi-cli --locked"
 )
 
 # Iterate over the tools and install them if they are not already available
