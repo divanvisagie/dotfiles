@@ -1,10 +1,11 @@
-# create if does not exist
+#!/bin/bash
+# Create if does not exist
 if [ ! -d ~/.config ]; then
-	mkdir ~/.config
+	mkdir -p ~/.config
 fi
 
 if [ ! -d ~/.config/skhd ]; then
-	mkdir ~/.config/skhd
+	mkdir -p ~/.config/skhd
 fi
 
 ln -s ~/.dotfiles/skhd/.skhdrc ~/.skhdrc
