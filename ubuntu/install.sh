@@ -15,6 +15,29 @@ sudo apt update
 sudo apt upgrade
 clear
 
+# Check if we're running under zsh
+if [ -z "$ZSH_VERSION" ]; then
+    echo "Switching to zsh..."
+
+    # Install zsh if not already installed
+    if ! command -v zsh &> /dev/null; then
+        echo "zsh not found. Installing zsh..."
+        sudo apt install -y zsh
+    fi
+
+    # Change the default shell to zsh for the current user
+    chsh -s $(which zsh)
+
+    # Re-run the script under zsh
+    echo "Re-running script under zsh..."
+    exec zsh "$0" "$@"
+
+    # Exit the current shell script
+    exit
+else
+    echo "Running under zsh. Continuing setup..."
+fi
+
 echo "Installing gum to bootstrap script..."
 # gum spin --spinner dot --title "Updating package sources..." -- sudo apt update
 # Install gum
