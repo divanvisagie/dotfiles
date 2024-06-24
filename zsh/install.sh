@@ -7,7 +7,9 @@ if [ ! -d ~/.zsh ]; then
 fi
 
 # Starship prompt
-curl -sS https://starship.rs/install.sh | sh
+if ! [ -x "$(command -v starship)" ]; then
+	curl -sS https://starship.rs/install.sh | sh
+fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sh ./ubuntu/install.sh
