@@ -22,11 +22,6 @@ Installer for Divan's development system
 
 EOF
 
-echo "This script will install all the dotfiles and tools I use on a fresh system."
-if ! gum confirm "Do you want to continue?"; then
-	exit 0
-fi
-
 if ! [ -x "$(command -v node)" ]; then
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 	export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"

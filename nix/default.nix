@@ -3,14 +3,17 @@
 pkgs.buildEnv {
   name = "my-environment";
   paths = [
-    pkgs.odin
-    pkgs.go
-    pkgs.clang
-    pkgs.tmux
-    pkgs.neovim
-    pkgs.zig
-    pkgs.vim
     pkgs.bun
-    pkgs.valgrind
+    pkgs.clang
+    pkgs.autogen
+    pkgs.autoconf
+    pkgs.cmake
+    pkgs.go
+    pkgs.neovim
+    pkgs.ocaml
+    pkgs.odin
+    pkgs.tmux
+    pkgs.vim
+    pkgs.zig
   ];
 }
