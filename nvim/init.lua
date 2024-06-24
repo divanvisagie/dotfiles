@@ -85,12 +85,6 @@ require("lazy").setup({
     -- Thing trouble keeps complaining about
 	'nvim-tree/nvim-web-devicons',
 
-    -- Language specific tools
-    'simrat39/rust-tools.nvim',
-
-    -- Preview markdown with :Glow
-    {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
-
     -- hex editing
     { 'RaafatTurki/hex.nvim' },
 
