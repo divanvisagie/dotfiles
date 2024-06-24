@@ -17,5 +17,9 @@ pkgs.buildEnv {
     pkgs.zig
     pkgs.fastfetch
     pkgs.gh
+    pkgs.nix-search-cli
+    pkgs.cowsay
+    pkgs.lolcat
+    pkgs.fortune
   ];
 }
