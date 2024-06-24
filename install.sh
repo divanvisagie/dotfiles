@@ -82,7 +82,6 @@ fi
 # Install configs
 ~/.dotfiles/tmux/install.sh
 ~/.dotfiles/git/install.sh
-~/.dotfiles/alacritty/install.sh
 ~/.dotfiles/wezterm/install.sh
 ~/.dotfiles/vim/install.sh
 ~/.dotfiles/nvim/install.sh

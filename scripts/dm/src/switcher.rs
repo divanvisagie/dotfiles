@@ -3,46 +3,6 @@ use std::{env, process::Command};
 pub trait Switcher {
     fn switch_wallpaper(&self, dark: bool);
     fn switch_theme(&self, dark: bool);
-    fn switch_alacritty(&self, dark: bool) {
-        let alacritty_config = std::fs::read_to_string(
-            std::env::var("HOME").unwrap() + "/.config/alacritty/alacritty.toml",
-        )
-        .unwrap();
-
-        // break away if the first line is not importing a path that contains the word "themes"
-        if !alacritty_config.contains("themes") {
-            println!("No themes found in alacritty config");
-            return;
-        }
-
-        //remove first line from alacritty config
-        let alacritty_config = alacritty_config
-            .lines()
-            .skip(1)
-            .collect::<Vec<_>>()
-            .join("\n");
-
-        let new_first_line = if dark {
-            vec![
-            r###"import = ["~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]"###.to_string(),
-            alacritty_config,
-        ]
-        .join("\n")
-        } else {
-            vec![
-                r###"import = ["~/.config/alacritty/themes/themes/rose-pine-dawn.toml"]"###
-                    .to_string(),
-                alacritty_config,
-            ]
-            .join("\n")
-        };
-
-        std::fs::write(
-            std::env::var("HOME").unwrap() + "/.config/alacritty/alacritty.toml",
-            new_first_line,
-        )
-        .unwrap();
-    }
     fn switch_all(&self, dark: bool) {
         self.switch_wallpaper(dark);
         self.switch_theme(dark);
