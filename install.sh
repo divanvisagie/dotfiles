@@ -88,9 +88,7 @@ fi
 
 # Install custom tools
 echo "Installing dark mode switcher..."
-cd ~/.dotfiles/scripts/dm
-cargo install --path .
-cd ~/.dotfiles
+cargo install --path ~/.dotfiles/scripts/dm
 
 cat << 'EOF'
 
