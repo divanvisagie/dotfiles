@@ -34,9 +34,9 @@ fi
 OS=$(uname)
 if [[ "$OS" == "Linux" ]]; then
 	echo "Linux detected..."
-	./ubuntu/install.sh
+	~/.dotfiles/ubuntu/install.sh
 else
-	./macos/install.sh
+	~/.dotfiles/macos/install.sh
 fi
 
 sh ~/.dotfiles/zsh/install.sh
