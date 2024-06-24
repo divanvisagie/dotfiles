@@ -15,5 +15,7 @@ pkgs.buildEnv {
     pkgs.tmux
     pkgs.vim
     pkgs.zig
+    pkgs.fastfetch
+    pkgs.gh
   ];
 }

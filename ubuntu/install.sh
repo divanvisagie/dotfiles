@@ -11,9 +11,6 @@ cat << 'EOF'
 Updating and upgrading system packages...
 EOF
 
-# Set up fastfetch
-sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
-
 sudo apt update
 sudo apt upgrade
 clear
@@ -35,18 +32,11 @@ if [ -z "$MACHINE_TYPE" ]; then
 	export MACHINE_TYPE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
 fi
 
-if [ -z "$XWINDOWS" ]; then
-	export XWINDOWS=$(gum choose "Do you want to install X11 related packages?" "yes" "no")
-fi
-
-
 echo "Installing missing packages..."
 # Define an array of packages to be installed
 packages=(
-	"autoconf"
 	"avahi-daemon"
 	"build-essential" 
-	"cmake" 
 	"curl" 
 	"direnv"
 	"fonts-dejavu"
@@ -56,23 +46,17 @@ packages=(
 	"gnome-sushi"
 	"gnome-tweaks"
 	"heif-gdk-pixbuf" 
-	"just" 
-	"libevent-dev" # need for building tmux
 	"libglib2.0-dev" 
 	"libnsl-dev"
 	"librust-servo-fontconfig-sys-dev" 
 	"libssl-dev"
 	"libxml2-dev"
 	"ncurses-dev"
-	"ninja-build"
 	"openssh-server"
 	"psensor"
-	"tmux"
-	"fastfetch"
 	"unzip"
+	"xclip"
 	"wl-clipboard" 
-	"wmctrl"
-	"yacc"
 )
 
 # Function to check if a package is installed
@@ -89,15 +73,14 @@ for package in "${packages[@]}"; do
   fi
 done
 
-if [ "$XWINDOWS" = "yes" ]; then
-	# X stuff for systems running Nvidia 
-	sudo apt-get install xbindkeys -y
-	sudo apt-get install xclip -y
-	sudo apt-get install xdotool -y
-fi
 clear
-
-
+################################################
+# Install nix
+################################################
+if ! [ -x "$(command -v nix)" ]; then
+	sh <(curl -L https://nixos.org/nix/install) --daemon
+fi
+~/.dotfiles/nix/install.sh
 
 ################################################
 # Install snaps
@@ -155,15 +138,6 @@ if gum confirm "Do you want to install proton vpn"; then
 fi
 
 
-# Github Cli
-if ! [ -x "$(command -v gh)" ]; then
-	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
-		sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
-		echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
-		sudo apt update &&
-		sudo apt install gh -y
-fi
-
 # Tailscale
 if ! [ -x "$(command -v tailscale)" ]; then
 	if gum confirm "Do you want to install tailscale?"; then
@@ -172,15 +146,8 @@ if ! [ -x "$(command -v tailscale)" ]; then
 	fi
 fi
 
-# Desktop stuff
-if [ "$XWINDOWS" = "yes" ]; then
-	echo ""
-	echo "Installing xbindkeys packages..."
-	~/.dotfiles/xbindkeys/install.sh
-fi
 ~/.dotfiles/ubuntu/extensions.sh
 ~/.dotfiles/ubuntu/keybinds.sh
-
 
 
 # Revert to normal idle and lock settings
