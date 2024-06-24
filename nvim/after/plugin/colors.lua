@@ -18,12 +18,14 @@ function Light()
     vim.o.background = "light"
 end
 
-local function isDarkMode()
-    local darkModeOutput = os.execute("dm -c")
-    return darkModeOutput == 'true'
+function IsDarkMode()
+    local handle = io.popen("dm -c")
+    local darkModeOutput = handle:read("*a")
+    handle:close()
+    return darkModeOutput:find("true") ~= nil
 end
 
-if isDarkMode() then
+if IsDarkMode() then
     Dark()
 else
     Light()
