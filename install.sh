@@ -22,14 +22,6 @@ Installer for Divan's development system
 
 EOF
 
-if ! [ -x "$(command -v node)" ]; then
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-	export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-	nvm install --lts
-	nvm use --lts
-fi
-
 # Perform OS specific installs
 OS=$(uname)
 if [[ "$OS" == "Linux" ]]; then
@@ -46,7 +38,7 @@ if ! [ -x "$(command -v rustc)" ]; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
-# Define the list of tools to install
+# Define the list of rust tools to install
 tools=(
 	"cgip"
 	"cargo-watch"

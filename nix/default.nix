@@ -18,6 +18,7 @@ pkgs.buildEnv {
     pkgs.gitui
     pkgs.go
     pkgs.hurl
+    pkgs.lldb
     pkgs.lolcat
     pkgs.neovim
     pkgs.nix-search-cli
@@ -28,6 +29,7 @@ pkgs.buildEnv {
     pkgs.ripgrep
     pkgs.tmux
     pkgs.vim
+    pkgs.volta
     pkgs.yazi
     pkgs.zig
     pkgs.zoxide
