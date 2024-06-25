@@ -6,6 +6,7 @@ pkgs.buildEnv {
     pkgs.autoconf
     pkgs.autogen
     pkgs.bat
+    pkgs.bottom
     pkgs.bun
     pkgs.clang
     pkgs.cmake
