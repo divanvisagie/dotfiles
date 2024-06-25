@@ -132,7 +132,11 @@ echo -ne "\x1b]0;$title\x1b\\"
 # Shell integrations
 eval "$(direnv hook zsh)"
 
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Enable vi mode, we do this before 
+# starship so that we dont interfere with it 
+# afterward
+bindkey -v
 
- eval "$(starship init zsh)"
+# Initialize Starship prompt
+eval "$(starship init zsh)"
+
