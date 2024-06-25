@@ -61,12 +61,12 @@ alias uuid="uuidgen | tr 'A-F' 'a-f'"
 alias sf="source ~/.zshrc"
 alias ls="eza --group-directories-first"
 alias flushdns='sudo killall -HUP mDNSResponder'
-alias mac="openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/:$//'"
 alias gtop='git log -1 --format="%H" | cat | xargs echo -n | pbcopy'
 alias ns='nix-search'
 alias nu='~/.dotfiles/nix/install.sh' # update nix environment
-# edit nix file
-alias ne='$EDITOR ~/.dotfiles/nix/default.nix'
+alias ne='$EDITOR ~/.dotfiles/nix/default.nix' # edit nix environment
+alias ed='$EDITOR'
+alias nv='nvim'
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # if wayland
