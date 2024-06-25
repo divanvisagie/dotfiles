@@ -3,6 +3,9 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# Set the default editor
+export EDITOR='nvim'
+
 # zinit ice depth=1; zinit light romkatv/powerlevel10k
 # zinit for starship rs
 zinit ice depth=1; zinit light starship/starship
@@ -60,6 +63,10 @@ alias ls="eza --group-directories-first"
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias mac="openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/:$//'"
 alias gtop='git log -1 --format="%H" | cat | xargs echo -n | pbcopy'
+alias ns='nix-search'
+alias nu='~/.dotfiles/nix/install.sh' # update nix environment
+# edit nix file
+alias ne='$EDITOR ~/.dotfiles/nix/default.nix'
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # if wayland
