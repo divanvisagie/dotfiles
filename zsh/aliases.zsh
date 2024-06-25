@@ -65,6 +65,7 @@ alias gtop='git log -1 --format="%H" | cat | xargs echo -n | pbcopy'
 alias ns='nix-search'
 alias nu='~/.dotfiles/nix/install.sh' # update nix environment
 alias ne='$EDITOR ~/.dotfiles/nix/default.nix' # edit nix environment
+alias ni='nix-env -i'
 alias ed='$EDITOR'
 alias nv='nvim'
 
