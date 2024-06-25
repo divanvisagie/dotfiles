@@ -14,6 +14,7 @@ pkgs.buildEnv {
     pkgs.eza
     pkgs.fastfetch
     pkgs.fortune
+    pkgs.hyperfine
     pkgs.gh
     pkgs.gitui
     pkgs.go
