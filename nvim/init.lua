@@ -21,7 +21,10 @@ require("lazy").setup({
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    'folke/trouble.nvim', -- Display errors better
+    {
+        'folke/trouble.nvim', -- Display errors better
+        tag = 'v2.10.0'
+    },
     'zbirenbaum/copilot.lua',
  	
 	-- debug adapter protocol
