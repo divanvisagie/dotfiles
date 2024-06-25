@@ -13,7 +13,6 @@ zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 
 # Add in snippets
 zinit snippet OMZP::git
-zinit snippet OMZP::sudo
 zinit snippet OMZP::yarn
 # zinit snippet OMZP::rust
 
