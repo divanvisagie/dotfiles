@@ -27,10 +27,6 @@ pkgs.buildEnv {
     pkgs.neovim
     pkgs.nix-search-cli
     pkgs.nyancat
-    pkgs.ocaml
-    pkgs.odin
-    pkgs.opam
-    pkgs.scala
     pkgs.procs # better version of ps
     pkgs.tokei # find out what programming languages are in use in this directory
     pkgs.ripgrep
