@@ -2,7 +2,6 @@
 
 set -e
 
-
 if [ -n "$DISPLAY" ]; then
 	# Ensure computer doesn't go to sleep or lock while installing
 	gsettings set org.gnome.desktop.screensaver lock-enabled false
@@ -41,19 +40,19 @@ else
     echo "Running under zsh. Continuing setup..."
 fi
 
-echo "Installing gum to bootstrap script..."
-# gum spin --spinner dot --title "Updating package sources..." -- sudo apt update
-# Install gum
-if ! [ -x "$(command -v gum)" ]; then
-	cd /tmp
-	GUM_VERSION="0.14.1" # Use known good version
-	wget -O gum.deb "https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
-	sudo apt install -y ./gum.deb
-	rm gum.deb
-	cd -
+################################################
+# Install nix
+################################################
+if ! [ -x "$(command -v curl)" ]; then
+	sudo apt-get install curl -y
 fi
-clear
+if ! [ -x "$(command -v nix)" ]; then
+	sh <(curl -L https://nixos.org/nix/install) --daemon
+fi
+~/.dotfiles/nix/install.sh
 
+# Choose machine specific stuff for 
+# windowing and power management settings
 if [ -z "$MACHINE_TYPE" ]; then
 	export MACHINE_TYPE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
 fi
@@ -100,13 +99,6 @@ for package in "${packages[@]}"; do
 done
 
 clear
-################################################
-# Install nix
-################################################
-if ! [ -x "$(command -v nix)" ]; then
-	sh <(curl -L https://nixos.org/nix/install) --daemon
-fi
-~/.dotfiles/nix/install.sh
 
 ################################################
 # Install snaps

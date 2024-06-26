@@ -17,6 +17,7 @@ pkgs.buildEnv {
     pkgs.fd # rust replacement for find
     pkgs.fortune
     pkgs.gh
+    pkgs.gum
     pkgs.gitui
     pkgs.go
     pkgs.hurl
