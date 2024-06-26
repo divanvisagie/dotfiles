@@ -11,6 +11,7 @@ pkgs.buildEnv {
     pkgs.clang
     pkgs.cmake
     pkgs.cowsay
+    pkgs.ddgr
     pkgs.dust
     pkgs.eza
     pkgs.fastfetch
