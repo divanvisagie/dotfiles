@@ -1,5 +1,8 @@
 #!/bin/bash
 
+if ! [ -n "$DISPLAY" ]; then
+	exit 0 # Dont install on headless systems
+fi
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Ctrl>space']"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "[]"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>space']"

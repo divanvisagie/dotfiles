@@ -2,9 +2,12 @@
 
 set -e
 
-# Ensure computer doesn't go to sleep or lock while installing
-gsettings set org.gnome.desktop.screensaver lock-enabled false
-gsettings set org.gnome.desktop.session idle-delay 0
+
+if [ -n "$DISPLAY" ]; then
+	# Ensure computer doesn't go to sleep or lock while installing
+	gsettings set org.gnome.desktop.screensaver lock-enabled false
+	gsettings set org.gnome.desktop.session idle-delay 0
+fi
 
 cat << 'EOF'
 	
@@ -174,6 +177,7 @@ fi
 ~/.dotfiles/ubuntu/keybinds.sh
 
 
-# Revert to normal idle and lock settings
-gsettings set org.gnome.desktop.screensaver lock-enabled true
-gsettings set org.gnome.desktop.session idle-delay 300
+if [ -n "$DISPLAY" ]; then
+	gsettings set org.gnome.desktop.screensaver lock-enabled true
+	gsettings set org.gnome.desktop.session idle-delay 300
+fi

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+if ! [ -n "$DISPLAY" ]; then
+	exit 0 # Dont install on headless systems
+fi
+
 sudo apt install -y gnome-shell-extension-manager pipx
 pipx install gnome-extensions-cli --system-site-packages
 
