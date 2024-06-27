@@ -18,9 +18,9 @@ pkgs.buildEnv {
     pkgs.fd # rust replacement for find
     pkgs.fortune
     pkgs.gh
-    pkgs.gum
     pkgs.gitui
     pkgs.go
+    pkgs.gum
     pkgs.hurl
     pkgs.hyperfine # benchmarking tool
     pkgs.lldb
@@ -29,10 +29,11 @@ pkgs.buildEnv {
     pkgs.nix-search-cli
     pkgs.nyancat
     pkgs.procs # better version of ps
-    pkgs.tokei # find out what programming languages are in use in this directory
     pkgs.ripgrep
     pkgs.tldr # simplified man pages
     pkgs.tmux
+    pkgs.tokei # find out what programming languages are in use in this directory
+    pkgs.tree
     pkgs.vim
     pkgs.volta
     pkgs.yazi # rust terminal file browser
