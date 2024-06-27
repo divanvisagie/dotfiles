@@ -144,6 +144,9 @@ eval "$(direnv hook zsh)"
 # afterward
 bindkey -v
 
+# Automatically CD when providing a file path
+setopt AUTO_CD
+
 # Initialize Starship prompt
 eval "$(starship init zsh)"
 
