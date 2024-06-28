@@ -102,25 +102,26 @@ clear
 ################################################
 # Install snaps
 ################################################
-echo "Installing snap packages..."
-# Extracting snap package names into a list
-snap_packages=(
-	"telegram-desktop"
-	"brave"
-	"spotify"
-)
+if [ -n "$DISPLAY" ]; then
+	echo "Installing snap packages..."
+	# Extracting snap package names into a list
+	snap_packages=(
+		"telegram-desktop"
+		"brave"
+		"spotify"
+	)
 
-# Iterate over the list and install each package if it's not already installed
-for snap in "${snap_packages[@]}"; do
-	if ! snap list | grep -q "^$snap"; then
-		echo "$snap is not installed, installing..."
-		snap install "$snap"
-	else
-		echo "$snap is already installed."
-	fi
-done
-echo ""
-
+	# Iterate over the list and install each package if it's not already installed
+	for snap in "${snap_packages[@]}"; do
+		if ! snap list | grep -q "^$snap"; then
+			echo "$snap is not installed, installing..."
+			snap install "$snap"
+		else
+			echo "$snap is already installed."
+		fi
+	done
+	echo ""
+fi
 ################################################
 # Install flatpacks
 ################################################
