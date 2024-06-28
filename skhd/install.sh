@@ -1,11 +1,5 @@
-#!/bin/bash
-# Create if does not exist
-if [ ! -d ~/.config ]; then
-	mkdir -p ~/.config
-fi
 
-if [ ! -d ~/.config/skhd ]; then
-	mkdir -p ~/.config/skhd
-fi
+mkdir -p ~/.config/skhd
 
-ln -s ~/.dotfiles/skhd/.skhdrc ~/.skhdrc
+# create link if it does not exist
+[ -f ~/.skhdrc ] || ln -s ~/.dotfiles/skhd/.skhdrc ~/.skhdrc

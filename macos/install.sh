@@ -32,7 +32,6 @@ if ! [ -x "$(command -v nix)" ]; then
 	sh <(curl -L https://nixos.org/nix/install)
 fi
 ~/.dotfiles/nix/install.sh
+echo "Setting up skhd..."
 ~/.dotfiles/skhd/install.sh
-
-defaults -currentHost delete -g AppleFontSmoothing
 

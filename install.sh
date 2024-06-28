@@ -29,8 +29,10 @@ if [[ "$OS" == "Linux" ]]; then
 	echo "Linux detected..."
 	~/.dotfiles/ubuntu/install.sh
 else
+	echo "macOS detected..."
 	~/.dotfiles/macos/install.sh
 fi
+echo "Installing common dependencies..."
 
 # Starship prompt
 if ! command_exists starship; then
