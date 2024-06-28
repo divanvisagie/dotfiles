@@ -8,7 +8,6 @@ if [ -z "$BASH_VERSION" ] && [ -z "$ZSH_VERSION" ]; then
 	exit 1
 fi
 
-clear
 # generated with toilet -f future "dotfiles"
 cat << 'EOF'
 
@@ -17,7 +16,7 @@ cat << 'EOF'
 ╺┻┛┗━┛ ╹ ╹  ╹┗━╸┗━╸┗━┛
 
 -----------------------------------------
-Installer for Divan's development system
+Manager for Divan's development system
 -----------------------------------------
 
 EOF
@@ -31,7 +30,10 @@ else
 	~/.dotfiles/macos/install.sh
 fi
 
-sh ~/.dotfiles/zsh/install.sh
+# Starship prompt
+if ! [ -x "$(command -v starship)" ]; then
+	curl -sS https://starship.rs/install.sh | sh
+fi
 
 # Install rust if not present 
 if ! [ -x "$(command -v rustc)" ]; then
@@ -54,20 +56,15 @@ for tool in "${tools[@]}"; do
 	fi
 done
 
-# Set up working directories if they do not exist
-if [ ! -d ~/Projects ]; then
-	mkdir ~/Projects
-fi
-if [ ! -d ~/Projects/com.github ]; then
-	mkdir ~/Projects/com.github
-fi
+mkdir -p ~/Projects/com.github
 
-# Install configs
-~/.dotfiles/tmux/install.sh
+# Install programs with configs
 ~/.dotfiles/git/install.sh
-~/.dotfiles/wezterm/install.sh
-~/.dotfiles/vim/install.sh
 ~/.dotfiles/nvim/install.sh
+~/.dotfiles/tmux/install.sh
+~/.dotfiles/vim/install.sh
+~/.dotfiles/wezterm/install.sh
+~/.dotfiles/zsh/install.sh
 
 # Install custom tools
 echo "Installing dark mode switcher..."
@@ -76,4 +73,5 @@ cargo install --path ~/.dotfiles/scripts/dm
 cat << 'EOF'
 
 Installation complete!
+
 EOF

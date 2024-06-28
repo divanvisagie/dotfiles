@@ -1,14 +1,16 @@
-# dotfiles
+# Dotfiles
 
-Welcome to 'dotfiles'! This is a repository of my personal dotfiles, which I
-use to configure my system and development environment. The goal is to be able
-to get myself up and running on a new system as quickly as possible across
-MacOS and Linux.
+╺┳┓┏━┓╺┳╸┏━╸╻╻  ┏━╸┏━┓
+ ┃┃┃ ┃ ┃ ┣╸ ┃┃  ┣╸ ┗━┓
+╺┻┛┗━┛ ╹ ╹  ╹┗━╸┗━╸┗━┛
+
+Welcome to 'dotfiles'! 
+
+This project sets up an opinionated user environment with the
+aim of acheiving a similar user experience across MacOS and Linux.
 
 ## Disclaimer
-I share these files publicly as a method of knowledge sharing only, I do not 
-intend to provide support or maintain these files for anyone else. If you find
-them useful, steal the parts you like and leave the rest. I subscribe to the 
+If you find this configuration useful, steal the parts you like and leave the rest. I subscribe to the 
 idea of a PDE (Personal Development Environment) and I encourage you to do the
 same.
 
@@ -17,7 +19,9 @@ of other people's dotfiles and I have found that it never really works out.
 The reason for this is that everyone has their own personal preferences and
 workflow. I have found that the best way to get a good configuration is to
 start from scratch and build it up from the ground up, only adding what you 
-need.
+need. 
+
+My recommendation is to fork this repo and make tweaks to it if you want something more personalised.
 
 ## Installation
 The entire system is intended to be installed at the root of the home directory

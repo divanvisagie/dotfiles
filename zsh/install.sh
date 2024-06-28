@@ -1,12 +1,18 @@
 #!/bin/bash
+set -e
 
-#if there is no ~/.zshrc, create it
-if [ ! -d ~/.zsh ]; then
-	rm ~/.zsh
-	ln -s ~/.dotfiles/zsh ~/.zsh
+# Add zsh load files if the are not present
+function config_loader_exists() {
+  grep -q "for config_file" ~/.zshrc
+}
+
+if config_loader_exists; then
+	exit 0
 fi
 
-# Starship prompt
-if ! [ -x "$(command -v starship)" ]; then
-	curl -sS https://starship.rs/install.sh | sh
-fi
+cat << 'EOF'
+for config_file ($HOME/.dotfiles/zsh/*.zsh); do
+  source $config_file
+done
+EOF | tee -a ~/.zshrc
+

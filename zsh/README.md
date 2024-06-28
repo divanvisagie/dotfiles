@@ -1,14 +1,14 @@
 # Zsh Setup
-This requires the inallation of oh-my-zsh and powerline 10k
 
-Since many setup wizards write stuff to the main zsh file, i have elected to
-write only include files here that can then be simlinked to ~/.zsh and used by
-.zshrc with the following code
+Since many setup wizards write stuff to .zshrc, I have elected to implement my zshrc setup
+as a separate file that will be loaded in with the following automatic loading code:
 
 ```sh
 for config_file ($HOME/.zsh/*.zsh); do
   source $config_file
 done
 ```
+
+The `install.sh` file in this directory will write this code to the end of your `.zshrc` file.
 
 

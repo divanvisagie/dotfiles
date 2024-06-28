@@ -63,11 +63,12 @@ alias ls="eza --group-directories-first"
 alias flushdns='sudo killall -HUP mDNSResponder'
 alias gtop='git log -1 --format="%H" | cat | xargs echo -n | pbcopy'
 alias ns='nix-search'
-alias nu='~/.dotfiles/nix/install.sh' # update nix environment
-alias ne='$EDITOR ~/.dotfiles/nix/default.nix' # edit nix environment
+alias nu='~/.dotfiles/nix/install.sh' # Update nix environment
+alias ne='$EDITOR ~/.dotfiles/nix/default.nix' # Edit nix environment
 alias ni='nix-env -i'
 alias ed='$EDITOR'
 alias nv='nvim'
+alias dfu='~/.dotfiles/install.sh' # Update dotfiles
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # if wayland
@@ -88,7 +89,7 @@ function strp() {
 }
 
 # A shutdown system 
-down() {
+function down() {
    # Get the name of the primary network interface
    local interface=$(ip route | grep '^default' | awk '{print $5}')
    
