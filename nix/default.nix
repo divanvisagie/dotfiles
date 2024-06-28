@@ -30,6 +30,7 @@ pkgs.buildEnv {
     pkgs.nix-search-cli
     pkgs.nyancat
     pkgs.procs # better version of ps
+    pkgs.qemu
     pkgs.ripgrep
     pkgs.tldr # simplified man pages
     pkgs.tmux
