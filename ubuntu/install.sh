@@ -70,7 +70,7 @@ if command_exists snap; then
 			echo "$snap is not installed, installing..."
 			snap install "$snap"
 		else
-			echo "$snap is already installed."
+			log_info "$snap is already installed."
 		fi
 	done
 	echo ""
