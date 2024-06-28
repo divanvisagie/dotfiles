@@ -137,7 +137,9 @@ if [ "$MACHINE_TYPE" = "laptop" ]; then
 	if ! is_installed "tlp"; then
 		sudo apt-get install tlp
 	fi
-	flatpak install flathub com.github.d4nj1.tlpui
+	if [ -n "$DISPLAY" ]; then
+		flatpak install flathub com.github.d4nj1.tlpui
+	fi
 fi
 clear
 echo ""
