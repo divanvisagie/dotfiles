@@ -128,13 +128,15 @@ echo ""
 echo "Installing flatpak packages..."
 # Set up flatpak
 if ! [ -x "$(command -v flatpak)" ]; then
-	sudo apt install flatpak -y
-	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	sudo apt install -y flatpak
+	sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 fi
 
 flatpak install flathub org.wezfurlong.wezterm
 if [ "$MACHINE_TYPE" = "laptop" ]; then
-	sudo apt install tlp
+	if ! is_installed "tlp"; then
+		sudo apt-get install tlp
+	fi
 	flatpak install flathub com.github.d4nj1.tlpui
 fi
 clear
