@@ -50,7 +50,7 @@ for package in "${system_packages[@]}"; do
     echo "Installing $package ..."
     sudo apt install "$package" -y
   else
-    echo "$package is already installed. Skipping."
+    log_info "$package is already installed. Skipping."
   fi
 done
 

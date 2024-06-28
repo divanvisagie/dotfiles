@@ -1,4 +1,6 @@
 #!/bin/bash
+source ~/.dotfiles/utils.sh
+set -e
 if ! [ -x "$(command -v brew)" ]; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
@@ -19,7 +21,7 @@ for package in "${packages[@]}"; do
     echo "Installing $package ..."
     brew install "$package"
   else
-    echo "$package is already installed. Skipping."
+    log_info "$package is already installed. Skipping."
   fi
 done
 
