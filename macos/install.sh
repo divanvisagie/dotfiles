@@ -5,10 +5,13 @@ if ! [ -x "$(command -v brew)" ]; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+if ! command_exists "skhd"; then
+	  brew install "koekeishiya/formulae/skhd"
+fi
+
 packages=(
 	"curl"
 	"gum"
-	"koekeishiya/formulae/skhd"
 	"wallpaper"
 )
 
