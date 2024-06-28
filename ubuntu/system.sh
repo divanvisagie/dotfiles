@@ -1,6 +1,7 @@
 #!/bin/bash
 
 system_packages=(
+	"zsh"
 	"avahi-daemon"
 	"build-essential" 
 	"curl" 
