@@ -63,7 +63,6 @@ packages=(
 	"avahi-daemon"
 	"build-essential" 
 	"curl" 
-	"direnv"
 	"fonts-dejavu"
 	"gettext" 
 	"git" 
@@ -81,7 +80,7 @@ packages=(
 	"psensor"
 	"unzip"
 	"xclip"
-	"wl-clipboard" 
+	"wl-clipboard" # Wayland clipboard
 )
 
 # Function to check if a package is installed

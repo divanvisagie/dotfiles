@@ -12,6 +12,7 @@ pkgs.buildEnv {
     pkgs.cmake
     pkgs.cowsay
     pkgs.ddgr
+    pkgs.direnv
     pkgs.dust
     pkgs.eza
     pkgs.fastfetch
