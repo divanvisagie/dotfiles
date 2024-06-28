@@ -1,23 +1,30 @@
 #!/bin/bash
 
+gext_is_installed () {
+	gnome-extensions list | grep -q "$1"
+}
 
 if ! [ -n "$DISPLAY" ]; then
 	exit 0 # Dont install on headless systems
 fi
 
-sudo apt install -y gnome-shell-extension-manager pipx
+sudo apt-get install -qq -y gnome-shell-extension-manager pipx
+
 pipx install gnome-extensions-cli --system-site-packages
 
 # Install new extensions
-gext install blur-my-shell@aunetx
-gext install tactile@lundal.io
+if ! gext_is_installed "blur-my-shell"; then
+	gext install blur-my-shell@aunetx
+fi
+
+if ! gext_is_installed "tactile"; then
+	gext install tactile@lundal.io
+fi
 
 # Compile gsettings schemas in order to be able to set them
 sudo cp ~/.local/share/gnome-shell/extensions/blur-my-shell\@aunetx/schemas/org.gnome.shell.extensions.blur-my-shell.gschema.xml /usr/share/glib-2.0/schemas/
 sudo cp ~/.local/share/gnome-shell/extensions/tactile@lundal.io/schemas/org.gnome.shell.extensions.tactile.gschema.xml /usr/share/glib-2.0/schemas/
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
-
-
 
 # Configure Blur My Shell
 # -----------------------
