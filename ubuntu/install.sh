@@ -132,7 +132,9 @@ if ! [ -x "$(command -v flatpak)" ]; then
 	sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 fi
 
-flatpak install flathub org.wezfurlong.wezterm
+if [ -n "$DISPLAY" ]; then
+	flatpak install flathub org.wezfurlong.wezterm
+fi
 if [ "$MACHINE_TYPE" = "laptop" ]; then
 	if ! is_installed "tlp"; then
 		sudo apt-get install tlp
