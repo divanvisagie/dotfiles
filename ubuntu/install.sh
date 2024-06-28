@@ -1,6 +1,7 @@
 #!/bin/bash
 source ~/.dotfiles/ubuntu/utils.sh
 source ~/.dotfiles/ubuntu/system.sh
+source ~/.dotfiles/utils.sh
 set -e
 
 if command_exists gsettings; then
@@ -23,14 +24,14 @@ sudo apt update
 sudo apt upgrade
 
 # Bootstrap curl
-if ! [ -x "$(command -v curl)" ]; then
+if ! command_exists curl; then
 	sudo apt install curl -y
 fi
 
 ################################################
 # Install nix packaging system
 ################################################
-if ! [ -x "$(command -v nix)" ]; then
+if ! command_exists nix; then
 	sh <(curl -L https://nixos.org/nix/install) --daemon
 fi
 ~/.dotfiles/nix/install.sh
@@ -39,6 +40,7 @@ fi
 # windowing and power management settings
 if [ -z "$MACHINE_TYPE" ]; then
 	export MACHINE_TYPE=$(gum choose "Are you on a laptop or a desktop?" "laptop" "desktop")
+	write_env "MACHINE_TYPE" "$MACHINE_TYPE"
 fi
 
 echo "Installing missing packages..."
@@ -52,13 +54,15 @@ for package in "${system_packages[@]}"; do
   fi
 done
 
-# Set the shell to zsh
-chsh -s $(which zsh)
+# Set the shell to zsh if it isnt
+if [ "$SHELL" != "/usr/bin/zsh" ]; then
+	chsh -s $(which zsh)
+fi
 
 ################################################
 # Install snaps
 ################################################
-if [ -n "$DISPLAY" ]; then
+if command_exists snap; then
 	echo "Installing snap packages..."
 	# Iterate over the list and install each package if it's not already installed
 	for snap in "${snap_packages[@]}"; do

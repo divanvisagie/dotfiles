@@ -1,5 +1,7 @@
 #!/bin/bash
+source ~/.dotfiles/utils.sh
 set -e
+
 # Alert user if they are running in sh, since the script only 
 # is compatible with bash/zsh arrays
 
@@ -31,12 +33,12 @@ else
 fi
 
 # Starship prompt
-if ! [ -x "$(command -v starship)" ]; then
+if ! command_exists starship; then
 	curl -sS https://starship.rs/install.sh | sh
 fi
 
 # Install rust if not present 
-if ! [ -x "$(command -v rustc)" ]; then
+if ! command_exists rustc; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
@@ -52,7 +54,7 @@ for tool in "${tools[@]}"; do
 		echo "${tool%% *} could not be found, installing..."
 		cargo install $tool
 	else
-		echo "${tool%% *} is already installed."
+		log_info "${tool%% *} is already installed."
 	fi
 done
 
@@ -69,6 +71,11 @@ mkdir -p ~/Projects/com.github
 # Install custom tools
 echo "Installing dark mode switcher..."
 cargo install --path ~/.dotfiles/scripts/dm
+
+# if prefs exists, source it
+if [ -f ~/.dotfiles/zsh/prefs.zsh ]; then
+	source ~/.dotfiles/zsh/prefs.zsh
+fi
 
 cat << 'EOF'
 

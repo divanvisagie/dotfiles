@@ -2,12 +2,13 @@
 ################################################
 # Install custom PPAs and other optional software
 ################################################
-source ~/.dotfiles/ubuntu/utils.sh
+source ~/.dotfiles/utils.sh
 set -e
 
 # Set up proton vpn
 if ! command_exists protonvpn-app; then
 	if gum confirm "Do you want to install proton vpn"; then
+		write_env "DOTFILES_PROTONVPN" "true"
 		wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
 		sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
 		sudo apt-get install proton-vpn-gnome-desktop
