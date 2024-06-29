@@ -25,8 +25,3 @@ system_packages=(
 	"wl-clipboard" # Wayland clipboard
 )
 
-snap_packages=(
-	"telegram-desktop"
-	"brave"
-	"spotify"
-)

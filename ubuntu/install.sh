@@ -60,22 +60,6 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
 fi
 
 ################################################
-# Install snaps
-################################################
-if command_exists snap; then
-	echo "Installing snap packages..."
-	# Iterate over the list and install each package if it's not already installed
-	for snap in "${snap_packages[@]}"; do
-		if ! snap list | grep -q "^$snap"; then
-			echo "$snap is not installed, installing..."
-			snap install "$snap"
-		else
-			log_info "$snap is already installed."
-		fi
-	done
-	echo ""
-fi
-################################################
 # Install flatpacks
 ################################################
 ~/.dotfiles/ubuntu/flatpaks.sh
