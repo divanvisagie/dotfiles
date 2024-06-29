@@ -22,7 +22,7 @@ if ! gext_is_installed "tactile"; then
 fi
 
 if ! gext_is_installed "rounded-window-corners"; then
-	gext install rounded-window-corners@flexagoon
+	gext install rounded-window-corners@fxgn
 fi
 
 # Compile gsettings schemas in order to be able to set them
