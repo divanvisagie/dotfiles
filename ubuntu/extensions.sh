@@ -21,6 +21,10 @@ if ! gext_is_installed "tactile"; then
 	gext install tactile@lundal.io
 fi
 
+if ! gext_is_installed "rounded-window-corners"; then
+	gext install rounded-window-corners@flexagoon
+fi
+
 # Compile gsettings schemas in order to be able to set them
 sudo cp ~/.local/share/gnome-shell/extensions/blur-my-shell\@aunetx/schemas/org.gnome.shell.extensions.blur-my-shell.gschema.xml /usr/share/glib-2.0/schemas/
 sudo cp ~/.local/share/gnome-shell/extensions/tactile@lundal.io/schemas/org.gnome.shell.extensions.tactile.gschema.xml /usr/share/glib-2.0/schemas/
