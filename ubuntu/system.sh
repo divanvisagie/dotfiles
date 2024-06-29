@@ -8,6 +8,7 @@ system_packages=(
 	"fonts-dejavu"
 	"gettext" 
 	"git" 
+	"gnome-software-plugin-flatpak"
 	"gnome-shell-extensions" 
 	"gnome-sushi"
 	"gnome-tweaks"
