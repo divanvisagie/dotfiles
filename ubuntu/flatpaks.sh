@@ -16,6 +16,9 @@ if [ -n "$DISPLAY" ]; then
 	flatpak install --or-update flathub org.wezfurlong.wezterm
 	flatpak install --or-update flathub org.telegram.desktop
 	flatpak install --or-update flathub com.spotify.Client
+	flatpak install --or-update flathub ch.protonmail.protonmail-bridge
+	flatpak install --or-update flathub com.protonvpn.www
+	flatpak install --or-update flathub me.proton.Pass
 fi
 
 if [ "$MACHINE_TYPE" = "laptop" ]; then
