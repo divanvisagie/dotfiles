@@ -3,10 +3,10 @@
 # Define variables
 ISO_PATH="Downloads/ubuntu-24.04-desktop-amd64.iso"
 VM_NAME="ubuntu_vm"
-VM_DISK="Disks/ubuntu_vm_disk.img"  
-RAM_SIZE="4G"
+VM_DISK="$HOME/Disks/ubuntu_vm_disk.img"  
+RAM_SIZE="2G"
 CPU_COUNT="2"
-DISK_SIZE="20G"
+DISK_SIZE="30G"
 SSH_PORT=2222
 LOG_FILE="ubuntu_vm.log"
 DOTFILES_DIR="$HOME/.dotfiles"
