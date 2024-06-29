@@ -4,8 +4,8 @@
 ISO_PATH="Downloads/ubuntu-24.04-desktop-amd64.iso"
 VM_NAME="ubuntu_vm"
 VM_DISK="$HOME/Disks/ubuntu_vm_disk.img"  
-RAM_SIZE="2G"
-CPU_COUNT="2"
+RAM_SIZE="8G"
+CPU_COUNT="4"
 DISK_SIZE="30G"
 SSH_PORT=2222
 LOG_FILE="ubuntu_vm.log"
