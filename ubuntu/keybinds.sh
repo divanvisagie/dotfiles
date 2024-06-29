@@ -18,7 +18,7 @@ gsettings set org.gnome.shell.keybindings switch-to-application-5 "['<Alt>m']" #
 # Set Brave to position 1 in the dock
 # Set Wezterm to position 2 in the dock, etc
 # /var/lib/flatpak/exports/share/applications/
-gsettings set org.gnome.shell favorite-apps "['com.brave.Browser.desktop', 'org.wezfurlong.wezterm.desktop', 'org.telegram.desktop.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop']"
+gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox.desktop', 'org.wezfurlong.wezterm.desktop', 'org.telegram.desktop.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop']"
 
 # Full-screen with title/navigation bar
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Shift>F11']"

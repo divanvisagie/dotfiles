@@ -13,6 +13,8 @@ fi
 
 if [ -n "$DISPLAY" ]; then
 	flatpak install --or-update flathub com.brave.Browser
+	flatpak install --or-update flathub org.mozilla.firefox
+	flatpak install --or-update flathub com.github.finefindus.eyedropper
 	flatpak install --or-update flathub org.wezfurlong.wezterm
 	flatpak install --or-update flathub org.telegram.desktop
 	flatpak install --or-update flathub com.spotify.Client
