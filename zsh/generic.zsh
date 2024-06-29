@@ -71,13 +71,9 @@ alias nv='nvim'
 alias dfu='~/.dotfiles/install.sh' # Update dotfiles
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # if wayland
-    if [ -n "$WAYLAND_DISPLAY" ]; then
-        export GDK_BACKEND=wayland
-        alias pbcopy='wl-copy'
-    else
-        alias pbcopy='xclip -selection c'
-    fi
+    export GDK_BACKEND=wayland
+    alias pbcopy='wl-copy'
+    alias pbpaste='wl-paste'
 fi
 
 # Custom functions

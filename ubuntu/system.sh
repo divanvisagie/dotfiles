@@ -22,7 +22,6 @@ system_packages=(
 	"openssh-server"
 	"psensor"
 	"unzip"
-	"xclip"
 	"wl-clipboard" # Wayland clipboard
 )
 
