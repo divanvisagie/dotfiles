@@ -70,6 +70,7 @@ alias ed='$EDITOR'
 alias nv='nvim'
 alias dfu='~/.dotfiles/install.sh' # Update dotfiles
 alias rsync='rsync --partial --info=progress2'
+alias fd='fd --color never'
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export GDK_BACKEND=wayland
