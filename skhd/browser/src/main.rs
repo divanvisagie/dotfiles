@@ -1,15 +1,11 @@
 use std::process::Command;
-// ─❯ defaults read com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers | grep -B 1 -A 3 "https" | grep -m 1 "LSHandlerRoleAll"
-//
-//         LSHandlerRoleAll = "org.mozilla.firefox";
-//
-//
+
+#[allow(unused)]
 enum Browser {
     Chrome(String, String),
     Firefox(String, String),
     Safari(String, String),
 }
-
 
 fn get_default_browser() -> std::io::Result<Browser> {
     match Command::new("sh")
@@ -37,8 +33,6 @@ fn get_default_browser() -> std::io::Result<Browser> {
         Err(e) => Err(e),
         }
 }
-
-
 
 fn focus_browser(browser: &Browser) {
     // osascript -e 'tell application "Google Chrome" to activate'
