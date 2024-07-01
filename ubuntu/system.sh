@@ -10,7 +10,7 @@ system_packages=(
 	"git" 
 	"gnome-software-plugin-flatpak"
 	"gnome-shell-extensions" 
-	"gnome-sushi"
+	"gnome-sushi" # Preview when you press space bar
 	"gnome-tweaks"
 	"heif-gdk-pixbuf" 
 	"libglib2.0-dev" 
