@@ -8,7 +8,6 @@ pkgs.buildEnv {
     pkgs.bat # rust replacement for less
     pkgs.bottom # rust replacement for top
     pkgs.bun
-    pkgs.clang
     pkgs.cmake
     pkgs.cowsay
     pkgs.ddgr
