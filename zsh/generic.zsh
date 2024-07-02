@@ -23,6 +23,7 @@ zinit snippet OMZP::yarn
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     zinit snippet OMZP::ubuntu
     alias wezterm='flatpak run org.wezfurlong.wezterm'
+    alias marktext='flatpak run com.github.marktext.marktext'
 fi
 # if on mac
 if [[ "$OSTYPE" == "darwin"* ]]; then
