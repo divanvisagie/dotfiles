@@ -1,25 +1,19 @@
 #!/bin/bash
 
-if ! [ -n "$DISPLAY" ]; then
-	exit 0 # Dont install on headless systems
-fi
-gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Ctrl>space']"
-gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "[]"
-gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>space']"
+# Use dconf to set the values
+dconf write /org/gnome/desktop/wm/keybindings/switch-input-source "['<Alt><Ctrl>space']" 
+dconf write /org/gnome/desktop/wm/keybindings/switch-input-source-backward "['']" 
+dconf write /org/gnome/shell/keybindings/toggle-overview "['<Super>space']" 
 
-gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>q']"
+dconf write /org/gnome/desktop/wm/keybindings/close "['<Alt>q']" 
 
-gsettings set org.gnome.shell.keybindings switch-to-application-1 "['<Alt>b']" # Browser
-gsettings set org.gnome.shell.keybindings switch-to-application-2 "['<Alt>t']" # Terminal
-gsettings set org.gnome.shell.keybindings switch-to-application-3 "['<Alt>g']" # Telegram
-gsettings set org.gnome.shell.keybindings switch-to-application-4 "['<Alt>f']" # Nautilus
-gsettings set org.gnome.shell.keybindings switch-to-application-5 "['<Alt>m']" # Spotify
+dconf write /org/gnome/shell/keybindings/switch-to-application-1 "['<Alt>b']" 
+dconf write /org/gnome/shell/keybindings/switch-to-application-2 "['<Alt>t']" 
+dconf write /org/gnome/shell/keybindings/switch-to-application-3 "['<Alt>g']" 
+dconf write /org/gnome/shell/keybindings/switch-to-application-4 "['<Alt>f']" 
+dconf write /org/gnome/shell/keybindings/switch-to-application-5 "['<Alt>o']" 
+dconf write /org/gnome/shell/keybindings/switch-to-application-6 "['<Alt>m']" 
 
-# Set Brave to position 1 in the dock
-# Set Wezterm to position 2 in the dock, etc
-# /var/lib/flatpak/exports/share/applications/
-gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox.desktop', 'org.wezfurlong.wezterm.desktop', 'org.telegram.desktop.desktop', 'org.gnome.Nautilus.desktop', 'com.spotify.Client.desktop']"
+dconf write /org/gnome/shell/favorite-apps "['org.mozilla.firefox.desktop', 'org.wezfurlong.wezterm.desktop', 'org.telegram.desktop.desktop', 'org.gnome.Nautilus.desktop','md.obsidian.Obsidian.desktop','com.spotify.Client.desktop']" || log "Failed to set favorite-apps"
 
-# Full-screen with title/navigation bar
-gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Shift>F11']"
-
+dconf write /org/gnome/desktop/wm/keybindings/toggle-fullscreen "['<Shift>F11']" 
