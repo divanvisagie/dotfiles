@@ -41,13 +41,13 @@ config.font_rules = {
     -- We show regular here, not italic
     font = wezterm.font("MesloLGS NF", {weight="Regular"}),
   },
-  {
-    -- Matcher
-    intensity = "Bold",
-    -- Setter
-    -- We show regular here, not bold
-    font = wezterm.font("MesloLGS NF", {weight="Regular"}),
-  },
+  -- {
+  --   -- Matcher
+  --   intensity = "Bold",
+  --   -- Setter
+  --   -- We show regular here, not bold
+  --   font = wezterm.font("MesloLGS NF", {weight="Regular"}),
+  -- },
 }
 
 -- Function to choose a color scheme based on appearance
