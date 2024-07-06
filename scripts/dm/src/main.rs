@@ -1,5 +1,5 @@
-use std::process::Command;
 use clap::Parser;
+use std::process::Command;
 
 use crate::switcher::SwitcherImpl;
 
@@ -7,11 +7,11 @@ mod switcher;
 
 fn get_is_dark_mode() -> bool {
     if cfg!(target_os = "linux") {
-        // gsettings get org.gnome.desktop.interface color-scheme
-        let output = Command::new("gsettings")
-            .args(&["get", "org.gnome.desktop.interface", "color-scheme"])
+        let output = Command::new("dconf")
+            .args(&["read", "/org/gnome/desktop/interface/color-scheme"])
             .output()
             .expect("Failed to execute command");
+
         let theme = String::from_utf8_lossy(&output.stdout);
         return theme.contains("dark");
     }

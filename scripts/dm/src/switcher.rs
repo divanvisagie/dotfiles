@@ -67,26 +67,27 @@ impl Switcher for LinuxSwitcher {
     }
 
     fn switch_theme(&self, dark: bool) {
-        if dark {
-            Command::new("gsettings")
+        let output = if dark {
+            Command::new("dconf")
                 .args(&[
-                    "set",
-                    "org.gnome.desktop.interface",
-                    "color-scheme",
-                    "prefer-dark",
+                    "write",
+                    "/org/gnome/desktop/interface/color-scheme",
+                    "'prefer-dark'",
                 ])
                 .output()
-                .expect("Failed to execute command");
         } else {
-            Command::new("gsettings")
+            Command::new("dconf")
                 .args(&[
-                    "set",
-                    "org.gnome.desktop.interface",
-                    "color-scheme",
-                    "default",
+                    "write",
+                    "/org/gnome/desktop/interface/color-scheme",
+                    "'default'",
                 ])
                 .output()
-                .expect("Failed to execute command");
+        }
+        .expect("Failed to execute command");
+
+        if !output.status.success() {
+            eprintln!("Command failed with status: {}", output.status);
         }
     }
 
