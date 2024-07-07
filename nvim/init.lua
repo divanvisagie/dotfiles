@@ -80,7 +80,6 @@ require("lazy").setup({
     },
     -- Git blame
     'f-person/git-blame.nvim',
-    'brooth/far.vim',
 
 	-- Git diff
 	'tpope/vim-fugitive',
