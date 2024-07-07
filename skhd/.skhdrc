@@ -2,7 +2,7 @@
 alt - t : osascript -e 'tell application "WezTerm" to activate'
 alt - b : ~/.dotfiles/skhd/browser/target/release/browser
 alt - s : osascript -e 'tell application "Slack" to activate'
-alt - g : osascript -e 'tell application "Telegram" to activate'
+alt - g : osascript -e 'tell application "Telegram Lite" to activate'
 alt - d : osascript -e 'tell application "DataGrip" to activate'
 alt - i : osascript -e 'tell application "Insomnia" to activate'
 alt - c : osascript -e 'tell application "Visual Studio Code" to activate'
