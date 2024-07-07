@@ -13,6 +13,7 @@ packages=(
 	"curl"
 	"gum"
 	"wallpaper"
+  "obsidian"
 )
 
 is_installed() {
