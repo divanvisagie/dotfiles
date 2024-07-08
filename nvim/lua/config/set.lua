@@ -16,6 +16,9 @@ vim.opt.foldmethod = "indent"
 -- do not fold by default
 vim.opt.foldlevel = 99
 
+--set lastatatus
+vim.opt.laststatus = 3
+
 --set default splitting behaviour
 vim.opt.splitright = true
 vim.opt.splitbelow = true
