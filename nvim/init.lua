@@ -12,9 +12,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+
+    -- Navigation and refactoring
     'theprimeagen/refactoring.nvim',
     'theprimeagen/harpoon',
-    'dmmulroy/ts-error-translator.nvim',
+
+    -- Translate typescript errors to something easier to parse for grug brain
+    'dmmulroy/ts-error-translator.nvim', 
 
     'preservim/nerdtree', 
 	{
@@ -25,23 +29,24 @@ require("lazy").setup({
         'folke/trouble.nvim', -- Display errors better
         tag = 'v2.10.0'
     },
+
+    -- GitHub Copilot
     'zbirenbaum/copilot.lua',
  	
 	-- debug adapter protocol
     'mfussenegger/nvim-dap',
     'theHamsta/nvim-dap-virtual-text',
 
-	-- tests
-    'klen/nvim-test',              -- run tests
+	-- Tests
+    'klen/nvim-test',              -- Run tests
 
     'nvim-lualine/lualine.nvim',   -- Better status line
 
     'anuvyklack/pretty-fold.nvim', -- Better code folding
-    'nmac427/guess-indent.nvim',   -- guess indentation
+    'nmac427/guess-indent.nvim',   -- Guess indentation
  	
 	-- Color Schemes
     'rose-pine/neovim',
-    'sainnhe/everforest',
     'sainnhe/gruvbox-material',
 
     -- Treesitter
@@ -50,7 +55,7 @@ require("lazy").setup({
         build = ":TSUpdate"  -- This replaces the 'do' hook from Vim-Plug
     },
 
-    -- Comments
+    -- Allow you to to comment stuff out with a shortcut
     'numToStr/Comment.nvim',     
 
     -- undo history visualiser
@@ -63,6 +68,8 @@ require("lazy").setup({
 
     -- Useful status updates for LSP
     { 'j-hui/fidget.nvim', tag = 'legacy' },
+
+    -- LSP stuff
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -78,19 +85,16 @@ require("lazy").setup({
           'L3MON4D3/LuaSnip',     -- Required for snippets
         }
     },
-    -- Git blame
-    'f-person/git-blame.nvim',
-
 	-- Git diff
 	'tpope/vim-fugitive',
 
     -- Thing trouble keeps complaining about
 	'nvim-tree/nvim-web-devicons',
 
-    -- hex editing
+    -- Hex editing
     { 'RaafatTurki/hex.nvim' },
 
-    -- react automatically to dark mode changes
+    -- React automatically to dark mode changes
     'f-person/auto-dark-mode.nvim'
 })
 
