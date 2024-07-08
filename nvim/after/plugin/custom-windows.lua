@@ -1,11 +1,12 @@
+-- Utility function to ensure a directory exists
+function EnsureDirectoryExists(path)
+  -- Use os.execute to create the directory if it doesn't exist
+  os.execute("mkdir -p " .. vim.fn.shellescape(path))
+end
 
-function Today(filename)
-  local date = os.date("*t")
-  local year = date.year
-  local month = string.format("%02d", date.month)
-  local day = string.format("%02d", date.day)
-  local journal_path = "~/Documents/Resources/Journal/" .. year .. "/" .. month .. "/" .. day .. "/" .. filename .. ".md"
-  local buf_name = vim.fn.expand(journal_path)
+-- General-purpose function to open a buffer
+function OpenBuffer(full_path)
+  local buf_name = vim.fn.expand(full_path)
   local existing_bufnr = vim.fn.bufnr(buf_name)
 
   -- Check if the buffer is already open and visible in any window
@@ -25,5 +26,29 @@ function Today(filename)
   end
 end
 
-vim.api.nvim_set_keymap('n', '<leader>td', ':lua Today("journal")<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>cg', ':lua Today("chatbot")<CR>', {noremap = true})
+-- Function to open the journal with a dated directory structure
+function OpenJournal(filename)
+  local date = os.date("*t")
+  local year = date.year
+  local month = string.format("%02d", date.month)
+  local day = string.format("%02d", date.day)
+  local journal_dir = "~/Documents/Resources/Journal/" .. year .. "/" .. month .. "/" .. day .. "/"
+  local journal_path = journal_dir .. filename .. ".md"
+  -- Ensure the directory exists
+  EnsureDirectoryExists(journal_dir)
+  OpenBuffer(journal_path)
+end
+
+-- Function to open the long-running todos file directly
+function OpenLongRunningTodos()
+  local todos_dir = "~/Documents/Projects/Todos/"
+  local todos_path = todos_dir .. "todos.md"
+  -- Ensure the directory exists
+  EnsureDirectoryExists(todos_dir)
+  OpenBuffer(todos_path)
+end
+
+-- Key mappings
+vim.api.nvim_set_keymap('n', '<leader>td', ':lua OpenJournal("journal")<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>cg', ':lua OpenJournal("chatbot")<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>lt', ':lua OpenLongRunningTodos()<CR>', { noremap = true })
