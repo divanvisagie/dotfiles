@@ -16,18 +16,11 @@ zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 
 # Add in snippets
 zinit snippet OMZP::git
-zinit snippet OMZP::yarn
-# zinit snippet OMZP::rust
 
 # if on ubuntu
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    zinit snippet OMZP::ubuntu
     alias wezterm='flatpak run org.wezfurlong.wezterm'
     alias marktext='flatpak run com.github.marktext.marktext'
-fi
-# if on mac
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    zinit snippet OMZP::brew
 fi
 
 autoload -U compinit && compinit

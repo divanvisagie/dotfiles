@@ -1,6 +1,6 @@
 #!/bin/bash
 source ~/.dotfiles/ubuntu/utils.sh
-source ~/.dotfiles/ubuntu/system.sh
+source ~/.dotfiles/ubuntu/packages.sh
 source ~/.dotfiles/utils.sh
 set -e
 
