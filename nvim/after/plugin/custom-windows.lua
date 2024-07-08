@@ -4,20 +4,24 @@ function Today(filename)
   local year = date.year
   local month = string.format("%02d", date.month)
   local day = string.format("%02d", date.day)
-  local journal_path = "~/Documents/Resources/Journal/" .. year .. "/" .. month .. "/" .. day .. "/" .. filename .. ".md" 
+  local journal_path = "~/Documents/Resources/Journal/" .. year .. "/" .. month .. "/" .. day .. "/" .. filename .. ".md"
   local buf_name = vim.fn.expand(journal_path)
   local existing_bufnr = vim.fn.bufnr(buf_name)
 
-  -- Check if the buffer is already open
+  -- Check if the buffer is already open and visible in any window
+  local win_id = vim.fn.win_findbuf(existing_bufnr)
+
   if existing_bufnr == -1 then
-	-- Open new vertical split with the buffer
-	vim.cmd("vsplit " .. buf_name)
-	-- Set filetype to markdown for the new buffer
-	vim.bo.filetype = 'markdown'
+    -- Buffer does not exist, create it
+    vim.cmd("vsplit " .. buf_name)
+    vim.bo.filetype = 'markdown'
+  elseif #win_id == 0 then
+    -- Buffer exists, but not displayed, open in a new split
+    vim.cmd("vsplit")
+    vim.cmd("buffer " .. existing_bufnr)
   else
-	-- Split and display the existing buffer
-	vim.cmd('vsplit')
-	vim.cmd('buffer ' .. existing_bufnr)
+    -- Buffer is already displayed, focus on it
+    vim.cmd("buffer " .. existing_bufnr)
   end
 end
 
