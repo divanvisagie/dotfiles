@@ -1,13 +1,4 @@
-function Trans()
-	-- Set background transparent
-	vim.api.nvim_set_hl(0, "NormalFloat",{ bg = "none" })
-	vim.api.nvim_set_hl(0, "Normal",{ bg = "none" })
-end
-
--- vim.cmd.colorscheme("catpuccin")
 function Dark()
-    -- vim.cmd.colorscheme("everforest")
-    -- vim.g.gruvbox_material_background = "hard"
     vim.g.gruvbox_material_background = "medium"
     vim.cmd.colorscheme("gruvbox-material")
     vim.o.background = "dark"
