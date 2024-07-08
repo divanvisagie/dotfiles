@@ -4,6 +4,10 @@ function EnsureDirectoryExists(path)
   os.execute("mkdir -p " .. vim.fn.shellescape(path))
 end
 
+function ExpandHomePath(path)
+  return path:gsub("^~", os.getenv("HOME"))
+end
+
 -- General-purpose function to open a buffer
 function OpenBuffer(full_path)
   local buf_name = vim.fn.expand(full_path)
@@ -32,7 +36,7 @@ function OpenJournal(filename)
   local year = date.year
   local month = string.format("%02d", date.month)
   local day = string.format("%02d", date.day)
-  local journal_dir = "~/Documents/Resources/Journal/" .. year .. "/" .. month .. "/" .. day .. "/"
+  local journal_dir = ExpandHomePath("~/Documents/Resources/Journal/") .. year .. "/" .. month .. "/" .. day .. "/"
   local journal_path = journal_dir .. filename .. ".md"
   -- Ensure the directory exists
   EnsureDirectoryExists(journal_dir)
@@ -41,7 +45,7 @@ end
 
 -- Function to open the long-running todos file directly
 function OpenLongRunningTodos()
-  local todos_dir = "~/Documents/Projects/Todos/"
+  local todos_dir = ExpandHomePath("~/Documents/Projects/Todos/")
   local todos_path = todos_dir .. "todos.md"
   -- Ensure the directory exists
   EnsureDirectoryExists(todos_dir)
