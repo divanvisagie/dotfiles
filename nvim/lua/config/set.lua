@@ -1,6 +1,7 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
--- dont use swap files
+
+-- Don't use swap files
 vim.opt.swapfile = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -11,15 +12,16 @@ vim.opt.colorcolumn = "80"
 vim.opt.scrolloff = 8
 vim.opt.clipboard = "unnamedplus"
 vim.opt.undolevels = 10000
--- set folding
+
+-- Set folding
 vim.opt.foldmethod = "indent"
--- do not fold by default
+-- Do not fold by default
 vim.opt.foldlevel = 99
 
---set lastatatus
+-- Set lastatatus
 vim.opt.laststatus = 3
 
---set default splitting behaviour
+-- Set default splitting behaviour
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
