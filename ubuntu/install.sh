@@ -33,6 +33,7 @@ fi
 ################################################
 if ! command_exists nix; then
 	sh <(curl -L https://nixos.org/nix/install) --daemon
+	exec $SHELL
 fi
 ~/.dotfiles/nix/install.sh
 
