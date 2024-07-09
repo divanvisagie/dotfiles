@@ -22,9 +22,7 @@ fi
 
 autoload -U compinit && compinit
 
-# ZSH_THEME="powerlevel10k/powerlevel10k"
 export TERM=xterm-256color
-export EDITOR='nvim'
 
 # Keybindings
 bindkey '^p' history-search-backward
