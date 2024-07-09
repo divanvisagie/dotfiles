@@ -14,9 +14,6 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 
-# Add in snippets
-zinit snippet OMZP::git
-
 # if on ubuntu
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     alias wezterm='flatpak run org.wezfurlong.wezterm'
@@ -51,20 +48,22 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # Use LS_COLORS for comp
 
 # Aliases
 alias cb='git branch --show-current'
-alias uuid="uuidgen | tr 'A-F' 'a-f'"
-alias sf="source ~/.zshrc"
-alias ls="eza --group-directories-first"
+alias dfu='~/.dotfiles/install.sh' # Update dotfiles
+alias ed='$EDITOR'
+alias fd='fd --color never'
 alias flushdns='sudo killall -HUP mDNSResponder'
+alias glo='git lg'
+alias gpr='git pull --rebase'
 alias gtop='git log -1 --format="%H" | cat | xargs echo -n | pbcopy'
-alias ns='nix-search'
-alias nu='~/.dotfiles/nix/install.sh' # Update nix environment
+alias ls="eza --group-directories-first"
 alias ne='$EDITOR ~/.dotfiles/nix/default.nix' # Edit nix environment
 alias ni='nix-env -i'
-alias ed='$EDITOR'
+alias ns='nix-search'
+alias nu='~/.dotfiles/nix/install.sh' # Update nix environment
 alias nv='nvim'
-alias dfu='~/.dotfiles/install.sh' # Update dotfiles
 alias rsync='rsync --partial --info=progress2'
-alias fd='fd --color never'
+alias sf="source ~/.zshrc"
+alias uuid="uuidgen | tr 'A-F' 'a-f'"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export GDK_BACKEND=wayland
