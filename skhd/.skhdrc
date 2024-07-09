@@ -2,10 +2,10 @@
 # Key Remaps
 ############################################################
 
-# Map Ctrl + V to Cmd + V
-ctrl - v : cmd - v
-# Map Ctrl + Shift + V to Cmd + V
-ctrl - shift - v : cmd - v
+ctrl - v : skhd -k "cmd - v"
+
+meh - y : skhd -k "cmd - c"
+meh - p : skhd -k "cmd - v"
 
 ############################################################
 # Focus specific applications

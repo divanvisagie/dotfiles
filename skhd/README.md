@@ -16,7 +16,7 @@ deterministic workflow compared to alt-tabbing through a list of open windows.
 
 ```sh
 brew install koekeishiya/formulae/skhd
-brew services start skhd
+skhd --start-service
 ```
 
 
