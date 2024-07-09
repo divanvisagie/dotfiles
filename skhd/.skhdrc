@@ -1,4 +1,15 @@
+############################################################
+# Key Remaps
+############################################################
+
+# Map Ctrl + V to Cmd + V
+ctrl - v : cmd - v
+# Map Ctrl + Shift + V to Cmd + V
+ctrl - shift - v : cmd - v
+
+############################################################
 # Focus specific applications
+############################################################
 alt - t : osascript -e 'tell application "WezTerm" to activate'
 alt - b : ~/.dotfiles/skhd/browser/target/release/browser
 alt - s : osascript -e 'tell application "Slack" to activate'
