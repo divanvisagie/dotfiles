@@ -5,6 +5,7 @@ enum Browser {
     Chrome(String, String),
     Firefox(String, String),
     Safari(String, String),
+    Brave(String, String),
 }
 
 fn get_default_browser() -> std::io::Result<Browser> {
@@ -27,6 +28,7 @@ fn get_default_browser() -> std::io::Result<Browser> {
                 "org.mozilla.firefox" => Ok(Browser::Firefox("Firefox".to_string(), bundle_id.to_string())),
                 "com.google.chrome" => Ok(Browser::Chrome("Google Chrome".to_string(), bundle_id.to_string())),
                 "com.apple.Safari" => Ok(Browser::Safari("Safari".to_string(), bundle_id.to_string())),
+                "com.brave.browser" => Ok(Browser::Brave("Brave".to_string(), bundle_id.to_string())),
                 _ => Err(std::io::Error::new(std::io::ErrorKind::Other, "Unknown browser")),
             }
         }
@@ -37,6 +39,13 @@ fn get_default_browser() -> std::io::Result<Browser> {
 fn focus_browser(browser: &Browser) {
     // osascript -e 'tell application "Google Chrome" to activate'
     match browser {
+        Browser::Brave(_, _) => {
+            Command::new("osascript")
+                .arg("-e")
+                .arg("tell application \"Brave Browser\" to activate")
+                .output()
+                .expect("failed to execute process");
+        }
         Browser::Chrome(_, _) => {
             Command::new("osascript")
                 .arg("-e")
@@ -65,6 +74,7 @@ fn main() {
         Ok(output) => {
             focus_browser(&output);
             let name = match output {
+                Browser::Brave(name, _ ) => name,
                 Browser::Chrome(name, _) => name,
                 Browser::Firefox(name, _) => name,
                 Browser::Safari(name, _) => name,
