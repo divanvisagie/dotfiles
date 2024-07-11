@@ -11,6 +11,11 @@ local mappings = {
 		t = { "<cmd>NERDTreeToggle<CR>", "Toggle" },
 		f = { "<cmd>NERDTreeFind<CR>", "Find in tree" },
 	},
+	h = {
+		a = {
+		    f = { "<cmd>NERDTreeFind<CR>", "Find in tree" },
+		}
+	}
 }
 local opts = { prefix = "<leader>" }
 wk.register(mappings, opts)
