@@ -146,7 +146,7 @@ echo -ne "\x1b]0;$title\x1b\\"
 
 # Shell integrations
 eval "$(direnv hook zsh)"
-
+export CGIP_SESSION_NAME=$(date -I)
 # Enable vi mode, we do this before 
 # starship so that we dont interfere with it 
 # afterward
