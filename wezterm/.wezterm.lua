@@ -12,7 +12,6 @@ local config = wezterm.config_builder()
 
 -- Set no window buttons
 config.use_fancy_tab_bar = true
-config.enable_wayland = true
 
 -- Only show bar if there is more than one tab
 config.hide_tab_bar_if_only_one_tab = true
@@ -70,7 +69,7 @@ end
 
 config.font = wezterm.font("MesloLGS NF")
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
-    config.font_size = 18.0
+    config.font_size = 17.0
     config.window_decorations = "NONE"
 else
     config.font_size = 21.0

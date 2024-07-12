@@ -20,8 +20,8 @@ if [ -n "$DISPLAY" ]; then
 	flatpak install --or-update flathub com.spotify.Client
 	flatpak install --or-update flathub me.proton.Pass
 	flatpak install --or-update flathub org.mozilla.firefox
-	flatpak install --or-update flathub org.telegram.desktop
 	flatpak install --or-update flathub org.wezfurlong.wezterm
+	flatpak install --or-update flathub md.obsidian.Obsidian
 fi
 
 if [ "$MACHINE_TYPE" = "laptop" ]; then

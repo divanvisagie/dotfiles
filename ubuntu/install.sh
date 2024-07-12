@@ -54,6 +54,7 @@ for package in "${system_packages[@]}"; do
     log_info "$package is already installed. Skipping."
   fi
 done
+snap install telegram-desktop
 
 # Set the shell to zsh if it isnt
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
