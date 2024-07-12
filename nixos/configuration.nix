@@ -126,6 +126,8 @@
      telegram-desktop
      xclip
      vim
+     tailscale
+     gitui
      vscode
      wezterm
      wget
