@@ -31,13 +31,25 @@ function OpenBuffer(full_path)
 end
 
 -- Function to open the journal with a dated directory structure
-function OpenJournal(filename)
+function OpenJournal()
   local date = os.date("*t")
   local year = date.year
   local month = string.format("%02d", date.month)
   local day = string.format("%02d", date.day)
-  local journal_dir = ExpandHomePath("~/Documents/Resources/Journal/") .. year .. "/" .. month .. "/" .. day .. "/"
-  local journal_path = journal_dir .. filename .. ".md"
+  local journal_dir = ExpandHomePath("~/Documents/Resources/Journal/")
+  local journal_path = journal_dir .. year .. "-" .. month.. "-" .. day .. ".md"
+  -- Ensure the directory exists
+  EnsureDirectoryExists(journal_dir)
+  OpenBuffer(journal_path)
+end
+
+function OpenChat()
+  local date = os.date("*t")
+  local year = date.year
+  local month = string.format("%02d", date.month)
+  local day = string.format("%02d", date.day)
+  local journal_dir = ExpandHomePath("~/Documents/Archives/Chat/")
+  local journal_path = journal_dir .. year .. "-" .. month.. "-" .. day .. ".md"
   -- Ensure the directory exists
   EnsureDirectoryExists(journal_dir)
   OpenBuffer(journal_path)
@@ -54,5 +66,5 @@ end
 
 -- Key mappings
 vim.api.nvim_set_keymap('n', '<leader>td', ':lua OpenJournal("journal")<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>cg', ':lua OpenJournal("chatbot")<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>cg', ':lua OpenChat("chatbot")<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>lt', ':lua OpenLongRunningTodos()<CR>', { noremap = true })
