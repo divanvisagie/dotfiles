@@ -16,6 +16,25 @@ nvim_lsp.vtsls.setup {
   },
 }
 
+require('lspconfig').lua_ls.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = { 'vim' , 'go' , 'kafka' , 'psql' },  -- Common global for Neovim
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
