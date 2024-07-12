@@ -1,9 +1,10 @@
 #!/bin/bash
 
+
 # Define variables
-ISO_PATH="Downloads/nixos-gnome-24.05.1695.dd457de7e08c-x86_64-linux.iso"
+ISO_PATH="$HOME/Downloads/nixos-gnome-24.05.1695.dd457de7e08c-x86_64-linux.iso"
 VM_NAME="nixos_vm"
-VM_DISK="Disks/nixos_vm_disk.img"  
+VM_DISK="$HOME/Disks/nixos_vm_disk.img"  
 RAM_SIZE="4G"
 CPU_COUNT="2"
 DISK_SIZE="20G"
