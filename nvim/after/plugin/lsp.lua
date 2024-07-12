@@ -23,7 +23,7 @@ require('lspconfig').lua_ls.setup {
         version = 'LuaJIT',
       },
       diagnostics = {
-        globals = { 'vim' , 'go' , 'kafka' , 'psql' },  -- Common global for Neovim
+        globals = { 'vim' , 'http', 'go' , 'kafka' , 'psql' },  -- Common global for Neovim
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
