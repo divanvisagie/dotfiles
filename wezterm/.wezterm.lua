@@ -14,7 +14,7 @@ local config = wezterm.config_builder()
 config.use_fancy_tab_bar = true
 
 -- Only show bar if there is more than one tab
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 --
 -- Don't pad the window
 config.window_padding = {
@@ -23,6 +23,7 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
+
 
 config.inactive_pane_hsb = {
   saturation = 1,
@@ -34,19 +35,9 @@ config.bold_brightens_ansi_colors = false
 -- Set font rules to disable bolding and italics
 config.font_rules = {
   {
-    -- Matcher
-    italic = true, 
-    -- Setter
-    -- We show regular here, not italic
-    font = wezterm.font("MesloLGS NF", {weight="Regular"}),
+    italic = true, -- Matcher
+    font = wezterm.font("MesloLGS NF", {weight="Regular"}), -- Setter
   },
-  -- {
-  --   -- Matcher
-  --   intensity = "Bold",
-  --   -- Setter
-  --   -- We show regular here, not bold
-  --   font = wezterm.font("MesloLGS NF", {weight="Regular"}),
-  -- },
 }
 
 -- Function to choose a color scheme based on appearance
@@ -82,9 +73,9 @@ wezterm.on('window-config-reloaded', function(window, pane)
     local scheme = scheme_for_appearance(appearance)
     local override_theme = get_theme(appearance)
 
-        overrides.color_scheme = scheme
-        overrides.colors = override_theme
-        window:set_config_overrides(overrides)
+    overrides.color_scheme = scheme
+    overrides.colors = override_theme
+    window:set_config_overrides(overrides)
 
 end)
 
@@ -136,20 +127,30 @@ config.keys = {
   {key="j", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Down"}},
   {key="k", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Up"}},
   -- Set ctrl +t to create a new tab
-  {key="t", mods="CTRL|SHIFT", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
+  {key="t", mods="CTRL", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
   -- close the tab with ctrl shift w
   {key="w", mods="CTRL|SHIFT", action=wezterm.action{CloseCurrentTab={confirm=true}}},
+  
+  -- Split Pane
+  {key="%", mods="CTRL|SHIFT", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
+  {key="\"", mods="CTRL|SHIFT", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
+
+  -- Resize split
+  {key="l", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Right', 5 }}},
+  {key="h", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Left', 5 }}},
+  {key="j", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Down', 5 }}},
+  {key="k", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Up', 5 }}},
 
   -- Switch tabs with super + number
-  {key="1", mods="CTRL|SHIFT", action=wezterm.action{ActivateTab=0}},
-  {key="2", mods="CTRL|SHIFT", action=wezterm.action{ActivateTab=1}},
-  {key="3", mods="CTRL|SHIFT", action=wezterm.action{ActivateTab=2}},
-  {key="4", mods="CTRL|SHIFT", action=wezterm.action{ActivateTab=3}},
-  {key="5", mods="CTRL|SHIFT", action=wezterm.action{ActivateTab=4}},
-  {key="6", mods="CTRL|SHIFT", action=wezterm.action{ActivateTab=5}},
-  {key="7", mods="CTRL|SHIFT", action=wezterm.action{ActivateTab=6}},
-  {key="8", mods="CTRL|SHIFT", action=wezterm.action{ActivateTab=7}},
-  {key="9", mods="CTRL|SHIFT", action=wezterm.action{ActivateTab=8}},
+  {key="1", mods="CTRL", action=wezterm.action{ActivateTab=0}},
+  {key="2", mods="CTRL", action=wezterm.action{ActivateTab=1}},
+  {key="3", mods="CTRL", action=wezterm.action{ActivateTab=2}},
+  {key="4", mods="CTRL", action=wezterm.action{ActivateTab=3}},
+  {key="5", mods="CTRL", action=wezterm.action{ActivateTab=4}},
+  {key="6", mods="CTRL", action=wezterm.action{ActivateTab=5}},
+  {key="7", mods="CTRL", action=wezterm.action{ActivateTab=6}},
+  {key="8", mods="CTRL", action=wezterm.action{ActivateTab=7}},
+  {key="9", mods="CTRL", action=wezterm.action{ActivateTab=8}},
 }
 
 -- We have to return the config
