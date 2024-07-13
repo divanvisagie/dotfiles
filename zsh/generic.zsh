@@ -64,9 +64,13 @@ alias sf="source ~/.zshrc"
 alias uuid="uuidgen | tr 'A-F' 'a-f'"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    export GDK_BACKEND=wayland
-    alias pbcopy='wl-copy'
-    alias pbpaste='wl-paste'
+    # if wayland
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+        export GDK_BACKEND=wayland
+        alias pbcopy='wl-copy'
+    else
+        alias pbcopy='xclip -selection c'
+    fi
 fi
 
 # Custom functions
