@@ -44,15 +44,8 @@ fi
 if [ "$MACHINE_TYPE" = "desktop" ]; then
 	echo "Installing desktop settings"
 	# Load dconf settings for tactile
-	# captured with: dconf dump /org/gnome/shell/extensions/tactile/ > tactile-settings.dconf
-    # dconf load /org/gnome/shell/extensions/tactile/ < ~/.dotfiles/ubuntu/tactile-settings.dconf
-	gsettings set org.gnome.shell.extensions.tactile col-0 1
-	gsettings set org.gnome.shell.extensions.tactile col-1 2
-	gsettings set org.gnome.shell.extensions.tactile col-2 2
-	gsettings set org.gnome.shell.extensions.tactile col-3 1
-	gsettings set org.gnome.shell.extensions.tactile row-0 1
-	gsettings set org.gnome.shell.extensions.tactile row-1 1
-	gsettings set org.gnome.shell.extensions.tactile gap-size 8
+	# captured with: dconf dump /org/gnome/shell/extensions/tactile/ > tactile-settings-desktop.dconf
+	dconf load /org/gnome/shell/extensions/tactile/ < ~/.dotfiles/ubuntu/tactile-settings-desktop.dconf
 else 
 	echo "Installing laptop settings"
 	# Load dconf settings for tactile
