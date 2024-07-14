@@ -91,6 +91,14 @@ function tab_title(tab_info)
   return active_pane.title
 end
 
+local function get_zoomed_indicator(pane)
+  if pane.is_zoomed then
+    return '*Z'
+  else
+    return ''
+  end
+end
+
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
@@ -111,11 +119,11 @@ wezterm.on(
         fgcolor = '#928374'
       end
     end
-
+    local zoomed_indicator = get_zoomed_indicator(pane)
     return {
       { Background = { Color = color } },
       { Foreground = { Color = fgcolor} },
-      { Text = ' ' .. tab.tab_index+1 .. ' │ ' .. title .. ' │ '},
+      { Text = ' ' .. tab.tab_index+1 .. ' │ ' .. title .. ' │' .. zoomed_indicator },
     }
   end
 )
@@ -136,12 +144,12 @@ config.keys = {
   {key="\"", mods="CTRL|SHIFT", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
 
   -- Resize split
-  {key="l", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Right', 5 }}},
-  {key="h", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Left', 5 }}},
-  {key="j", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Down', 5 }}},
-  {key="k", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Up', 5 }}},
+  {key="l", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Right', 2 }}},
+  {key="h", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Left',  2 }}},
+  {key="j", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Down',  2 }}},
+  {key="k", mods="CTRL|SHIFT", action=wezterm.action{AdjustPaneSize={ 'Up',    2 }}},
 
-  -- Switch tabs with super + number
+  -- Switch tabs with ctrl + number
   {key="1", mods="CTRL", action=wezterm.action{ActivateTab=0}},
   {key="2", mods="CTRL", action=wezterm.action{ActivateTab=1}},
   {key="3", mods="CTRL", action=wezterm.action{ActivateTab=2}},
@@ -151,6 +159,17 @@ config.keys = {
   {key="7", mods="CTRL", action=wezterm.action{ActivateTab=6}},
   {key="8", mods="CTRL", action=wezterm.action{ActivateTab=7}},
   {key="9", mods="CTRL", action=wezterm.action{ActivateTab=8}},
+  
+  -- Switch tabs with alt + number
+  {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
+  {key="2", mods="ALT", action=wezterm.action{ActivateTab=1}},
+  {key="3", mods="ALT", action=wezterm.action{ActivateTab=2}},
+  {key="4", mods="ALT", action=wezterm.action{ActivateTab=3}},
+  {key="5", mods="ALT", action=wezterm.action{ActivateTab=4}},
+  {key="6", mods="ALT", action=wezterm.action{ActivateTab=5}},
+  {key="7", mods="ALT", action=wezterm.action{ActivateTab=6}},
+  {key="8", mods="ALT", action=wezterm.action{ActivateTab=7}},
+  {key="9", mods="ALT", action=wezterm.action{ActivateTab=8}},
 }
 
 -- We have to return the config
