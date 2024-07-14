@@ -32,6 +32,14 @@ vim.api.nvim_set_keymap('n', '<C-k>', ':resize +2<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-h>', ':vertical resize -2<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-l>', ':vertical resize +2<CR>', {noremap = true})
 
+-- Set local leaders
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Clear search
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 -- Apply specific rules to markdown files
 vim.api.nvim_exec([[ 
   autocmd FileType markdown setlocal formatoptions+=t 
