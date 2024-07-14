@@ -14,7 +14,7 @@ local config = wezterm.config_builder()
 config.use_fancy_tab_bar = true
 
 -- Only show bar if there is more than one tab
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 
 config.window_frame = {
   font = wezterm.font { family = 'Ubuntu', weight = 'Bold' },
@@ -142,7 +142,7 @@ config.keys = {
   {key="j", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Down"}},
   {key="k", mods="CTRL|ALT", action=wezterm.action{ActivatePaneDirection="Up"}},
   -- Set ctrl +t to create a new tab
-  {key="t", mods="CTRL", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
+  {key="t", mods="CTRL|SHIFT", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
   -- close the tab with ctrl shift w
   {key="w", mods="CTRL|SHIFT", action=wezterm.action{CloseCurrentTab={confirm=true}}},
   
@@ -166,17 +166,6 @@ config.keys = {
   {key="7", mods="CTRL", action=wezterm.action{ActivateTab=6}},
   {key="8", mods="CTRL", action=wezterm.action{ActivateTab=7}},
   {key="9", mods="CTRL", action=wezterm.action{ActivateTab=8}},
-  
-  -- Switch tabs with alt + number
-  {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
-  {key="2", mods="ALT", action=wezterm.action{ActivateTab=1}},
-  {key="3", mods="ALT", action=wezterm.action{ActivateTab=2}},
-  {key="4", mods="ALT", action=wezterm.action{ActivateTab=3}},
-  {key="5", mods="ALT", action=wezterm.action{ActivateTab=4}},
-  {key="6", mods="ALT", action=wezterm.action{ActivateTab=5}},
-  {key="7", mods="ALT", action=wezterm.action{ActivateTab=6}},
-  {key="8", mods="ALT", action=wezterm.action{ActivateTab=7}},
-  {key="9", mods="ALT", action=wezterm.action{ActivateTab=8}},
 }
 
 -- We have to return the config
