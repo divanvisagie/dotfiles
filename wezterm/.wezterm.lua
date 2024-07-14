@@ -23,7 +23,7 @@ config.window_frame = {
   -- Whatever font is selected here, it will have the
   -- main font setting appended to it to pick up any
   -- fallback fonts you may have used there.
-  font = wezterm.font { family = 'Roboto', weight = 'Bold' },
+  font = wezterm.font { family = 'Ubuntu', weight = 'Bold' },
 
   -- Default to 10.0 on Windows but 12.0 on other systems
   font_size = 18.0,
