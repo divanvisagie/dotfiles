@@ -15,7 +15,24 @@ config.use_fancy_tab_bar = true
 
 -- Only show bar if there is more than one tab
 config.hide_tab_bar_if_only_one_tab = false
---
+
+config.window_frame = {
+  -- The font used in the tab bar.
+  -- Roboto Bold is the default; this font is bundled
+  -- with wezterm.
+  -- Whatever font is selected here, it will have the
+  -- main font setting appended to it to pick up any
+  -- fallback fonts you may have used there.
+  font = wezterm.font { family = 'Roboto', weight = 'Bold' },
+
+  -- Default to 10.0 on Windows but 12.0 on other systems
+  font_size = 18.0,
+
+  -- The overall background color of the tab bar when
+  -- the window is not focused
+  inactive_titlebar_bg = '#333333',
+}
+
 -- Don't pad the window
 config.window_padding = {
   left = 0,
