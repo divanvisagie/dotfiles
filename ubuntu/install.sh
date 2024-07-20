@@ -54,11 +54,13 @@ for package in "${system_packages[@]}"; do
     log_info "$package is already installed. Skipping."
   fi
 done
-snap install telegram-desktop
-snap install brave
-snap install spotify
 
-# Set the shell to zsh if it isnt
+# Telegram is the kind of tool you want to be always updated
+# Snap keeps this in motion and I have had issues with the flatpak for this 
+# particular app fail before
+snap install telegram-desktop
+
+# Set the shell to zsh if it isn't
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
 	chsh -s $(which zsh)
 fi

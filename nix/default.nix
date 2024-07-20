@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { config.allowUnfree = true; } }:
 
 pkgs.buildEnv {
   name = "my-environment";
@@ -7,6 +7,7 @@ pkgs.buildEnv {
     pkgs.autogen
     pkgs.bat # rust replacement for less
     pkgs.bottom # rust replacement for top
+    pkgs.brave
     pkgs.bun
     pkgs.cmake
     pkgs.cowsay
@@ -31,6 +32,7 @@ pkgs.buildEnv {
     pkgs.procs # better version of ps
     pkgs.qemu
     pkgs.ripgrep
+    pkgs.spotify
     pkgs.tldr # simplified man pages
     pkgs.tmux
     pkgs.tokei # find out what programming languages are in use in this directory
