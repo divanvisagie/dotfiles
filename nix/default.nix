@@ -7,7 +7,6 @@ pkgs.buildEnv {
     pkgs.autogen
     pkgs.bat # rust replacement for less
     pkgs.bottom # rust replacement for top
-    pkgs.brave
     pkgs.bun
     pkgs.cmake
     pkgs.cowsay

@@ -15,6 +15,7 @@ if [ -n "$DISPLAY" ]; then
 	flatpak install --or-update flathub ch.protonmail.protonmail-bridge
 	flatpak install --or-update flathub com.github.finefindus.eyedropper
 	flatpak install --or-update flathub com.protonvpn.www
+	flatpak install --or-update flathub com.brave.Browser
 	flatpak install --or-update flathub me.proton.Pass
 	flatpak install --or-update flathub org.wezfurlong.wezterm
 	flatpak install --or-update flathub md.obsidian.Obsidian
