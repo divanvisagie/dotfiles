@@ -10,7 +10,6 @@ fi
 
 # Aliases
 alias cb='git branch --show-current'
-alias dfu='~/.dotfiles/install.sh' # Update dotfiles
 alias ed='$EDITOR'
 alias fd='fd --color never'
 alias flushdns='sudo killall -HUP mDNSResponder'
@@ -19,9 +18,7 @@ alias gpr='git pull --rebase'
 alias gtop='git log -1 --format="%H" | cat | xargs echo -n | pbcopy'
 alias ls="eza --group-directories-first"
 alias ne='$EDITOR ~/.dotfiles/nix/default.nix' # Edit nix environment
-alias ni='nix-env -i'
 alias ns='nix-search'
-alias nu='~/.dotfiles/nix/install.sh' # Update nix environment
 alias nv='nvim'
 alias rsync='rsync --partial --info=progress2'
 alias sf="source ~/.bashrc"
