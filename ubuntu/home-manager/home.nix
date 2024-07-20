@@ -38,9 +38,6 @@
     pkgs.nodejs_20
     pkgs.nyancat
     pkgs.procs # better version of ps
-    pkgs.protonvpn-gui
-    pkgs.protonmail-bridge
-    pkgs.protonmail-bridge-gui
     pkgs.qemu
     pkgs.ripgrep
     pkgs.rustup
