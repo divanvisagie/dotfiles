@@ -60,11 +60,6 @@ done
 # particular app fail before
 snap install telegram-desktop
 
-# Set the shell to zsh if it isn't
-if [ "$SHELL" != "/usr/bin/zsh" ]; then
-	chsh -s $(which zsh)
-fi
-
 ################################################
 # Install flatpacks
 ################################################

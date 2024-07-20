@@ -8,17 +8,15 @@ is_headless() {
 	[ -z "$DISPLAY" ]
 }
 
-# Writes an env export to the machine specific prefs zsh file
+# Writes an env export to the machine specific prefs sh file
 # so that user choices about dotfiles can be persisted.
 # Example Usage: write_env "MACHINE_TYPE" "laptop"
 write_env() {
-  # set what we will write as a variable first
-  # then append it to the .zshrc file
   local env_var="export $1=$2"
-  if grep -q "$env_var" ~/.dotfiles/zsh/prefs.zsh; then
+  if grep -q "$env_var" ~/.dotfiles/bash/prefs.sh; then
 	return
   fi
-  echo $env_var >> ~/.dotfiles/zsh/prefs.zsh
+  echo $env_var >> ~/.dotfiles/bash/prefs.sh
 }
 
 log_info() {

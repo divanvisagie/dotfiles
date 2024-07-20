@@ -68,15 +68,14 @@ mkdir -p ~/Projects/com.github
 ~/.dotfiles/tmux/install.sh
 ~/.dotfiles/vim/install.sh
 ~/.dotfiles/wezterm/install.sh
-~/.dotfiles/zsh/install.sh
 
 # Install custom tools
 echo "Installing dark mode switcher..."
 cargo install --path ~/.dotfiles/scripts/dm
 
 # if prefs exists, source it
-if [ -f ~/.dotfiles/zsh/prefs.zsh ]; then
-	source ~/.dotfiles/zsh/prefs.zsh
+if [ -f ~/.dotfiles/bash/prefs.sh ]; then
+	source ~/.dotfiles/bash/prefs.sh
 fi
 
 cat << 'EOF'
