@@ -55,7 +55,6 @@ for package in "${system_packages[@]}"; do
   fi
 done
 snap install telegram-desktop
-snap install firefox
 snap install brave
 snap install spotify
 
