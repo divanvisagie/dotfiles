@@ -97,6 +97,14 @@ function httpserver () {
     python3 -m http.server "$port"
 }
 
+# Hook into the prompt and apply title on directory change
+chpwd() {
+    local title=$(basename "$PWD")
+    echo -ne "\033]0;$title\007"
+}
+# Hook the function to the PROMPT_COMMAND
+PROMPT_COMMAND="chpwd; $PROMPT_COMMAND"
+
 # Enable bash vi mode
 set -o vi
 shopt -s autocd
