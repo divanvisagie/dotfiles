@@ -1,22 +1,14 @@
 -- NERDTree toggle mapping
-vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
 
--- Mapping to find the active file in NERDTree
+-- Show hidden files in NERDTree
 vim.g.NERDTreeShowHidden = 1
 
-local wk = require("which-key")
-local mappings = {
-	n = {
-		name = "NERDTree",
-		t = { "<cmd>NERDTreeToggle<CR>", "Toggle" },
-		f = { "<cmd>NERDTreeFind<CR>", "Find in tree" },
-	},
-	h = {
-		a = {
-		    f = { "<cmd>NERDTreeFind<CR>", "Find in tree" },
-		}
-	}
-}
-local opts = { prefix = "<leader>" }
-wk.register(mappings, opts)
+-- Toggle NERDTree
+vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>NERDTreeToggle<CR>', { noremap = true, silent = true })
 
+-- Find the active file in NERDTree
+vim.api.nvim_set_keymap('n', '<leader>nf', '<cmd>NERDTreeFind<CR>', { noremap = true, silent = true })
+
+-- Nested mapping for hierarchical shortcut: <leader>h -> a -> f
+vim.api.nvim_set_keymap('n', '<leader>haf', '<cmd>NERDTreeFind<CR>', { noremap = true, silent = true })

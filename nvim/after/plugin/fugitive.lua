@@ -1,18 +1,8 @@
--- Require which-key
-local wk = require("which-key")
+-- Git status
+vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>G<CR>', { noremap = true, silent = true })
 
--- Define the mappings
-local mappings = {
-  g = {
-    name = "Git",
-    g = { "<cmd>G<CR>", "Status" },
-    s = { "<cmd>Gvdiffsplit<CR>", "Split vertical diff" },
-    b = { "<cmd>Git blame<CR>", "Blame" },
-  },
-}
+-- Split vertical diff
+vim.api.nvim_set_keymap('n', '<leader>gs', '<cmd>Gvdiffsplit<CR>', { noremap = true, silent = true })
 
--- Define the options
-local opts = { prefix = "<leader>" }
-
--- Register the mappings
-wk.register(mappings, opts)
+-- Git blame
+vim.api.nvim_set_keymap('n', '<leader>gb', '<cmd>Git blame<CR>', { noremap = true, silent = true })
