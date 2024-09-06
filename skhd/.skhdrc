@@ -2,7 +2,6 @@
 # Key Remaps
 ############################################################
 
-ctrl - v : skhd -k "cmd - v"
 
 meh - y : skhd -k "cmd - c"
 meh - p : skhd -k "cmd - v"
