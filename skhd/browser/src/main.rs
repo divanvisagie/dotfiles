@@ -29,7 +29,7 @@ fn get_default_browser() -> std::io::Result<Browser> {
                 "com.google.chrome" => Ok(Browser::Chrome("Google Chrome".to_string(), bundle_id.to_string())),
                 "com.apple.Safari" => Ok(Browser::Safari("Safari".to_string(), bundle_id.to_string())),
                 "com.brave.browser" => Ok(Browser::Brave("Brave".to_string(), bundle_id.to_string())),
-                _ => Err(std::io::Error::new(std::io::ErrorKind::Other, "Unknown browser")),
+                _ => Ok(Browser::Safari("Safari".to_string(), bundle_id.to_string())),
             }
         }
         Err(e) => Err(e),
