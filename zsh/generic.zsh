@@ -154,7 +154,7 @@ export CGIP_SESSION_NAME=$(date -I)
 # Enable vi mode, we do this before 
 # starship so that we dont interfere with it 
 # afterward
-bindkey -v
+# bindkey -v
 
 # Automatically CD when providing a file path
 setopt AUTO_CD
