@@ -7,6 +7,10 @@ end
 function Light()
     vim.cmd.colorscheme("rose-pine")
     vim.o.background = "light"
+    -- set background colour transparent
+    vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+    -- set unfocused buffers to also have transparent background
+    vim.cmd("hi NormalNC guibg=NONE ctermbg=NONE")
 end
 
 function IsDarkMode()
