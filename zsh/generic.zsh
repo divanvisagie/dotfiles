@@ -17,7 +17,6 @@ zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 # if on ubuntu
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     alias wezterm='flatpak run org.wezfurlong.wezterm'
-    alias marktext='flatpak run com.github.marktext.marktext'
 fi
 
 autoload -U compinit && compinit
