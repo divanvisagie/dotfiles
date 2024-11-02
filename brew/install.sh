@@ -13,7 +13,6 @@ packages=(
 	"curl"
 	"gum"
 	"wallpaper"
-  "obsidian"
 )
 
 is_installed() {
@@ -29,13 +28,6 @@ for package in "${packages[@]}"; do
   fi
 done
 
-################################################
-# Install nix
-################################################
-if ! [ -x "$(command -v nix)" ]; then
-	sh <(curl -L https://nixos.org/nix/install)
-fi
-~/.dotfiles/nix/install.sh
 echo "Setting up skhd..."
 ~/.dotfiles/skhd/install.sh
 

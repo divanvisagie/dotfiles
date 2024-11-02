@@ -27,10 +27,10 @@ EOF
 OS=$(uname)
 if [[ "$OS" == "Linux" ]]; then
 	echo "Linux detected..."
-	~/.dotfiles/ubuntu/install.sh
+	echo "No Extra Installation."
 else
 	echo "macOS detected..."
-	~/.dotfiles/macos/install.sh
+	~/.dotfiles/brew/install.sh
 fi
 echo "Installing common dependencies..."
 
@@ -67,7 +67,6 @@ mkdir -p ~/Projects/com.github
 ~/.dotfiles/nvim/install.sh
 ~/.dotfiles/tmux/install.sh
 ~/.dotfiles/vim/install.sh
-~/.dotfiles/wezterm/install.sh
 
 # Install custom tools
 echo "Installing dark mode switcher..."
