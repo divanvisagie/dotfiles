@@ -5,8 +5,19 @@ require("neodev").setup({
 })
 
 local nvim_lsp = require("lspconfig")
+local util = require("lspconfig.util")
+
+nvim_lsp.denols.setup({
+    root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+    init_options = {
+        lint = true,
+        unstable = true,
+    },
+})
+
 
 nvim_lsp.vtsls.setup {
+  root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
   settings = {
     typescript = {
       tsserver = {
@@ -14,6 +25,7 @@ nvim_lsp.vtsls.setup {
       },
     },
   },
+  single_file_support = false,
 }
 
 
@@ -27,7 +39,8 @@ lsp.ensure_installed({
     'jsonls',
     'yamlls',
     'gopls',
-    'vtsls' -- tsserver replacement
+    'vtsls', -- tsserver replacement
+    'denols'
 })
 
 nvim_lsp.rust_analyzer.setup({
