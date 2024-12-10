@@ -81,29 +81,6 @@ function strp() {
   '
 }
 
-# A shutdown system 
-function down() {
-   # Get the name of the primary network interface
-   local interface=$(ip route | grep '^default' | awk '{print $5}')
-   
-   # Check if an interface is found
-   if [ -z "$interface" ]; then
-       echo "No network interface found. Ensure you are connected to a network."
-       return 1
-   fi
-
-   # Apply the Wake-on-LAN setting
-   sudo ethtool -s "$interface" wol g
-   if [[ $? -ne 0 ]]; then
-       echo "Failed to set Wake-on-LAN for $interface"
-       return 1
-   fi
-
-   # Shutdown the system
-   echo "Shutting down..."
-   sudo shutdown -h now
-}
-
 function kb() {
     for job in $(jobs -p); do kill -9 $job; done
 }
