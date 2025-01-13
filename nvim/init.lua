@@ -83,6 +83,7 @@ require("lazy").setup({
           'hrsh7th/nvim-cmp',     -- Required for autocompletion
           'hrsh7th/cmp-nvim-lsp', -- Required for LSP completion source
           'L3MON4D3/LuaSnip',     -- Required for snippets
+          'Feel-ix-343/markdown-oxide',
         }
     },
 	-- Git diff
