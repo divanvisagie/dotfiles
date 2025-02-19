@@ -54,6 +54,18 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate"  -- This replaces the 'do' hook from Vim-Plug
     },
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+      config = function()
+        require("treesitter-context").setup {
+          enable = true,  -- Enable the plugin
+          max_lines = 3,  -- Show up to 3 lines of context
+          trim_scope = "outer",  -- Trim long context blocks
+          mode = "cursor",  -- Show context at cursor (can be "topline" too)
+        }
+      end
+    },
 
     -- Allow you to to comment stuff out with a shortcut
     'numToStr/Comment.nvim',     
