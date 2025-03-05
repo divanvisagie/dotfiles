@@ -47,12 +47,29 @@ function OpenJournal()
 end
 
 function OpenChat()
+
+  -- Start by getting the git root or cwd
+  local root_dir = vim.fn.getcwd()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+  if git_root and git_root ~= "" and not git_root:match("fatal") then
+    root_dir = git_root
+  end
+  
+  -- Create the unique hash
+  local salt = root_dir  
+  local unique_hash = vim.fn.system("echo -n '" .. salt .. "' | shasum -a 256 | awk '{print $1}'")
+  -- shorten hash
+  unique_hash = string.sub(unique_hash, 1, 8)
+
+
+  local journal_dir = ExpandHomePath("~/Documents/Archives/Chat/")
+  local journal_path = journal_dir .. unique_hash .. ".md"
   local date = os.date("*t")
   local year = date.year
   local month = string.format("%02d", date.month)
   local day = string.format("%02d", date.day)
   local journal_dir = ExpandHomePath("~/Documents/Archives/Chat/")
-  local journal_path = journal_dir .. year .. "-" .. month.. "-" .. day .. ".md"
+  local journal_path = journal_dir  .. year .. "-" .. month.. "-" .. day .. "-" .. unique_hash .. ".md"
   
   -- Ensure the directory exists
   EnsureDirectoryExists(journal_dir)
