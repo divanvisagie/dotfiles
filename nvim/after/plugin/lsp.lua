@@ -107,3 +107,8 @@ lsp.on_attach(function(_, bufnr)
 end)
 lsp.setup()
 
+-- assign to a keybind
+-- :lua require('telescope.builtin').lsp_document_symbols()
+vim.keymap.set("n", "<leader>ds", function()
+    require('telescope.builtin').lsp_document_symbols()
+end)
