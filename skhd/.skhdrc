@@ -45,6 +45,8 @@ ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
 
 # Center 23rds
 ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1
+# Center 2 4ths
+ctrl + alt - s : yabai -m window --grid 1:4:1:0:2:1
 
 # Move to other screen
 ctrl + alt + cmd - n : yabai -m window --display next; yabai -m display --focus next
