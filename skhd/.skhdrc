@@ -26,3 +26,29 @@ alt - l : osascript -e 'tell application "Slack" to activate'
 alt - s : osascript -e 'tell application "Safari" to activate'
 alt - t : osascript -e 'tell application "iTerm" to activate'
 alt - v : osascript -e 'tell application "Cursor" to activate'
+
+
+# Make floating window fill left half of screen
+ctrl + alt - left : yabai -m window --grid 1:2:0:0:1:1
+
+# Make floating window fill right half of screen
+ctrl + alt - right : yabai -m window --grid 1:2:1:0:1:1
+
+# Make floating window fill top half of screen
+#ctrl + alt - up : yabai -m window --toggle float --grid 2:1:0:0:1:1
+
+# Make floating window fill bottom half of screen
+# ctrl + alt - down : yabai -m window --toggle float --grid 2:1:0:1:1:1
+
+# Make window maximised
+ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
+
+# Center 23rds
+ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1
+
+# Move to other screen
+ctrl + alt + cmd - n : yabai -m window --display next; yabai -m display --focus next
+
+ctrl + cmd - 0  : yabai -m window --display 0; yabai -m display --focus 0
+ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
+ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
