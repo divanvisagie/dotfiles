@@ -25,7 +25,7 @@ alt - r : osascript -e 'tell application "Reminders" to activate'
 alt - l : osascript -e 'tell application "Slack" to activate'
 alt - s : osascript -e 'tell application "Safari" to activate'
 alt - t : osascript -e 'tell application "iTerm" to activate'
-alt - v : osascript -e 'tell application "Cursor" to activate'
+alt - v : osascript -e 'tell application "Visual Studio Code" to activate'
 
 
 # Make floating window fill left half of screen
