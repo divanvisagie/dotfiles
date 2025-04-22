@@ -34,6 +34,10 @@ ctrl + alt - left : yabai -m window --grid 1:2:0:0:1:1
 # Make floating window fill right half of screen
 ctrl + alt - right : yabai -m window --grid 1:2:1:0:1:1
 
+# Make window fill the whole screen
+ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
+ctrl + alt - down : yabai -m window --grid 1:9:1:0:7:1
+
 # Make floating window fill top half of screen
 #ctrl + alt - up : yabai -m window --toggle float --grid 2:1:0:0:1:1
 
@@ -48,9 +52,5 @@ ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1
 # Center 2 4ths
 ctrl + alt - s : yabai -m window --grid 1:4:1:0:2:1
 
-# Move to other screen
-ctrl + alt + cmd - n : yabai -m window --display next; yabai -m display --focus next
-
-ctrl + cmd - 0  : yabai -m window --display 0; yabai -m display --focus 0
-ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
-ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
+# Set reminders location
+ctrl + alt - r : yabai -m window --grid 2:9:0:1:1:1
