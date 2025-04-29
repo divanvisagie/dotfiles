@@ -42,7 +42,13 @@ require("lazy").setup({
 
     'nvim-lualine/lualine.nvim',   -- Better status line
 
-    'anuvyklack/pretty-fold.nvim', -- Better code folding
+    {
+      "Konfekt/FastFold",
+      config = function()
+        -- Optional: any FastFold-specific config
+      end,
+      lazy = false,
+    },
     'nmac427/guess-indent.nvim',   -- Guess indentation
  	
 	-- Color Schemes
