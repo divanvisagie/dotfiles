@@ -11,21 +11,19 @@
 
 alt - b : ~/.dotfiles/skhd/browser/target/release/browser
 alt - c : osascript -e 'tell application "ChatGPT" to activate'
-alt - d : osascript -e 'tell application "DataGrip" to activate'
 alt - e : osascript -e 'tell application "Mail" to activate'
 alt - f : osascript -e 'tell application "Finder" to activate'
 alt - g : osascript -e 'tell application "Telegram" to activate'
 alt - i : osascript -e 'tell application "Insomnia" to activate'
-alt - j : osascript -e 'tell application "IntelliJ IDEA" to activate'
 alt - m : osascript -e 'tell application "Spotify" to activate'
 alt - w : osascript -e 'tell application "WhatsApp" to activate'
 alt - n : osascript -e 'tell application "Notes" to activate'
 alt - o : osascript -e 'tell application "Obsidian" to activate'
 alt - r : osascript -e 'tell application "Reminders" to activate'
-alt - l : osascript -e 'tell application "Slack" to activate'
-alt - s : osascript -e 'tell application "Safari" to activate'
-alt - t : osascript -e 'tell application "iTerm" to activate'
-alt - v : osascript -e 'tell application "Visual Studio Code" to activate'
+alt - s : osascript -e 'tell application "Slack" to activate'
+alt - t : osascript -e 'tell application "Ghostty" to activate'
+alt - v : osascript -e 'tell application "Cursor" to activate'
+alt - z : osascript -e 'tell application "Zed" to activate'
 
 
 # Make floating window fill left half of screen
@@ -46,6 +44,7 @@ ctrl + alt - down : yabai -m window --grid 1:9:1:0:7:1
 
 # Make window maximised
 ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
+ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
 
 # Center 23rds
 ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1

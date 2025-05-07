@@ -6,6 +6,7 @@ enum Browser {
     Firefox(String, String),
     Safari(String, String),
     Brave(String, String),
+    Vivaldi(String, String),
 }
 
 fn get_default_browser() -> std::io::Result<Browser> {
@@ -29,7 +30,7 @@ fn get_default_browser() -> std::io::Result<Browser> {
                 "com.google.chrome" => Ok(Browser::Chrome("Google Chrome".to_string(), bundle_id.to_string())),
                 "com.apple.Safari" => Ok(Browser::Safari("Safari".to_string(), bundle_id.to_string())),
                 "com.brave.browser" => Ok(Browser::Brave("Brave".to_string(), bundle_id.to_string())),
-                _ => Ok(Browser::Safari("Safari".to_string(), bundle_id.to_string())),
+                _ => Ok(Browser::Vivaldi("Vivaldi".to_string(), bundle_id.to_string())),
             }
         }
         Err(e) => Err(e),
@@ -67,6 +68,13 @@ fn focus_browser(browser: &Browser) {
                 .output()
                 .expect("failed to execute process");
         }
+        Browser::Vivaldi(_, _) => {
+            Command::new("osascript")
+                .arg("-e")
+                .arg("tell application \"Vivaldi\" to activate")
+                .output()
+                .expect("failed to execute process");
+        }
     }
 }
 fn main() {
@@ -78,6 +86,7 @@ fn main() {
                 Browser::Chrome(name, _) => name,
                 Browser::Firefox(name, _) => name,
                 Browser::Safari(name, _) => name,
+                Browser::Vivaldi(name, _) => name,
             };
             println!("Default browser bundle identifier: {}",name);
         }
