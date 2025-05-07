@@ -1,10 +1,9 @@
-
-theme = rose-pine-dawn
+theme = light:rose-pine-dawn,dark:GruvboxDark
 font-size = 16
 shell-integration = zsh
-minimum-contrast = 2.05
-# font-family = "MesloLGS NF"
 font-thicken = true
 font-thicken-strength = 50
+font-feature = -calt, -liga, -dlig
 macos-titlebar-proxy-icon = hidden
 macos-titlebar-style = tabs
+window-theme = system
