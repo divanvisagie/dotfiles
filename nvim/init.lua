@@ -29,6 +29,18 @@ require("lazy").setup({
         'folke/trouble.nvim', -- Display errors better
         tag = 'v2.10.0'
     },
+    {
+        "mason-org/mason.nvim"
+    },
+    {
+      "neovim/nvim-lspconfig", -- Core LSP support
+      dependencies = {
+        "hrsh7th/nvim-cmp",          -- Autocompletion engine
+        "hrsh7th/cmp-nvim-lsp",      -- LSP source for nvim-cmp
+        "folke/neodev.nvim",         -- Better Lua support for Neovim config
+        "nvim-telescope/telescope.nvim", -- Optional, for <leader>ds
+      },
+    },
 
     -- GitHub Copilot
     'zbirenbaum/copilot.lua',
@@ -87,23 +99,6 @@ require("lazy").setup({
     -- Useful status updates for LSP
     { 'j-hui/fidget.nvim', tag = 'legacy' },
 
-    -- LSP stuff
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        dependencies = {
-          'neovim/nvim-lspconfig',
-          {
-            'williamboman/mason.nvim',
-            build = function() pcall(vim.cmd, 'MasonUpdate') end,
-          },
-          'williamboman/mason-lspconfig.nvim', -- Optional
-          'hrsh7th/nvim-cmp',     -- Required for autocompletion
-          'hrsh7th/cmp-nvim-lsp', -- Required for LSP completion source
-          'L3MON4D3/LuaSnip',     -- Required for snippets
-          'Feel-ix-343/markdown-oxide',
-        }
-    },
 	-- Git diff
 	'tpope/vim-fugitive',
 
@@ -114,7 +109,20 @@ require("lazy").setup({
     { 'RaafatTurki/hex.nvim' },
 
     -- React automatically to dark mode changes
-    'f-person/auto-dark-mode.nvim'
+    'f-person/auto-dark-mode.nvim',
+    -- lazy.nvim
+    {
+      "folke/snacks.nvim",
+      ---@type snacks.Config
+      opts = {
+        image = {
+          -- your image configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      }
+    }
+
 })
 
 
