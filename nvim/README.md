@@ -27,13 +27,16 @@ the first place.
 The initial setup is meant to be cloned to `~/.dotfiles`, you can then use `install.sh` to create
 a symbolic link that will point to this config.
 
-Once that is sorted out, browse to the packer.lua and then enter the following vim commands:
+### Install the required LSP servers
 
-```vim
-:so
-:PackerSync
+```sh
+npm install -g @vtsls/language-server
+brew install rust-analyzer
+deno upgrade
 ```
 
+
+## Troubleshooting
 For issues with treesitter try:
 ```vim
 :TSInstall typescript
