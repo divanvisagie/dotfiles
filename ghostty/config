@@ -1,0 +1,10 @@
+
+theme = rose-pine-dawn
+font-size = 16
+shell-integration = zsh
+minimum-contrast = 2.05
+# font-family = "MesloLGS NF"
+font-thicken = true
+font-thicken-strength = 50
+macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = tabs
