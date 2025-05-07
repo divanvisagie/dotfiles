@@ -138,4 +138,4 @@ setopt AUTO_CD
 
 # Initialize Starship prompt
 eval "$(starship init zsh)"
-
+eval "$(zoxide init zsh)"
