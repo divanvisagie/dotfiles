@@ -57,7 +57,7 @@ alias ls="eza --group-directories-first"
 alias ne='$EDITOR ~/.dotfiles/nix/default.nix' # Edit nix environment
 alias ni='nix-env -i'
 alias ns='nix-search'
-alias nu='~/.dotfiles/nix/install.sh' # Update nix environment
+# alias nu='~/.dotfiles/nix/install.sh' # Update nix environment
 alias nv='nvim'
 alias rsync='rsync --partial --info=progress2'
 alias sf="source ~/.zshrc"
@@ -139,3 +139,4 @@ setopt AUTO_CD
 # Initialize Starship prompt
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
