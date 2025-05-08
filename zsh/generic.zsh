@@ -62,6 +62,8 @@ alias nv='nvim'
 alias rsync='rsync --partial --info=progress2'
 alias sf="source ~/.zshrc"
 alias uuid="uuidgen | tr 'A-F' 'a-f'"
+alias main="git checkout main"
+alias master="git checkout master"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # if wayland
@@ -118,12 +120,12 @@ function httpserver () {
 # ##################################################
 
 # on directory change
-function chpwd() {
-    local title=$(basename "$PWD")
-    echo -ne "\x1b]0;$title\x1b\\"
-}
-local title=$(basename "$PWD")
-echo -ne "\x1b]0;$title\x1b\\"
+# function chpwd() {
+#     local title=$(basename "$PWD")
+#     echo -ne "\x1b]0;$title\x1b\\"
+# }
+# local title=$(basename "$PWD")
+# echo -ne "\x1b]0;$title\x1b\\"
 
 # Shell integrations
 eval "$(direnv hook zsh)"

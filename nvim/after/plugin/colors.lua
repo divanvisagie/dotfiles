@@ -5,7 +5,8 @@ function Dark()
 end
 
 function Light()
-    vim.cmd.colorscheme("rose-pine")
+    -- vim.cmd.colorscheme("rose-pine")
+    vim.cmd.colorscheme("tomorrow")
     vim.o.background = "light"
     -- set background colour transparent
     vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
