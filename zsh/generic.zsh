@@ -130,7 +130,7 @@ function httpserver () {
 # Shell integrations
 eval "$(direnv hook zsh)"
 
-export OPENAI_API_URL="http://127.0.0.1:3017/v1/partition/$USER/instance/reservoir"
+export OPENAI_API_URL="http://127.0.0.1:3017/partition/$USER/instance/reservoir"
 # Enable vi mode, we do this before 
 # starship so that we dont interfere with it 
 # afterward
