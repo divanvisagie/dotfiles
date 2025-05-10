@@ -45,10 +45,6 @@ require("lazy").setup({
     -- GitHub Copilot
     'zbirenbaum/copilot.lua',
  	
-	-- debug adapter protocol
-    'mfussenegger/nvim-dap',
-    'theHamsta/nvim-dap-virtual-text',
-
 	-- Tests
     'klen/nvim-test',              -- Run tests
 
