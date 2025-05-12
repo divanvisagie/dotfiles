@@ -60,10 +60,8 @@ require("lazy").setup({
     'nmac427/guess-indent.nvim',   -- Guess indentation
  	
 	-- Color Schemes
-    'rose-pine/neovim',
     'sainnhe/gruvbox-material',
-    'navarasu/onedark.nvim',
-'chriskempson/vim-tomorrow-theme',
+    'chriskempson/vim-tomorrow-theme',
 
 
     -- Treesitter
