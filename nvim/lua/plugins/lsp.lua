@@ -56,27 +56,21 @@ return {
     })
 
     lspconfig.tsserver.setup({
-      cmd = { "typescript-language-server", "--stdio" },
-      filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-      root_dir = function(fname)
-        local deno = util.root_pattern("deno.json", "deno.jsonc")(fname)
-        if deno then
-          return nil
-        end
-        local node_root = util.root_pattern("package.json")(fname)
-        return node_root
-      end,
+      root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+      settings = {
+        typescript = {
+          tsserver = {
+            maxTsServerMemory = 6 * 1024,
+          },
+        },
+      },
+      single_file_support = false,
       on_attach = on_attach,
       capabilities = capabilities,
     })
 
     lspconfig.denols.setup({
-      cmd = { "deno", "lsp" },
-      filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-      root_dir = function(fname)
-        local deno_root = util.root_pattern("deno.json", "deno.jsonc")(fname)
-        return deno_root
-      end,
+      root_dir = util.root_pattern("deno.json", "deno.jsonc"),
       init_options = {
         lint = true,
         unstable = true,
@@ -104,7 +98,7 @@ return {
         --  This example looks for a .git directory or a Cargo.toml file.
         return require("lspconfig.util").root_pattern(".git", "Cargo.toml")(fname) or vim.fn.getcwd()
       end,
-      on_attach = on_attach,  -- Use the same on_attach function you defined
+      on_attach = on_attach,       -- Use the same on_attach function you defined
       capabilities = capabilities, -- Use the same capabilities
     })
 
@@ -135,4 +129,4 @@ return {
       require("conform").format({ async = true, lsp_fallback = true })
     end, { desc = "[F]ormat [D]ocument (Conform)" })
   end
-} 
+}
