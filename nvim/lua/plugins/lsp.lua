@@ -23,7 +23,6 @@ return {
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local on_attach = function(client, bufnr)
-      print("[LSP] Attached:", client.name, "to buffer", bufnr)
       local opts = { buffer = bufnr }
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
@@ -62,11 +61,9 @@ return {
       root_dir = function(fname)
         local deno = util.root_pattern("deno.json", "deno.jsonc")(fname)
         if deno then
-          print("[tsserver] Skipping due to Deno project:", fname)
           return nil
         end
         local node_root = util.root_pattern("package.json")(fname)
-        print("[tsserver] node root:", node_root)
         return node_root
       end,
       on_attach = on_attach,
@@ -89,7 +86,6 @@ return {
       filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
       root_dir = function(fname)
         local deno_root = util.root_pattern("deno.json", "deno.jsonc")(fname)
-        print("[denols] deno root:", deno_root)
         return deno_root
       end,
       init_options = {
