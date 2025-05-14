@@ -70,17 +70,6 @@ return {
       capabilities = capabilities,
     })
 
-    lspconfig.rust_analyzer.setup({
-      cmd = { "rust-analyzer" },
-      filetypes = { "rust" },
-      root_markers = { "Cargo.toml" },
-      settings = {
-        ["rust-analyzer"] = { cargo = { allFeatures = true } }
-      },
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
-
     lspconfig.denols.setup({
       cmd = { "deno", "lsp" },
       filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
@@ -95,6 +84,30 @@ return {
       on_attach = on_attach,
       capabilities = capabilities,
     })
+
+    lspconfig.rust_analyzer.setup({
+      cmd = { "rust-analyzer" },
+      filetypes = { "rust" },
+      root_markers = { "Cargo.toml" },
+      settings = {
+        ["rust-analyzer"] = { cargo = { allFeatures = true } }
+      },
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
+
+    lspconfig.markdown_oxide.setup({
+      cmd = { "markdown-oxide", "--lsp" }, -- Adjust the command if needed. '--lsp' enables LSP mode
+      filetypes = { "markdown" },
+      root_dir = function(fname)
+        --  Define how to find the project root directory (optional).
+        --  This example looks for a .git directory or a Cargo.toml file.
+        return require("lspconfig.util").root_pattern(".git", "Cargo.toml")(fname) or vim.fn.getcwd()
+      end,
+      on_attach = on_attach,  -- Use the same on_attach function you defined
+      capabilities = capabilities, -- Use the same capabilities
+    })
+
 
     vim.keymap.set("n", "<leader>ds", function()
       require("telescope.builtin").lsp_document_symbols()

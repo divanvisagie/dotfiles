@@ -30,9 +30,12 @@ a symbolic link that will point to this config.
 ### Install the required LSP servers
 
 ```sh
-npm install -g @vtsls/language-server
+brew install lua-language-server
 brew install rust-analyzer
+cargo install --locked --git https://github.com/Feel-ix-343/markdown-oxide.git markdown-oxide
 deno upgrade
+npm install -g @vtsls/language-server
+npm install -g typescript typescript-language-server
 ```
 
 

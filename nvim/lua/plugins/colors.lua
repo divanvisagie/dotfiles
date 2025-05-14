@@ -1,6 +1,9 @@
 return {
   "f-person/auto-dark-mode.nvim",
-  dependencies = { "chriskempson/vim-tomorrow-theme" },
+  dependencies = { 
+    "chriskempson/vim-tomorrow-theme",
+    "sainnhe/gruvbox-material"
+  },
   config = function()
     function Dark()
       vim.g.gruvbox_material_background = "medium"
