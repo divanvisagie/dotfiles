@@ -13,6 +13,8 @@ alt - b : ~/.dotfiles/skhd/browser/target/release/browser
 alt - c : osascript -e 'tell application "ChatGPT" to activate'
 alt - d : osascript -e 'do shell script "dm"'
 alt - e : osascript -e 'tell application "Mail" to activate'
+alt - p : osascript -e 'tell application "Denny" to activate'
+alt - x : osascript -e 'tell application "Xcode" to activate'
 alt - f : osascript -e 'tell application "Finder" to activate'
 alt - g : osascript -e 'tell application "Telegram" to activate'
 alt - i : osascript -e 'tell application "Insomnia" to activate'
