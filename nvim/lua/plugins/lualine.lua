@@ -1,3 +1,7 @@
+local function cgip_indicator()
+  return (vim.g.cgip_busy and "Thinking...") or ""
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   config = function()
@@ -19,8 +23,8 @@ return {
         icons_enabled = false,
         global_status = true,
         theme = 'auto',
-        component_separators = { left = '│', right = '│'},
-        section_separators = { left = '', right = ''},
+        component_separators = { left = '│', right = '│' },
+        section_separators = { left = '', right = '' },
         disabled_filetypes = {
           statusline = {},
           winbar = {
@@ -36,21 +40,21 @@ return {
         },
       },
       sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'diff', 'diagnostics'},
+        lualine_a = { 'mode' },
+        lualine_b = { 'diff', 'diagnostics' },
         lualine_c = { relative_path },
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'},
+        lualine_x = { cgip_indicator, 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' },
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
         lualine_c = { relative_path },
-        lualine_x = {'location'},
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
       },
     }
   end
-} 
+}
