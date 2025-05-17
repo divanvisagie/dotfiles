@@ -54,6 +54,10 @@ ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
 ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1
 # Center 2 4ths
 ctrl + alt - s : yabai -m window --grid 1:4:1:0:2:1
+# 
+ctrl + alt - g : yabai -m window --grid 1:3:0:0:1:1
+ctrl + alt - e : yabai -m window --grid 1:3:1:0:2:1
+
 
 # Set reminders location
 ctrl + alt - r : yabai -m window --grid 2:9:0:1:1:1
