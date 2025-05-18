@@ -51,7 +51,8 @@ ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
 ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
 
 # Center 23rds
-ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1
+ctrl + alt - c :~/.dotfiles/skhd/center_window.sh
+
 # Center 2 4ths
 ctrl + alt - s : yabai -m window --grid 1:4:1:0:2:1
 # 
