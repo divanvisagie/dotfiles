@@ -48,13 +48,18 @@ function RunCgipOverSelection()
 	local lines, sel, mode = CgipGetSelectionInfo()
 	local srow, scol, erow, ecol = unpack(sel) -- ← unpack properly
 	local text = table.concat(lines, "\n")
+	local system_prompt =
+	"'You are inside neovim, your output will replace the input text exactly, output only what is asked for, no extra formatting if replacing'"
 
 	vim.g.cgip_busy = true
 	vim.cmd("redrawstatus")
 
 	vim.system(
-		{ "cgip",
-			"'You are inside neovim, your output will replace the input text exactly, output only what is asked for, no extra formatting if replacing'" }, -- replace with your cgip command
+		{
+			"cgip",
+			"--system-prompt",
+			system_prompt,
+		}, -- replace with your cgip command
 		{ stdin = text },
 		function(res)
 			vim.schedule(function()

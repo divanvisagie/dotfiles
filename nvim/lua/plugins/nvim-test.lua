@@ -14,6 +14,9 @@ return {
     }
 
     test.setup {
+      termOpts = {
+        width = 63,
+      },
       runners = {
         typescript = "nvim-test.runners.jest",
         javascript = "nvim-test.runners.jest",
