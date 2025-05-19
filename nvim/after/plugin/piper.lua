@@ -53,7 +53,8 @@ function RunCgipOverSelection()
 	vim.cmd("redrawstatus")
 
 	vim.system(
-		{ "cgip" }, -- replace with your cgip command
+		{ "cgip",
+			"'You are inside neovim, your output will replace the input text exactly, output only what is asked for, no extra formatting if replacing'" }, -- replace with your cgip command
 		{ stdin = text },
 		function(res)
 			vim.schedule(function()
