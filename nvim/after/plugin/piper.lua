@@ -94,3 +94,5 @@ end
 
 vim.keymap.set('x', '<leader>C', RunCgipOverSelection, { desc = "Pipe selection through cgip" })
 vim.keymap.set('n', '<leader>C', RunCgipOverSelection, { desc = "Pipe current line through cgip" })
+vim.keymap.set('x', 'C', RunCgipOverSelection, { desc = "Pipe selection through cgip" })
+vim.keymap.set('n', 'C', RunCgipOverSelection, { desc = "Pipe current line through cgip" })
