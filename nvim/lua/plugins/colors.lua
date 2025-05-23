@@ -1,6 +1,6 @@
 return {
   "f-person/auto-dark-mode.nvim",
-  dependencies = { 
+  dependencies = {
     "chriskempson/vim-tomorrow-theme",
     "sainnhe/gruvbox-material"
   },
@@ -12,7 +12,7 @@ return {
     end
 
     function Light()
-      vim.cmd.colorscheme("tomorrow")
+      vim.cmd.colorscheme("Tomorrow")
       vim.o.background = "light"
       vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
       vim.cmd("hi NormalNC guibg=NONE ctermbg=NONE")
@@ -51,4 +51,4 @@ return {
       vim.cmd(string.format("highlight %s cterm=NONE gui=NONE", group))
     end
   end
-} 
+}
