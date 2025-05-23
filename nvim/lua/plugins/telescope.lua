@@ -18,6 +18,10 @@ return {
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+    -- search lsp document symbols
+    vim.keymap.set('n', '<leader>so', function()
+      builtin.lsp_document_symbols()
+    end, { desc = '[S]earch [D]ocument Symbols' })
     vim.keymap.set('n', '<leader>fs', function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end, { desc = '[F]ind grep [S]tring' })
