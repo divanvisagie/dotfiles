@@ -29,6 +29,10 @@ alt - t : osascript -e 'tell application "Ghostty" to activate'
 alt - v : osascript -e 'tell application "Cursor" to activate'
 alt - z : osascript -e 'tell application "Zed" to activate'
 
+alt - 1 : osascript -e 'tell application "Finder" to activate'
+alt - 2 : ~/.dotfiles/skhd/browser/target/release/browser
+alt - 3 : osascript -e 'tell application "Ghostty" to activate'
+alt - 4 : osascript -e 'tell application "Telegram" to activate'
 
 # Make floating window fill left half of screen
 ctrl + alt - left : yabai -m window --grid 1:2:0:0:1:1

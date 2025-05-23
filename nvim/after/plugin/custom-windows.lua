@@ -61,13 +61,11 @@ function OpenChat()
   unique_hash = string.sub(unique_hash, 1, 8)
 
 
-  local journal_dir = ExpandHomePath("~/Documents/Archives/Chat/")
-  local journal_path = journal_dir .. unique_hash .. ".md"
+  local journal_dir = ExpandHomePath("~/Documents/Notes/Archives/Chat/")
   local date = os.date("*t")
   local year = date.year
   local month = string.format("%02d", date.month)
   local day = string.format("%02d", date.day)
-  local journal_dir = ExpandHomePath("~/Documents/Archives/Chat/")
   local journal_path = journal_dir .. year .. "-" .. month .. "-" .. day .. "-" .. unique_hash .. ".md"
 
   -- Ensure the directory exists
@@ -102,7 +100,7 @@ end
 
 -- Function to open the long-running todos file directly
 function OpenLongRunningTodos()
-  local todos_dir = ExpandHomePath("~/Documents/Projects/Todos/")
+  local todos_dir = ExpandHomePath("~/Documents/Notes/Projects/Todos/")
   local todos_path = todos_dir .. "todos.md"
   -- Ensure the directory exists
   EnsureDirectoryExists(todos_dir)
