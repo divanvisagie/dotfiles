@@ -6,6 +6,27 @@ return {
     "folke/neodev.nvim",
     "nvim-telescope/telescope.nvim",
     "stevearc/conform.nvim",
+    "williamboman/mason-lspconfig", -- Add this as a dependency to your lspconfig plugin
+  {
+    "williamboman/mason.nvim",
+    cmd = "Mason",
+    config = function()
+      require("mason").setup({
+        -- Here's where you tell Mason-LSPconfig what LSPs to *ensure* are installed
+        -- This means Mason will automatically download them if they're missing
+        ensure_installed = {
+          "lua_ls",         -- For Lua
+          "denols",         -- For Deno
+          "rust_analyzer",  -- For Rust
+          "typescript_ls",  -- For TypeScript
+          "markdown_oxide", -- For Markdown
+          -- Add any other LSPs you want Mason to manage here
+        },
+        -- If you want to ensure formatters are installed, you'd configure Mason's "tools" section
+        -- or use mason-tool-installer if you have it.
+      })
+    end,
+  },
   },
   config = function()
     local cmp = require("cmp")
