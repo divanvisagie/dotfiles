@@ -39,7 +39,7 @@ function OpenJournal()
   local year = date.year
   local month = string.format("%02d", date.month)
   local day = string.format("%02d", date.day)
-  local journal_dir = ExpandHomePath("~/Documents/Resources/Journal/")
+  local journal_dir = ExpandHomePath("~/Documents/Notes/Resources/Journal/")
   local journal_path = journal_dir .. year .. "-" .. month .. "-" .. day .. ".md"
   -- Ensure the directory exists
   EnsureDirectoryExists(journal_dir)

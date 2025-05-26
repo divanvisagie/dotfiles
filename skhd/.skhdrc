@@ -26,7 +26,7 @@ alt - o : osascript -e 'tell application "Obsidian" to activate'
 alt - r : osascript -e 'tell application "Reminders" to activate'
 alt - l : osascript -e 'tell application "Slack" to activate'
 alt - t : osascript -e 'tell application "Ghostty" to activate'
-alt - v : osascript -e 'tell application "Cursor" to activate'
+alt - v : osascript -e 'tell application "Visual Studio Code" to activate'
 alt - z : osascript -e 'tell application "Zed" to activate'
 
 alt - 1 : osascript -e 'tell application "Finder" to activate'
