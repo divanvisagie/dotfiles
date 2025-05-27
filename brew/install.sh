@@ -13,6 +13,7 @@ packages=(
 	"curl"
 	"gum"
 	"wallpaper"
+  "gcalcli"
 )
 
 is_installed() {
@@ -24,7 +25,7 @@ for package in "${packages[@]}"; do
     echo "Installing $package ..."
     brew install "$package"
   else
-    log_info "$package is already installed. Skipping."
+    echo "$package is already installed. Skipping."
   fi
 done
 
