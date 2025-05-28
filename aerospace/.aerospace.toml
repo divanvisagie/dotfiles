@@ -1,5 +1,7 @@
+start-at-login = true
+
 [[on-window-detected]]
-check-further-callbacks = true          # allow later rules to run
+check-further-callbacks = true          
 run = ['layout floating', 'move-node-to-workspace 1']       
 
 [[on-window-detected]]
@@ -8,11 +10,16 @@ run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ['move-node-to-workspace 3']
+run = ['move-node-to-workspace 2']
 
 
 [mode.main.binding]
-# Workspaces
+ctrl-alt-j = ['move-node-to-monitor --focus-follows-window next', 'fullscreen']
+ctrl-alt-k = 'exec-and-forget ~/.dotfiles/aerospace/move_k.sh'
+
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
+
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = ['secondary', 'main']

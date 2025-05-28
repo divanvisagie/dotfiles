@@ -39,15 +39,7 @@ ctrl + alt - l : yabai -m window --grid 1:2:1:0:1:1
 
 # Make window fill the whole screen
 ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
-ctrl + alt - k: yabai -m window --grid 1:1:0:0:1:1
 ctrl + alt - down : yabai -m window --grid 1:9:1:0:7:1
-ctrl + alt - j : yabai -m window --grid 1:9:1:0:7:1
-
-# Make floating window fill top half of screen
-#ctrl + alt - up : yabai -m window --toggle float --grid 2:1:0:0:1:1
-
-# Make floating window fill bottom half of screen
-# ctrl + alt - down : yabai -m window --toggle float --grid 2:1:0:1:1:1
 
 # Make window maximised
 ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
@@ -60,8 +52,7 @@ ctrl + alt - s : yabai -m window --grid 1:4:1:0:2:1
 # 
 ctrl + alt - g : yabai -m window --grid 1:3:0:0:1:1
 ctrl + alt - e : yabai -m window --grid 1:3:1:0:2:1
-ctrl + alt - n : ~/.dotfiles/skhd/move_window_next_screen.sh
-
+# ctrl + alt - n : ~/.dotfiles/skhd/move_window_next_screen.sh
 
 # Set reminders location
 ctrl + alt - r : yabai -m window --grid 2:9:0:1:1:1
