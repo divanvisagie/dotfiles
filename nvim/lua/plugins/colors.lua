@@ -9,6 +9,8 @@ return {
       vim.g.gruvbox_material_background = "medium"
       vim.cmd.colorscheme("gruvbox-material")
       vim.o.background = "dark"
+      vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+      vim.cmd("hi NormalNC guibg=NONE ctermbg=NONE")
     end
 
     function Light()

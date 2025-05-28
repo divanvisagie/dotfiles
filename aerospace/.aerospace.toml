@@ -1,0 +1,18 @@
+[[on-window-detected]]
+check-further-callbacks = true          # allow later rules to run
+run = ['layout floating', 'move-node-to-workspace 1']       
+
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = ['move-node-to-workspace 3']
+
+
+[mode.main.binding]
+# Workspaces
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'

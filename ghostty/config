@@ -5,7 +5,7 @@ font-thicken-strength = 50
 macos-icon = chalkboard 
 macos-titlebar-proxy-icon = hidden
 macos-titlebar-style = tabs
-macos-auto-secure-input = true
+macos-auto-secure-input = false 
 maximize = true
 shell-integration = zsh
 theme = light:Builtin Tango Light,dark:GruvboxDark
@@ -14,3 +14,6 @@ window-position-x = 0
 window-position-y = 0
 window-theme = system
 working-directory = home
+
+#background-opacity = 0.8
+#background-blur = 30
