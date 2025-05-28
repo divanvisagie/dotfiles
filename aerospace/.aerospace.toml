@@ -20,6 +20,9 @@ run = ['move-node-to-workspace 4']
 if.app-id = 'net.whatsapp.WhatsApp'
 run = ['move-node-to-workspace 4']
 
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = ['move-node-to-workspace 5']
 
 [mode.main.binding]
 ctrl-alt-j = ['move-node-to-monitor --focus-follows-window next', 'fullscreen']
