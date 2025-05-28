@@ -12,6 +12,14 @@ run = ['move-node-to-workspace 2']
 if.app-id = 'com.mitchellh.ghostty'
 run = ['move-node-to-workspace 3']
 
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = ['move-node-to-workspace 4']
+
 
 [mode.main.binding]
 ctrl-alt-j = ['move-node-to-monitor --focus-follows-window next', 'fullscreen']
@@ -19,8 +27,11 @@ ctrl-alt-k = 'exec-and-forget ~/.dotfiles/aerospace/move_k.sh'
 
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
 
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = ['secondary', 'main']
 3 = ['secondary', 'main']
+4 = 'main'
