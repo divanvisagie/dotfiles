@@ -15,5 +15,5 @@ window-position-y = 0
 window-theme = system
 working-directory = home
 
-# background-opacity = 0.8
-# background-blur = 30
+background-opacity = 0.75
+background-blur = 35
