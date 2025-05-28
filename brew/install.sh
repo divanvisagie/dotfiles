@@ -14,6 +14,7 @@ packages=(
 	"gum"
 	"wallpaper"
   "gcalcli"
+  "gdrive"
 )
 
 is_installed() {

@@ -36,13 +36,17 @@ alt - 4 : osascript -e 'tell application "Telegram" to activate'
 
 # Make floating window fill left half of screen
 ctrl + alt - left : yabai -m window --grid 1:2:0:0:1:1
+ctrl + alt - h : yabai -m window --grid 1:2:0:0:1:1
 
 # Make floating window fill right half of screen
 ctrl + alt - right : yabai -m window --grid 1:2:1:0:1:1
+ctrl + alt - l : yabai -m window --grid 1:2:1:0:1:1
 
 # Make window fill the whole screen
 ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
+ctrl + alt - k: yabai -m window --grid 1:1:0:0:1:1
 ctrl + alt - down : yabai -m window --grid 1:9:1:0:7:1
+ctrl + alt - j : yabai -m window --grid 1:9:1:0:7:1
 
 # Make floating window fill top half of screen
 #ctrl + alt - up : yabai -m window --toggle float --grid 2:1:0:0:1:1
