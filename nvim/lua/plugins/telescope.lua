@@ -9,6 +9,11 @@ return {
         find_command = { 'rg', '--files', '--hidden', '--glob', '!.git/*' },
       })
     end, { desc = '[F]ind [F]iles' })
+    vim.keymap.set('n', '<D-p>', function() -- Another Zed / Vscode inspired shortcut
+      builtin.find_files({
+        find_command = { 'rg', '--files', '--hidden', '--glob', '!.git/*' },
+      })
+    end, { desc = '[F]ind [F]iles' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
     vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = '[G]it Files' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
@@ -22,6 +27,10 @@ return {
     vim.keymap.set('n', '<leader>so', function()
       builtin.lsp_document_symbols()
     end, { desc = '[S]earch [D]ocument Symbols' })
+    -- search lsp document symbols with Cmd-Shift-O (Zed mapping)
+    vim.keymap.set('n', '<D-O>', function()
+      builtin.lsp_document_symbols()
+    end, { desc = '[S]earch [D]ocument Symbols (Cmd-Shift-O)' })
     vim.keymap.set('n', '<leader>fs', function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end, { desc = '[F]ind grep [S]tring' })

@@ -45,3 +45,7 @@ vim.api.nvim_exec([[
   autocmd FileType markdown setlocal wrap
   autocmd FileType markdown setlocal colorcolumn=0
 ]], false)
+
+-- Set interactive zsh shell
+vim.opt.shell = "zsh"
+vim.opt.shellcmdflag = "-ic"
