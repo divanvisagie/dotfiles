@@ -21,7 +21,9 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "space g g": "git_panel::ToggleFocus"
+      "space g g": "git_panel::ToggleFocus",
+      "space h a f": "project_panel::ToggleFocus",
+      "space f f": "file_finder::Toggle"
     }
   }
 ]
