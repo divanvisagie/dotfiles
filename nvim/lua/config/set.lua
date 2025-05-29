@@ -52,4 +52,4 @@ vim.opt.shellcmdflag = "-ic"
 
 -- Keep NERDTree hidden on startup
 vim.g.NERDTreeAutoOpenOnStartup = 0
-vim.g.NERDTreeHijackNetrw = 0
+vim.g.NERDTreeHijackNetrw = 1
