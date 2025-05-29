@@ -23,7 +23,12 @@
     "bindings": {
       "space g g": "git_panel::ToggleFocus",
       "space h a f": "project_panel::ToggleFocus",
-      "space f f": "file_finder::Toggle"
+      "space f f": "file_finder::Toggle",
+      "space s o": "outline::Toggle",
+      "space s d": "diagnostics::Deploy",
+      "space f s": "pane::DeploySearch",
+      "space g s": "git::Diff",
+      "space g b": "git::Blame"
     }
   }
 ]
