@@ -49,3 +49,7 @@ vim.api.nvim_exec([[
 -- Set interactive zsh shell
 vim.opt.shell = "zsh"
 vim.opt.shellcmdflag = "-ic"
+
+-- Keep NERDTree hidden on startup
+vim.g.NERDTreeAutoOpenOnStartup = 0
+vim.g.NERDTreeHijackNetrw = 0

@@ -2,6 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set('n', '<leader>haf', vim.cmd.Ex)
 
 -- Allows you to move the selected lines up or down
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
