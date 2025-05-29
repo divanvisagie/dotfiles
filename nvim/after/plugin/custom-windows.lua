@@ -112,8 +112,8 @@ vim.api.nvim_set_keymap('n', '<leader>td', ':lua OpenJournal("journal")<CR>', { 
 vim.api.nvim_set_keymap('n', '<leader>cg', ':lua OpenChat("chatbot")<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>lt', ':lua OpenLongRunningTodos()<CR>', { noremap = true })
 
--- Keymap in visual mode (x mode covers char, line, and block visual selections)
-vim.keymap.set('x', '<leader>cp', function()
+-- Function to copy visual selection to chat buffer
+function CopySelectionToChat()
   -- 1. Get selection start and end positions in the buffer
   local _, srow, scol, _ = unpack(vim.fn.getpos("v")) -- visual start position (mark 'v')
   local _, erow, ecol, _ = unpack(vim.fn.getpos(".")) -- visual end position (cursor)
@@ -190,4 +190,8 @@ vim.keymap.set('x', '<leader>cp', function()
   -- Restore focus to the original window
   vim.api.nvim_set_current_win(cur_win)
   -- vim.cmd('normal! ' .. string.char(27))                                 -- reselect the visual area
-end, { noremap = true, desc = "Copy selection to chat buffer" })
+end
+
+-- Keymap in visual mode (x mode covers char, line, and block visual selections)
+vim.keymap.set('x', '<leader>cp', CopySelectionToChat, { noremap = true, desc = "Copy selection to chat buffer" })
+vim.keymap.set('x', '<C-CR>', CopySelectionToChat, { noremap = true, desc = "Copy selection to chat buffer" })
