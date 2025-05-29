@@ -10,6 +10,7 @@
   "auto_update_extensions": {
     "deno": true
   },
+  "relative_line_numbers": true,
   "agent": {
     "always_allow_tool_actions": true,
     "default_profile": "write",
