@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e # The script will exit if it hits an error code
+#set -e # The script will exit if it hits an error code
 
 if [ ! -f ~/.tmux.conf ]; then
 	rm ~/.tmux.conf

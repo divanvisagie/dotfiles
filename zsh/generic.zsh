@@ -120,12 +120,12 @@ function httpserver () {
 # ##################################################
 
 # on directory change
-# function chpwd() {
-#     local title=$(basename "$PWD")
-#     echo -ne "\x1b]0;$title\x1b\\"
-# }
-# local title=$(basename "$PWD")
-# echo -ne "\x1b]0;$title\x1b\\"
+function chpwd() {
+    local title=$(basename "$PWD")
+    echo -ne "\x1b]0;$title\x1b\\"
+}
+local title=$(basename "$PWD")
+echo -ne "\x1b]0;$title\x1b\\"
 
 # Shell integrations
 eval "$(direnv hook zsh)"
