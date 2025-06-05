@@ -38,12 +38,12 @@ config.inactive_pane_hsb = {
 config.bold_brightens_ansi_colors = false
 
 -- Set font rules to disable bolding and italics
-config.font_rules = {
-  {
-    italic = true,                                              -- Matcher
-    font = wezterm.font("MesloLGS NF", { weight = "Regular" }), -- Setter
-  },
-}
+-- config.font_rules = {
+--   {
+--     italic = true,                                              -- Matcher
+--      font = wezterm.font("MesloLGS NF", { weight = "Regular" }), -- Setter
+--   },
+-- }
 
 -- Function to choose a color scheme based on appearance
 local function scheme_for_appearance(appearance)
@@ -63,9 +63,9 @@ local function get_theme(appearance)
   end
 end
 
-config.font = wezterm.font("MesloLGS NF")
+--config.font = wezterm.font("MesloLGS NF")
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
-  config.font_size = 17.0
+  config.font_size = 14.0
   config.window_decorations = "NONE"
 else
   config.font_size = 17.0
