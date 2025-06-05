@@ -10,6 +10,7 @@ local config = wezterm.config_builder()
 
 -- Set no window buttons
 config.use_fancy_tab_bar = false
+config.window_close_confirmation = 'NeverPrompt'
 
 -- Only show bar if there is more than one tab
 config.hide_tab_bar_if_only_one_tab = true
