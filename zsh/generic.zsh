@@ -53,7 +53,6 @@ alias flushdns='sudo killall -HUP mDNSResponder'
 alias glo='git lg'
 alias gpr='git pull --rebase'
 alias gtop='git log -1 --format="%H" | cat | xargs echo -n | pbcopy'
-alias ls="eza --group-directories-first"
 alias ne='$EDITOR ~/.dotfiles/nix/default.nix' # Edit nix environment
 alias ni='nix-env -i'
 alias ns='nix-search'
