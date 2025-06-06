@@ -46,8 +46,6 @@
     "terminalfont",
     "cpu",
     "memory",
-    "localip",
-    "publicip",
     "break",
     "colors"
   ]
