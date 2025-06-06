@@ -74,6 +74,11 @@ input * {
 
 ### Key bindings
 #
+# Custom:
+#
+    # Map dms to alt d for dark mode switching
+    bindsym Alt+d exec dms
+#
 # Basics:
 #
     # Start a terminal
