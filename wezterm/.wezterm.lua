@@ -166,5 +166,23 @@ config.keys = {
   -- { key = "9",  mods = "CTRL",       action = wezterm.action { ActivateTab = 8 } },
 }
 
+-- unbind tabs from cmd
+-- Disable default key bindings for Command + number keys
+for i = 1, 9 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = 'CMD',
+    action = wezterm.action.DisableDefaultAssignment,
+  })
+end
+-- do the same for ctrl
+for i = 1, 9 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = 'CTRL',
+    action = wezterm.action.DisableDefaultAssignment,
+  })
+end
+
 -- We have to return the config
 return config
