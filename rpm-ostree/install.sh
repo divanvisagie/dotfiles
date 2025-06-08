@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Auto-generated rpm-ostree install script
-# Generated on Fri  6 Jun 22:53:34 CEST 2025
+# Generated on Sun  8 Jun 10:54:57 CEST 2025
 
 set -e
 
@@ -21,6 +21,7 @@ rpm-ostree install \
     tailscale \
     tmux \
     wdisplays \
+    yt-dlp \
     zoxide \
     zsh
 
