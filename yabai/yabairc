@@ -11,7 +11,8 @@
 # yabai -m config window_gap     10
 
 # Enable window border
-yabai -m config window_border  on
+# yabai -m config window_border  on
 yabai -m config window_border_width 3
 yabai -m config active_window_border_color 0xff5c7cfa
 yabai -m config normal_window_border_color 0xff505050
+yabai -m config window_shadow off

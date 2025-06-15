@@ -21,7 +21,7 @@ return {
     end
 
     function IsDarkMode()
-      local handle = io.popen("dm -c")
+      local handle = io.popen("dms -c")
       local darkModeOutput = handle:read("*a")
       handle:close()
       return darkModeOutput:find("true") ~= nil

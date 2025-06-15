@@ -25,34 +25,34 @@ alt - n : osascript -e 'tell application "Notes" to activate'
 alt - o : osascript -e 'tell application "Obsidian" to activate'
 alt - r : osascript -e 'tell application "Reminders" to activate'
 # alt - l : osascript -e 'tell application "Slack" to activate'
-alt - t : osascript -e 'tell application "WezTerm" to activate'
+alt - t : osascript -e 'tell application "iTerm" to activate'
 alt - v : osascript -e 'tell application "Visual Studio Code" to activate'
 alt - z : osascript -e 'tell application "Zed" to activate'
 
-# Make floating window fill left half of screen
-ctrl + alt - left : yabai -m window --grid 1:2:0:0:1:1
-ctrl + alt - h : yabai -m window --grid 1:2:0:0:1:1
-
-# Make floating window fill right half of screen
-ctrl + alt - right : yabai -m window --grid 1:2:1:0:1:1
-ctrl + alt - l : yabai -m window --grid 1:2:1:0:1:1
-
-# Make window fill the whole screen
-ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
-ctrl + alt - down : yabai -m window --grid 1:9:1:0:7:1
-
-# Make window maximised
-ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
-ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
-
-# Center 23rds
-ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1
-# Center 2 4ths
-ctrl + alt - s : yabai -m window --grid 1:4:1:0:2:1
-# 
-ctrl + alt - g : yabai -m window --grid 1:3:0:0:1:1
-ctrl + alt - e : yabai -m window --grid 1:3:1:0:2:1
-# ctrl + alt - n : ~/.dotfiles/skhd/move_window_next_screen.sh
-
-# Set reminders location
-ctrl + alt - r : yabai -m window --grid 2:9:0:1:1:1
+# # Make floating window fill left half of screen
+# ctrl + alt - left : yabai -m window --grid 1:2:0:0:1:1
+# ctrl + alt - h : yabai -m window --grid 1:2:0:0:1:1
+#
+# # Make floating window fill right half of screen
+# ctrl + alt - right : yabai -m window --grid 1:2:1:0:1:1
+# ctrl + alt - l : yabai -m window --grid 1:2:1:0:1:1
+#
+# # Make window fill the whole screen
+# ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
+# ctrl + alt - down : yabai -m window --grid 1:9:1:0:7:1
+#
+# # Make window maximised
+# ctrl + alt - up : yabai -m window --grid 1:1:0:0:1:1
+# ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
+#
+# # Center 23rds
+# ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1
+# # Center 2 4ths
+# ctrl + alt - s : yabai -m window --grid 1:4:1:0:2:1
+# # 
+# ctrl + alt - g : yabai -m window --grid 1:3:0:0:1:1
+# ctrl + alt - e : yabai -m window --grid 1:3:1:0:2:1
+# # ctrl + alt - n : ~/.dotfiles/skhd/move_window_next_screen.sh
+#
+# # Set reminders location
+# ctrl + alt - r : yabai -m window --grid 2:9:0:1:1:1
