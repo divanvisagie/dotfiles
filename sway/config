@@ -247,3 +247,12 @@ client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
 # the trick, it's all in the `wordexp(3)`.
 #
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
+
+# Device specific
+input "1739:52619:SYNA8004:00_06CB:CD8B_Touchpad" {
+    natural_scroll enabled
+}
+
+
+exec_always swaybg -i ~/.dotfiles/wallpapers/blackmesaorange.jpg -m fill
