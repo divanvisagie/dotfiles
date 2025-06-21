@@ -73,6 +73,11 @@ input * {
 # Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
+# warpd hotkeys
+
+bindsym Mod4+Mod1+x exec warpd --hint
+bindsym Mod4+Mod1+c exec warpd --normal
+bindsym Mod4+Mod1+g exec warpd --grid
 #
 # Custom:
 #
@@ -256,4 +261,4 @@ input "1739:52619:SYNA8004:00_06CB:CD8B_Touchpad" {
 }
 
 
-exec_always swaybg -i ~/.dotfiles/wallpapers/blackmesaorange.jpg -m fill
+exec_always swaybg -i ~/.dotfiles/wallpapers/wallpaper.png -m fill
