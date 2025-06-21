@@ -86,6 +86,7 @@ input * {
 
     # Kill focused window
     bindsym $mod+Shift+q kill
+    bindsym Alt+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu

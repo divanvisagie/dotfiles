@@ -8,3 +8,8 @@ To set background
 ```bash
 exec_always swaybg -i ~/.dotfiles/wallpapers/unix.jpg -m fill
 ```
+Set default file browser
+```bash
+xdg-mime default com.system76.CosmicFiles.desktop inode/directory
+```
+
