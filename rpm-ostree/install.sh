@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Auto-generated rpm-ostree install script
-# Generated on Sat Jun 21 12:38:55 PM CEST 2025
+# Generated on Sat Jun 21 06:45:33 PM CEST 2025
 
 set -e
 
@@ -24,7 +24,6 @@ rpm-ostree install \
     neovim \
     podman-compose \
     rust-openssl-sys-devel \
-    steam-devices \
     tailscale \
     texlive-lexend \
     tmux \
