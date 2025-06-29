@@ -1,32 +1,44 @@
 #!/bin/bash
 
 # Auto-generated rpm-ostree install script
-# Generated on Sat Jun 21 06:45:33 PM CEST 2025
+# Generated on Sun Jun 29 03:07:30 PM CEST 2025
 
 set -e
 
 echo 'Installing layered packages...'
 rpm-ostree install \
+    cmake \
     cosmic-files \
     cosmic-settings \
     cosmic-store \
+    cosmic-term \
     direnv \
     distrobox \
-    docker \
-    docker-compose \
     fastfetch \
     fd-find \
     fzf \
+    gcc \
+    gcc-c++ \
     gnome-software \
     htop \
+    make \
     mosquitto \
     mqttcli \
     neovim \
+    ollama \
+    perl \
     podman-compose \
+    qemu-img \
+    qemu-system-x86 \
     rust-openssl-sys-devel \
+    rust-wayland-sys-devel \
+    steam \
     tailscale \
     texlive-lexend \
+    texlive-scheme-basic \
+    thunderbird \
     tmux \
+    unison \
     wdisplays \
     yt-dlp \
     zoxide \
