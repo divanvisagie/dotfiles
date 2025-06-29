@@ -1,7 +1,16 @@
+To find desktop files in the system
+
+```sh
+ls /usr/share/applications/*.desktop
+```
+
 To set zen to the default browser
 
 ```bash
 xdg-settings set default-web-browser app.zen_browser.zen.desktop
+```
+```bash
+xdg-settings set default-web-browser com.brave.Browser.desktop
 ```
 
 To set background
