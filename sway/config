@@ -94,6 +94,9 @@ bindsym Mod4+Mod1+g exec warpd --grid
     # Start your launcher
     bindsym $mod+d exec $menu
 
+    # Paste clipboard content
+    bindsym Mod1+v exec "wl-paste -n | wtype -"
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.

@@ -41,6 +41,7 @@ rpm-ostree install \
     unison \
     vlc-gui-qt \
     wdisplays \
+    wtype \
     yt-dlp \
     zoxide \
     zsh
