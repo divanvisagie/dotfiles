@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Auto-generated rpm-ostree install script
-# Generated on Sun Jun 29 03:07:30 PM CEST 2025
+# Generated on Mon Jun 30 11:26:44 AM CEST 2025
 
 set -e
 
@@ -19,6 +19,7 @@ rpm-ostree install \
     fzf \
     gcc \
     gcc-c++ \
+    geary \
     gnome-software \
     htop \
     make \
@@ -36,9 +37,9 @@ rpm-ostree install \
     tailscale \
     texlive-lexend \
     texlive-scheme-basic \
-    thunderbird \
     tmux \
     unison \
+    vlc-gui-qt \
     wdisplays \
     yt-dlp \
     zoxide \
