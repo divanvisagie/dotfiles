@@ -93,6 +93,7 @@ bindsym Mod4+Mod1+g exec warpd --grid
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym Alt+space exec $menu
 
     # Paste clipboard content
     bindsym Mod1+v exec "wl-paste -n | wtype -"
@@ -234,6 +235,7 @@ client.focused_inactive #3c3836   #3c3836   #ffffff   #3c3836   #3c3836
 client.unfocused        #32302f   #32302f   #888888   #32302f   #32302f
 client.urgent           #cc241d   #cc241d   #ffffff   #cc241d   #cc241d
 client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
+
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
