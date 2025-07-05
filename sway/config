@@ -267,4 +267,4 @@ input "1739:52619:SYNA8004:00_06CB:CD8B_Touchpad" {
 }
 
 
-exec_always swaybg -i ~/.dotfiles/wallpapers/wallpaper.png -m fill
+exec_always swaybg -i ~/.dotfiles/wallpapers/sector-f-labs.png -m fill
