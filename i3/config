@@ -207,7 +207,7 @@ bindsym $mod+r mode "resize"
 bar {
 	position top
         font pango:Ubuntu Mono 12
-        status_command i3status
+        status_command i3status -c ~/.dotfiles/i3/i3status.conf
         colors {
                 statusline #eeeeee
                 background #000000
