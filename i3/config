@@ -58,23 +58,30 @@ tiling_drag modifier titlebar
 
 # start a terminal
 #bindsym $mod+Return exec alacritty
-set $term flatpak run org.wezfurlong.wezterm
-bindsym $mod+Return exec flatpak run org.wezfurlong.wezterm
+set $term flatpak run t wezterm
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
 # mod1 is alt
-bindsym Mod1+q kill 
+bindsym Mod1+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-set $menu rofi -terminal '$term' -theme sector-f-dark -show combi -combi-modes drun#run -modes combi
-# bindsym $mod+d exec --no-startup-id rofi -show drun -theme sector-f-dark
-bindsym $mod+d exec $menu
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# Recommends: rofi-wayland
 set $rofi_cmd rofi \
         -terminal '$term' -theme sector-f-dark
-
+# Shows a combined list of the applications with desktop files and
+# executables from PATH.
+# TODO: add window with the next release of rofi-wayland
 bindsym Mod1+Tab exec --no-startup-id $rofi_cmd -show window
+set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+#set $menu $rofi_cmd -show combi -combi-modes drun -modes combi
+
+bindsym $mod+d exec --no-startup-id $menu
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -207,7 +214,7 @@ bindsym $mod+r mode "resize"
 bar {
 	position top
         font pango:Ubuntu Mono 12
-        status_command i3status -c ~/.dotfiles/i3/i3status.conf
+        status_command i3status
         colors {
                 statusline #eeeeee
                 background #000000
@@ -222,4 +229,3 @@ client.focused_inactive #3c3836   #3c3836   #ffffff   #3c3836   #3c3836
 client.unfocused        #32302f   #32302f   #888888   #32302f   #32302f
 client.urgent           #cc241d   #cc241d   #ffffff   #cc241d   #cc241d
 client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
-
