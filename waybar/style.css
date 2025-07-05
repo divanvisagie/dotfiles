@@ -2,7 +2,6 @@
     font-family:
         "Noto Sans Mono", "Font Awesome 6 Free", "Font Awesome 6 Brands",
         monospace;
-    /* font-family: Lexend; */
     color: #000000;
     font-size: 13px;
 }
@@ -57,7 +56,6 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    /* color: #ffffff; */
     border: 0;
     box-shadow: inset 0 0 #000000;
 }
@@ -99,11 +97,9 @@ button:hover {
 #power-profiles-daemon,
 #mpd {
     padding: 0 10px;
-    /* color: #ffffff; */
 }
 
 #network {
-    color: #000000;
 }
 
 #window,
@@ -270,6 +266,7 @@ label:focus {
 
 #mpd.paused {
     background-color: transparent;
+
 }
 
 #language {
@@ -308,5 +305,14 @@ label:focus {
 
 #privacy-item {
     padding: 0 5px;
+}
+
+tooltip {
+    background-color: #000000;
+    border: 1px solid #000000;
+}
+
+tooltip label {
+    color: #ffffff;
 }
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Auto-generated rpm-ostree install script
-# Generated on Mon Jun 30 11:26:44 AM CEST 2025
+# Generated on Sat Jul  5 12:36:52 PM CEST 2025
 
 set -e
 
