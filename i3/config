@@ -57,8 +57,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-#bindsym $mod+Return exec alacritty
-set $term flatpak run t wezterm
+#bindsym $mod+Return exec wezterm
+set $term wezterm
 bindsym $mod+Return exec $term
 
 # kill focused window
@@ -81,7 +81,8 @@ bindsym Mod1+Tab exec --no-startup-id $rofi_cmd -show window
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 #set $menu $rofi_cmd -show combi -combi-modes drun -modes combi
 
-bindsym $mod+d exec --no-startup-id $menu
+#bindsym Mod4+d exec --no-startup-id $menu
+bindsym Mod4+d exec --no-startup-id rofi -terminal 'wezterm' -theme sector-f-dark -show combi -combi-modes drun#run -modes-combi
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
