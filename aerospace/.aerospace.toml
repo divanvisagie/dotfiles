@@ -15,6 +15,9 @@ outer.right = 0
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = ['move-node-to-workspace 2']
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
@@ -24,8 +27,13 @@ if.app-id = 'com.googlecode.iterm2'
 run = ['layout tiling', 'move-node-to-workspace 3']
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
-run = ['layout tiling', 'move-node-to-workspace 3']
-
+run = ['layout tiling']
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = ['layout tiling']
+[[on-window-detected]]
+if.app-id = 'com.apple.Terminal'
+run = ['layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
@@ -85,9 +93,41 @@ alt-l = 'focus right'
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
 
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+alt-shift-semicolon = 'mode service'
+alt-shift-space = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+
+alt-r = 'mode resize'      # 1. Define a binding to switch to 'resize' mode
+
+[mode.resize.binding]          # 2. Declare 'resize' binding mode
+h = 'resize smart -50'
+l = 'resize smart +50'
+esc = 'mode main'             # 3. Define a binding to switch back to 'main' mode
+
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = ['secondary', 'main']
 3 = ['secondary', 'main']
 4 = 'main'
 5 = ['secondary', 'main']
+
+# 'service' binding mode declaration.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+    # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+    #s = ['layout sticky tiling', 'mode main']
+
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
+
+    down = 'volume down'
+    up = 'volume up'
+    shift-down = ['volume set 0', 'mode main']
