@@ -155,28 +155,20 @@ config.keys = {
   { key = "j",  mods = "CTRL|SHIFT", action = wezterm.action { AdjustPaneSize = { 'Down', 2 } } },
   { key = "k",  mods = "CTRL|SHIFT", action = wezterm.action { AdjustPaneSize = { 'Up', 2 } } },
 
-  -- Switch tabs with ctrl + number
-  -- { key = "1",  mods = "CTRL",       action = wezterm.action { ActivateTab = 0 } },
-  -- { key = "2",  mods = "CTRL",       action = wezterm.action { ActivateTab = 1 } },
-  -- { key = "3",  mods = "CTRL",       action = wezterm.action { ActivateTab = 2 } },
-  -- { key = "4",  mods = "CTRL",       action = wezterm.action { ActivateTab = 3 } },
-  -- { key = "5",  mods = "CTRL",       action = wezterm.action { ActivateTab = 4 } },
-  -- { key = "6",  mods = "CTRL",       action = wezterm.action { ActivateTab = 5 } },
-  -- { key = "7",  mods = "CTRL",       action = wezterm.action { ActivateTab = 6 } },
-  -- { key = "8",  mods = "CTRL",       action = wezterm.action { ActivateTab = 7 } },
-  -- { key = "9",  mods = "CTRL",       action = wezterm.action { ActivateTab = 8 } },
+  -- Switch tabs with cmd + number
+  -- { key = "1",  mods = "SUPER",      action = wezterm.action { ActivateTab = 0 } },
+  -- { key = "2",  mods = "SUPER",      action = wezterm.action { ActivateTab = 1 } },
+  -- { key = "3",  mods = "SUPER",      action = wezterm.action { ActivateTab = 2 } },
+  -- { key = "4",  mods = "SUPER",      action = wezterm.action { ActivateTab = 3 } },
+  -- { key = "5",  mods = "SUPER",      action = wezterm.action { ActivateTab = 4 } },
+  -- { key = "6",  mods = "SUPER",      action = wezterm.action { ActivateTab = 5 } },
+  -- { key = "7",  mods = "SUPER",      action = wezterm.action { ActivateTab = 6 } },
+  -- { key = "8",  mods = "SUPER",      action = wezterm.action { ActivateTab = 7 } },
+  -- { key = "9",  mods = "SUPER",      action = wezterm.action { ActivateTab = 8 } },
 }
 
 -- unbind tabs from cmd
--- Disable default key bindings for Command + number keys
-for i = 1, 9 do
-  table.insert(config.keys, {
-    key = tostring(i),
-    mods = 'CMD',
-    action = wezterm.action.DisableDefaultAssignment,
-  })
-end
--- do the same for ctrl
+-- Disable default key bindings for ctrl + number keys
 for i = 1, 9 do
   table.insert(config.keys, {
     key = tostring(i),
