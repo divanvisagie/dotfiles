@@ -58,7 +58,6 @@ alias ni='nix-env -i'
 alias ns='nix-search'
 # alias nu='~/.dotfiles/nix/install.sh' # Update nix environment
 alias nv='nvim'
-alias rsync='rsync --partial --info=progress2'
 alias sf="source ~/.zshrc"
 alias uuid="uuidgen | tr 'A-F' 'a-f'"
 alias main="git checkout main"
