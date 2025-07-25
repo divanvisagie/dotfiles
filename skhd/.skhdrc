@@ -19,15 +19,17 @@ alt - f : osascript -e 'tell application "Finder" to activate'
 alt - g : osascript -e 'tell application "Telegram" to activate'
 alt - i : osascript -e 'tell application "Insomnia" to activate'
 alt - s : osascript -e 'tell application "Spotify" to activate'
+alt - o : osascript -e 'tell application "Obsidian" to activate'
 alt - m : osascript -e 'tell application "MD-Chat" to activate'
 alt - w : osascript -e 'tell application "WhatsApp" to activate'
 alt - n : osascript -e 'tell application "Notes" to activate'
-alt - o : osascript -e 'tell application "Obsidian" to activate'
-alt - r : osascript -e 'tell application "Reminders" to activate'
-# alt - l : osascript -e 'tell application "Slack" to activate'
-alt - t : osascript -e 'tell application "iTerm" to activate'
-alt - v : osascript -e 'tell application "Visual Studio Code" to activate'
+alt - t : osascript -e 'tell application "Terminal" to activate'
 alt - z : osascript -e 'tell application "Zed" to activate'
+
+#open new wezterm window on alt + enter
+#alt - return : osascript -e 'tell application "WezTerm" to make new window'
+alt - return : open -na "Terminal"
+
 
 # # Make floating window fill left half of screen
 # ctrl + alt - left : yabai -m window --grid 1:2:0:0:1:1
@@ -46,7 +48,7 @@ alt - z : osascript -e 'tell application "Zed" to activate'
 # ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
 #
 # # Center 23rds
-# ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1
+ctrl + alt - c : yabai -m window --grid 1:9:1:0:7:1
 # # Center 2 4ths
 # ctrl + alt - s : yabai -m window --grid 1:4:1:0:2:1
 # # 
