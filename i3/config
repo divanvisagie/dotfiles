@@ -73,7 +73,7 @@ bindsym Mod1+q kill
 # on the original workspace that the command was run on.
 # Recommends: rofi-wayland
 set $rofi_cmd rofi \
-        -terminal '$term' -theme sector-f-dark
+        -terminal '$term' -theme sector-f-light
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
@@ -82,7 +82,7 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 #set $menu $rofi_cmd -show combi -combi-modes drun -modes combi
 
 #bindsym Mod4+d exec --no-startup-id $menu
-bindsym Mod4+d exec --no-startup-id rofi -terminal 'wezterm' -theme sector-f-dark -show combi -combi-modes drun#run -modes-combi
+bindsym Mod4+d exec --no-startup-id rofi -terminal 'wezterm' -theme sector-f-light -show combi -combi-modes drun#run -modes-combi
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -230,3 +230,7 @@ client.focused_inactive #3c3836   #3c3836   #ffffff   #3c3836   #3c3836
 client.unfocused        #32302f   #32302f   #888888   #32302f   #32302f
 client.urgent           #cc241d   #cc241d   #ffffff   #cc241d   #cc241d
 client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
+
+# Force borders for all windows
+# for_window [class=".*"] border pixel 2
+#exec --no-startup-id gtk3-nocsd
