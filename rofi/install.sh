@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Create rofi config directory if it doesn't exist
 mkdir -p ~/.config/rofi
