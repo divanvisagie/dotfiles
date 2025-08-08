@@ -28,13 +28,13 @@
     gruvbox-dark-yellow-light: #fabd2f;
     gruvbox-dark-gray:         #a89984;
     accent:                    #e77500;
-    bg:                        #000000;
+    bg:                        #111111;
     light:                     #eeeeee;
 
     /* Theme colors */
     // background:                  @gruvbox-dark-bg0-soft;
-    background:                  @bg;
-    background-color:            @bg;
+    background:                  #00000000;
+    background-color:            #11111155;
     // foreground:                  @gruvbox-dark-fg1;
     foreground:                  @accent;
     border-color:                @accent;
@@ -43,13 +43,13 @@
 
     normal-background:           @background;
     normal-foreground:           @foreground;
-    alternate-normal-background: @bg;
+    alternate-normal-background: #00000055;
     alternate-normal-foreground: @light;
     selected-normal-background:  @accent;
     selected-normal-foreground:  @bg;
 
     active-background:           @gruvbox-dark-yellow-dark;
-    active-foreground:           @background;
+    active-foreground:           #000000;
     alternate-active-background: @active-background;
     alternate-active-foreground: @active-foreground;
     selected-active-background:  @gruvbox-dark-yellow-light;
@@ -65,3 +65,13 @@
 
 @import "gruvbox-common"
 
+window {
+    border-radius: 10px;      /* Adjust the px value to taste */
+    // border: 2px;              /* Your existing border thickness */
+    // border-color: @accent;    /* Already defined in your theme */
+    // padding: 10px;            /* Optional: keeps text from hugging corners */
+}
+
+mainbox {
+    border-radius: 10px;
+}

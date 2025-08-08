@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #set -e # The script will exit if it hits an error code
 

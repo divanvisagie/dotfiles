@@ -1,0 +1,8 @@
+@import "default"
+
+window {
+    border-radius: 10px;      /* Adjust the px value to taste */
+    // border: 2px;              /* Your existing border thickness */
+    // border-color: @accent;    /* Already defined in your theme */
+    // padding: 10px;            /* Optional: keeps text from hugging corners */
+}
