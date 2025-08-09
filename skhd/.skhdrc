@@ -25,11 +25,11 @@ alt - w : osascript -e 'tell application "WhatsApp" to activate'
 alt - n : osascript -e 'tell application "Notes" to activate'
 alt - t : osascript -e 'tell application "WezTerm" to activate'
 alt - z : osascript -e 'tell application "Zed" to activate'
-
 #open new wezterm window on alt + enter
 #alt - return : osascript -e 'tell application "WezTerm" to make new window'
 alt - return : open -na "wezterm"
 
+alt - tab : ~/.dotfiles/aerospace/tabber.sh
 
 # # Make floating window fill left half of screen
 # ctrl + alt - left : yabai -m window --grid 1:2:0:0:1:1
