@@ -10,10 +10,9 @@
 ############################################################
 
 alt - b : ~/.dotfiles/skhd/browser/target/release/browser
-alt - c : osascript -e 'tell application "ChatGPT" to activate'
+alt - c : osascript -e 'tell application "Ollama" to activate'
 alt - d : osascript -e 'do shell script "dm"'
 alt - e : osascript -e 'tell application "Mail" to activate'
-alt - p : osascript -e 'tell application "Denny" to activate'
 alt - x : osascript -e 'tell application "Xcode" to activate'
 alt - f : osascript -e 'tell application "Finder" to activate'
 alt - g : osascript -e 'tell application "Telegram" to activate'
@@ -23,13 +22,14 @@ alt - o : osascript -e 'tell application "Obsidian" to activate'
 alt - m : osascript -e 'tell application "MD-Chat" to activate'
 alt - w : osascript -e 'tell application "WhatsApp" to activate'
 alt - n : osascript -e 'tell application "Notes" to activate'
-alt - t : osascript -e 'tell application "WezTerm" to activate'
+alt - t : osascript -e 'tell application "Terminal" to activate'
 alt - z : osascript -e 'tell application "Zed" to activate'
 #open new wezterm window on alt + enter
 #alt - return : osascript -e 'tell application "WezTerm" to make new window'
-alt - return : open -na "wezterm"
+alt - return : open -na "Terminal"
 
 alt - tab : ~/.dotfiles/aerospace/tabber.sh
+cmd - tab : ~/.dotfiles/aerospace/tabber.sh
 
 # # Make floating window fill left half of screen
 # ctrl + alt - left : yabai -m window --grid 1:2:0:0:1:1

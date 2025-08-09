@@ -1,30 +1,27 @@
-start-at-login = false
+start-at-login = true
 default-root-container-layout = 'tiles'
 after-startup-command = [
 #    exec-and-forget borders active_color=0xff000000 inactive_color=0x55777777 width=1.0'
 ]
 
 [gaps]
-inner.horizontal = 0
-inner.vertical = 0
-outer.left = 0
-outer.bottom = 0
+inner.horizontal = 5
+inner.vertical = 5
+outer.left = 5
+outer.bottom =5
 outer.top = 0
-outer.right = 0
+outer.right = 5
 
 [[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
+if.app-id = 'org.mozilla.firefox'
 run = ['move-node-to-workspace 2']
-[[on-window-detected]]
-if.app-id = 'com.brave.Browser'
-run = ['move-node-to-workspace 2']
+# [[on-window-detected]]
+# if.app-id = 'app.zen-browser.zen'
+# run = ['move-node-to-workspace 2']
+# [[on-window-detected]]
+# if.app-id = 'com.brave.Browser'
+# run = ['move-node-to-workspace 2']
 
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-run = ['layout tiling', 'move-node-to-workspace 3']
-[[on-window-detected]]
-if.app-id = 'com.googlecode.iterm2'
-run = ['layout tiling', 'move-node-to-workspace 3']
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = ['layout tiling']
@@ -38,23 +35,23 @@ run = ['layout tiling']
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
 #run = ['move-node-to-workspace 4']
-run = ['layout floating', 'move-node-to-workspace 4']
+run = ['layout tiling', 'move-node-to-workspace 4']
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
 #run = ['move-node-to-workspace 4']
-run = ['layout floating', 'move-node-to-workspace 4']
+run = ['layout tiling', 'move-node-to-workspace 4']
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
 #run = ['move-node-to-workspace 4']
-run = ['layout floating', 'move-node-to-workspace 4']
+run = ['layout tiling', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run = ['move-node-to-workspace 5']
+run = ['move-node-to-workspace 3']
 
-[[on-window-detected]]
-check-further-callbacks = true
-run = ['layout floating', 'move-node-to-workspace 1']
+# [[on-window-detected]]
+# check-further-callbacks = true
+# run = ['layout floating', 'move-node-to-workspace 1']
 
 [mode.main.binding]
 ctrl-alt-j = ['move-node-to-monitor --focus-follows-window next', 'fullscreen']
