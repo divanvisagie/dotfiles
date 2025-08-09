@@ -26,7 +26,7 @@ alt - t : osascript -e 'tell application "Terminal" to activate'
 alt - z : osascript -e 'tell application "Zed" to activate'
 #open new wezterm window on alt + enter
 #alt - return : osascript -e 'tell application "WezTerm" to make new window'
-alt - return : open -na "Terminal"
+alt - return : ~/.dotfiles/skhd/terminal.sh
 
 alt - tab : ~/.dotfiles/aerospace/tabber.sh
 cmd - tab : ~/.dotfiles/aerospace/tabber.sh

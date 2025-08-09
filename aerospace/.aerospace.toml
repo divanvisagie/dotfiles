@@ -8,7 +8,7 @@ after-startup-command = [
 inner.horizontal = 5
 inner.vertical = 5
 outer.left = 5
-outer.bottom =5
+outer.bottom = 4
 outer.top = 0
 outer.right = 5
 
