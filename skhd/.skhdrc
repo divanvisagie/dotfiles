@@ -23,12 +23,12 @@ alt - o : osascript -e 'tell application "Obsidian" to activate'
 alt - m : osascript -e 'tell application "MD-Chat" to activate'
 alt - w : osascript -e 'tell application "WhatsApp" to activate'
 alt - n : osascript -e 'tell application "Notes" to activate'
-alt - t : osascript -e 'tell application "Terminal" to activate'
+alt - t : osascript -e 'tell application "WezTerm" to activate'
 alt - z : osascript -e 'tell application "Zed" to activate'
 
 #open new wezterm window on alt + enter
 #alt - return : osascript -e 'tell application "WezTerm" to make new window'
-alt - return : open -na "Terminal"
+alt - return : open -na "wezterm"
 
 
 # # Make floating window fill left half of screen
