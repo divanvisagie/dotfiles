@@ -1,28 +1,31 @@
 #!/bin/sh
-# winpick: pick any window via rofi, then focus it with Aerospace
-# deps: aerospace, rofi
-# usage:
-#   winpick            # current monitor’s workspace(s)
-#   winpick --all      # all monitors
+# winpick-choose — Aerospace + choose-gui
+# deps: /opt/homebrew/bin/aerospace, /opt/homebrew/bin/choose
 
 set -euo pipefail
 
+AERO=${AERO:-/opt/homebrew/bin/aerospace}
+CHOOSE=${CHOOSE:-/opt/homebrew/bin/choose}
+
+# default = focused monitor; pass --all to see everything
 SCOPE="--monitor focused"
 [ "${1-}" = "--all" ] && SCOPE="--all"
 
-# Format: id<TAB>app<TAB>title
-FORMAT='%{window-id}%{tab}%{app-name}%{tab}%{window-title}'
+# Use real tabs via $'...'; scripts pasted with '\t' will break awk -F '\t'
+FORMAT=$'%{window-id}\t%{workspace}\t%{app-name}\t%{window-title}'
 
-# Build the menu, skipping untitled windows, and show "App — Title"
-SELECTION="$(
-  aerospace list-windows $SCOPE --format "$FORMAT" \
-  | awk -F '\t' 'NF>=3 && length($3) > 0 { printf "%s\t%s — %s\n",$1,$2,$3 }' \
-  | rofi -dmenu -i -p 'Windows'
+MENU_LINES="$(
+  "$AERO" list-windows $SCOPE --format "$FORMAT" \
+  | awk -F '\t' 'NF>=4 && length($4)>0 {
+      # id \t Visible label
+      printf "%s\t[%s] %s — %s\n", $1, $2, $3, $4
+    }'
 )"
 
-# User cancelled
-[ -z "${SELECTION}" ] && exit 0
+[ -z "$MENU_LINES" ] && exit 0
 
-WIN_ID=$(printf '%s' "$SELECTION" | awk -F '\t' '{print $1}')
-[ -n "$WIN_ID" ] && exec aerospace focus --window-id "$WIN_ID"
+SELECTION="$(printf '%s\n' "$MENU_LINES" | "$CHOOSE" "Windows")" || exit 0
+[ -z "$SELECTION" ] && exit 0
 
+WIN_ID="$(printf '%s' "$SELECTION" | cut -f1)"
+[ -n "$WIN_ID" ] && exec "$AERO" focus --window-id "$WIN_ID"
